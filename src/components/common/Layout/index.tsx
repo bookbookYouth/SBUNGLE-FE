@@ -1,4 +1,4 @@
-import { Flex } from '../../base/Flex';
+import { Flex } from '@/components/base/Flex';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
