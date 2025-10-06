@@ -5,7 +5,7 @@ import { fontTheme, paletteTheme } from './theme.css';
 const layoutProperties = defineProperties({
   properties: {
     position: ['absolute', 'fixed', 'relative', 'static', 'sticky'],
-    display: ['none', 'flex', 'block', 'inline'],
+    display: ['none', 'flex', 'block', 'inline', 'inline-block'],
     flexDirection: ['row', 'column'],
     justifyContent: ['stretch', 'flex-start', 'center', 'flex-end', 'space-around', 'space-between'],
     alignItems: ['stretch', 'flex-start', 'center', 'flex-end'],
