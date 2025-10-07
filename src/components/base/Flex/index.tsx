@@ -1,3 +1,6 @@
+import clsx from 'clsx';
+
+import { flexStyle } from '@/styles/common/flex.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
 interface FlexProps {
@@ -10,6 +13,8 @@ interface FlexProps {
   width?: string;
   height?: string;
   gap?: string;
+  overflowX?: 'hidden' | 'scroll' | 'auto';
+  overflowY?: 'hidden' | 'scroll' | 'auto';
 }
 
 export const Flex = ({
@@ -22,18 +27,23 @@ export const Flex = ({
   width,
   height,
   gap,
+  overflowX = 'auto',
+  overflowY = 'auto',
 }: FlexProps) => {
   return (
     <div
-      className={sprinkles({
-        display: 'flex',
-        flexDirection: direction,
-        justifyContent: justifyContent,
-        alignItems: alignItems,
-        flexWrap: wrap,
-        backgroundColor: backgroundColor,
-      })}
-      style={{ width, height, gap }}
+      className={clsx(
+        flexStyle,
+        sprinkles({
+          display: 'flex',
+          flexDirection: direction,
+          justifyContent: justifyContent,
+          alignItems: alignItems,
+          flexWrap: wrap,
+          backgroundColor: backgroundColor,
+        }),
+      )}
+      style={{ width, height, gap, overflowX, overflowY }}
     >
       {children}
     </div>

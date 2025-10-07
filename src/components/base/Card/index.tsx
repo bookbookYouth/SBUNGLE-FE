@@ -15,7 +15,7 @@ export const Card = ({ theme = 'large', top, bottom }: CardProps) => {
     <div
       style={{
         border: `1px solid ${paletteTheme.palette.black}`,
-        width: theme === 'large' ? '180px' : '152px',
+        minWidth: theme === 'large' ? '180px' : '152px',
         height: '268px',
       }}
     >
