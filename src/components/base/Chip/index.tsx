@@ -13,13 +13,15 @@ interface ChipProps {
 export const Chip = ({ children, color = 'gray400', borderColor = 'gray200' }: ChipProps) => {
   return (
     <div
-      className={clsx(typo['content_sm'], sprinkles({ display: 'inline-block', color: color }))}
+      className={clsx(
+        typo['content_sm'],
+        sprinkles({ display: 'inline-block', color: color, backgroundColor: 'transparent' }),
+      )}
       style={{
         width: 'fit-content',
         border: `1px solid ${paletteTheme.palette[borderColor]}`,
         borderRadius: '20px',
         padding: '8px 16px',
-        backgroundColor: 'transparent',
       }}
     >
       {children}

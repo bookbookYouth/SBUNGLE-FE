@@ -14,20 +14,23 @@ export const Link = ({ children, url, isExternal = false }: LinkProps) => {
     window.open(url, '_blank', 'noopener, noreferrer');
   };
 
-  const linkStyle = {
-    backgroundColor: 'transparent',
-    border: 'none',
-  };
-
   if (isExternal) {
     return (
-      <button className={sprinkles({ cursor: 'pointer' })} onClick={() => handleOpenNewTab(url)} style={linkStyle}>
+      <button
+        className={sprinkles({ cursor: 'pointer', backgroundColor: 'transparent' })}
+        onClick={() => handleOpenNewTab(url)}
+        style={{ border: 'none' }}
+      >
         {children}
       </button>
     );
   } else {
     return (
-      <button className={sprinkles({ cursor: 'pointer' })} onClick={() => naviagate(url)} style={linkStyle}>
+      <button
+        className={sprinkles({ cursor: 'pointer', backgroundColor: 'transparent' })}
+        onClick={() => naviagate(url)}
+        style={{ border: 'none' }}
+      >
         {children}
       </button>
     );

@@ -18,12 +18,15 @@ interface TabItemProps {
 const TabItem = ({ children, onClick }: TabItemProps) => {
   return (
     <button
-      className={clsx(typo['subTitle_regular'], tabStyle, sprinkles({ color: 'gray200', cursor: 'pointer' }))}
+      className={clsx(
+        typo['subTitle_regular'],
+        tabStyle,
+        sprinkles({ color: 'gray200', cursor: 'pointer', backgroundColor: 'transparent' }),
+      )}
       onClick={onClick}
       style={{
         flex: 1,
         height: '48px',
-        backgroundColor: 'transparent',
       }}
     >
       <Flex alignItems="center" justifyContent="center">
