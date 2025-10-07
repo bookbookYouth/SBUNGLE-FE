@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { buttonStyle } from '@/styles/common/button.css';
+import { buttonStyle } from '@/styles/base/button.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
 export type colorType = 'orange' | 'gray' | 'black';

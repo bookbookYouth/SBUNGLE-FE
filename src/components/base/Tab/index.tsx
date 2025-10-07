@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 import { Flex } from '../Flex';
 
-import { tabStyle } from '@/styles/common/tab.css';
+import { tabStyle } from '@/styles/base/tab.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { typo } from '@/styles/typo.css';
 

@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 
-import { iconButtonStyle } from '@/styles/common/button.css';
+import { iconButtonStyle } from '@/styles/base/button.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
 interface IconButtonProps {

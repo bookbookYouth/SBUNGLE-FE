@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { flexStyle } from '@/styles/common/flex.css';
+import { flexStyle } from '@/styles/base/flex.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
 interface FlexProps {

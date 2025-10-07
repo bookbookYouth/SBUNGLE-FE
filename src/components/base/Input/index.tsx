@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Flex } from '../Flex';
 import { Txt } from '../Txt';
 
-import { inputStyle } from '@/styles/common/input.css';
+import { inputStyle } from '@/styles/base/input.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { typo } from '@/styles/typo.css';
 
