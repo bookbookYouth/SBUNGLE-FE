@@ -11,7 +11,7 @@ interface IconButtonProps {
   alt: string;
   ariaLabel?: string;
   disabled?: boolean;
-  handleClick?: () => void;
+  onClick?: () => void;
   active?: boolean;
   activeStyle?: CSSProperties;
 }
@@ -23,7 +23,7 @@ export const IconButton = ({
   alt,
   ariaLabel,
   disabled = false,
-  handleClick,
+  onClick,
   active = false,
   activeStyle,
 }: IconButtonProps) => {
@@ -41,7 +41,7 @@ export const IconButton = ({
       )}
       aria-label={ariaLabel ?? alt}
       disabled={disabled}
-      onClick={handleClick}
+      onClick={onClick}
     >
       <img
         src={src}

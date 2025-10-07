@@ -14,7 +14,7 @@ interface ButtonProps {
   height: string;
   ariaLabel?: string;
   disabled?: boolean;
-  handleClick?: () => void;
+  onClick?: () => void;
 }
 export const Button = ({
   color = 'black',
@@ -24,7 +24,7 @@ export const Button = ({
   height,
   ariaLabel,
   disabled = false,
-  handleClick,
+  onClick,
 }: ButtonProps) => {
   return (
     <button
@@ -40,7 +40,7 @@ export const Button = ({
       )}
       aria-label={ariaLabel ?? 'button'}
       disabled={disabled}
-      onClick={handleClick}
+      onClick={onClick}
       data-color={color}
       data-theme={theme}
       style={{ width, height }}

@@ -5,6 +5,7 @@ import { Txt } from '../Txt';
 
 import { inputStyle } from '@/styles/common/input.css';
 import { sprinkles } from '@/styles/sprinkles.css';
+import { typo } from '@/styles/typo.css';
 
 interface InputProps {
   height: string;
@@ -12,17 +13,10 @@ interface InputProps {
   label?: string;
   placeholder?: string;
   required?: boolean;
-  handleChange?: () => void;
+  onChange?: () => void;
 }
 
-export const Input = ({
-  height,
-  width = '100%',
-  label,
-  placeholder = '',
-  required = false,
-  handleChange,
-}: InputProps) => {
+export const Input = ({ height, width = '100%', label, placeholder = '', required = false, onChange }: InputProps) => {
   return (
     <Flex width="100%" alignItems="flex-start" justifyContent="space-between">
       {label && (
@@ -39,9 +33,9 @@ export const Input = ({
       <input
         type="text"
         aria-label={label ?? 'input'}
-        className={clsx(inputStyle, sprinkles({ color: 'black', fontFamily: 'body', fontSize: 'sm' }))}
+        className={clsx(inputStyle, typo['content_sm'], sprinkles({ color: 'black' }))}
         placeholder={placeholder}
-        onChange={handleChange}
+        onChange={onChange}
         style={{
           height,
           width,

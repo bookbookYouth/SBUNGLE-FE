@@ -5,6 +5,7 @@ import { Txt } from '../Txt';
 
 import { textareaStyle } from '@/styles/common/input.css';
 import { sprinkles } from '@/styles/sprinkles.css';
+import { typo } from '@/styles/typo.css';
 
 interface TextareaProps {
   height: string;
@@ -12,7 +13,7 @@ interface TextareaProps {
   label?: string;
   placeholder?: string;
   required?: boolean;
-  handleChange?: () => void;
+  onChange?: () => void;
 }
 
 export const Textarea = ({
@@ -21,7 +22,7 @@ export const Textarea = ({
   label,
   placeholder = '',
   required = false,
-  handleChange,
+  onChange,
 }: TextareaProps) => {
   return (
     <Flex width="100%" alignItems="flex-start" justifyContent="space-between">
@@ -38,9 +39,9 @@ export const Textarea = ({
       )}
       <textarea
         aria-label={label ?? 'textarea'}
-        className={clsx(textareaStyle, sprinkles({ color: 'black', fontFamily: 'body', fontSize: 'sm' }))}
+        className={clsx(textareaStyle, typo['content_sm'], sprinkles({ color: 'black' }))}
         placeholder={placeholder}
-        onChange={handleChange}
+        onChange={onChange}
         style={{
           height,
           width,
