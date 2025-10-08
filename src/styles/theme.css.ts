@@ -23,6 +23,7 @@ export const fontTheme = createGlobalThemeContract({
       md: 'fong-md',
       sm: 'font-sm',
       xs: 'font-xs',
+      xxs: 'font-xxs',
     },
     weight: {
       regular: 'font-regular',
@@ -31,6 +32,7 @@ export const fontTheme = createGlobalThemeContract({
     lineHeight: {
       lg: 'font-height-lg',
       sm: 'font-height-sm',
+      xs: 'font-height-xs',
     },
   },
 });
@@ -58,6 +60,7 @@ export const font = createGlobalTheme(':root', fontTheme, {
       md: '16px',
       sm: '14px',
       xs: '12px',
+      xxs: '10px',
     },
     weight: {
       regular: '400',
@@ -66,6 +69,7 @@ export const font = createGlobalTheme(':root', fontTheme, {
     lineHeight: {
       lg: '160%',
       sm: '140%',
+      xs: '120%',
     },
   },
 });

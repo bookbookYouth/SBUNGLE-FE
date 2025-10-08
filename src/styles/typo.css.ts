@@ -43,4 +43,10 @@ export const typo = {
     fontWeight: 'regular',
     lineHeight: 'sm',
   }),
+  menu: sprinkles({
+    fontFamily: 'body',
+    fontSize: 'xxs',
+    fontWeight: 'regular',
+    lineHeight: 'xs',
+  }),
 };
