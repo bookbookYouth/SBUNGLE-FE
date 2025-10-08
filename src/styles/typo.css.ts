@@ -5,7 +5,7 @@ export const typo = {
     //Title 20pt_160%
     fontFamily: 'body',
     fontSize: 'lg',
-    fontWeight: 'regular',
+    fontWeight: 'bold',
     lineHeight: 'lg',
   }),
   subTitle_bold: sprinkles({
