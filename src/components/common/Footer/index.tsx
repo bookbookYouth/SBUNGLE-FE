@@ -33,14 +33,14 @@ export const Footer = () => {
     <div
       style={{
         borderTop: `1px solid ${paletteTheme.palette.gray100}`,
-        height: '82px',
+        height: '48px',
         width: '402px',
         position: 'fixed',
         bottom: 0,
         paddingTop: '4px',
       }}
     >
-      <Flex height="100%" width="100%" gap="36px" justifyContent="center">
+      <Flex height="100%" width="100%" gap="36px" justifyContent="center" alignItems="center">
         {menuItems.map((item) => (
           <button
             key={item.route}
@@ -48,7 +48,7 @@ export const Footer = () => {
             className={sprinkles({ cursor: 'pointer', backgroundColor: 'transparent' })}
             style={{ width: '44px', padding: '0', border: 'none' }}
           >
-            <Flex direction="column" alignItems="center" justifyContent="flex-end" width="44px" height="44px">
+            <Flex direction="column" alignItems="center" justifyContent="center" width="44px" height="44px">
               <img
                 src={pathname === item.route ? item.clickedIcon : item.icon}
                 alt={item.route}
