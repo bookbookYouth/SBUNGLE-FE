@@ -11,7 +11,21 @@ const unusedImports = require('eslint-plugin-unused-imports');
 const jsxA11y = require('eslint-plugin-jsx-a11y');
 
 module.exports = [
-  { ignores: ['dist', 'coverage', 'storybook-static', 'eslint.config.*'] },
+  {
+    ignores: [
+      'dist',
+      'coverage',
+      'storybook-static',
+      'eslint.config.*',
+      'node_modules',
+      'build',
+      '.eslintrc.*',
+      '.eslintcache',
+      'pnpm-lock.yaml',
+      'package-lock.json',
+      'yarn.lock',
+    ],
+  },
 
   js.configs.recommended,
   ...tseslint.configs.recommended,

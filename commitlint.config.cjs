@@ -1,6 +1,5 @@
 const Configuration = {
   extends: ['@commitlint/config-conventional'],
-  plugins: ['commitlint-plugin-jira-rules'],
   formatter: '@commitlint/format',
   rules: {
     'type-enum': [2, 'always', ['feat', 'test', 'fix', 'docs', 'refactor', 'chore', 'style', 'perf', 'build']],
