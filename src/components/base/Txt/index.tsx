@@ -10,5 +10,5 @@ interface TxtProps {
 }
 
 export const Txt = ({ children, typo = 'content_sm', color }: TxtProps) => {
-  return <div className={clsx(typoStyle[typo], sprinkles({ color }))}>{children}</div>;
+  return <span className={clsx(typoStyle[typo], sprinkles({ color }))}>{children}</span>;
 };
