@@ -24,6 +24,7 @@ function SurveyPage() {
 
   const onSubmit = (data: SurveySetupProps) => {
     // api 연동
+    console.log(data);
     navigate('/');
   };
 
