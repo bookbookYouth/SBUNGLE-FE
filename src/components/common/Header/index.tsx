@@ -11,9 +11,16 @@ interface HeaderProps {
   isRight?: boolean;
   isLeft?: boolean;
   iconColor?: Parameters<typeof sprinkles>[0]['backgroundColor'];
+  handleBack?: () => void;
 }
 
-export const Header = ({ title = '', isRight = false, isLeft = false, iconColor = 'gray300' }: HeaderProps) => {
+export const Header = ({
+  title = '',
+  isRight = false,
+  isLeft = false,
+  iconColor = 'gray300',
+  handleBack,
+}: HeaderProps) => {
   return (
     <div style={{ height: '52px', width: '100%', padding: '0 2px' }}>
       <Flex height="100%" width="100%" justifyContent="space-between" alignItems="center">
@@ -23,6 +30,7 @@ export const Header = ({ title = '', isRight = false, isLeft = false, iconColor 
             width="44px"
             height="44px"
             style={{ color: paletteTheme.palette[iconColor] }}
+            onClick={handleBack}
           />
         ) : (
           <div style={{ width: '44px', height: '44px' }} />
