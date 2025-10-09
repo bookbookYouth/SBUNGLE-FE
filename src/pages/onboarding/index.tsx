@@ -12,7 +12,7 @@ function OnboardingPage() {
   return (
     <>
       <Spacing height="106px" />
-      <div className={sprinkles({ alignItems: 'center' })} style={{ padding: '0 20px' }}>
+      <div className={sprinkles({ alignItems: 'center' })}>
         <Txt typo="point_lg">
           더 이상 책 앞에서 고민하지 말고, <br />
           <Txt typo="point_lg" color="primary">
