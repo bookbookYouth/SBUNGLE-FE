@@ -1,5 +1,7 @@
 import type { ListType } from '@/type/onboarding';
 
+export const STEPS = ['기본 정보', '장르', '취향'];
+
 export const genderList: ListType[] = [
   { name: '여성', key: 'woman' },
   { name: '남성', key: 'man' },
