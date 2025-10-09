@@ -13,9 +13,10 @@ interface TabProps {
 interface TabItemProps {
   children: React.ReactNode;
   onClick?: () => void;
+  active?: boolean;
 }
 
-const TabItem = ({ children, onClick }: TabItemProps) => {
+const TabItem = ({ children, onClick, active = false }: TabItemProps) => {
   return (
     <button
       className={clsx(
@@ -24,6 +25,7 @@ const TabItem = ({ children, onClick }: TabItemProps) => {
         sprinkles({ color: 'gray200', cursor: 'pointer', backgroundColor: 'transparent' }),
       )}
       onClick={onClick}
+      data-active={active}
       style={{
         flex: 1,
         height: '48px',

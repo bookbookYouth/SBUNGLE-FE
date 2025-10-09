@@ -7,8 +7,16 @@ interface TxtProps {
   children: React.ReactNode;
   typo?: keyof typeof typoStyle;
   color?: Parameters<typeof sprinkles>[0]['color'];
+  underline?: boolean;
 }
 
-export const Txt = ({ children, typo = 'content_sm', color }: TxtProps) => {
-  return <span className={clsx(typoStyle[typo], sprinkles({ color }))}>{children}</span>;
+export const Txt = ({ children, typo = 'content_sm', color, underline = false }: TxtProps) => {
+  return (
+    <span
+      className={clsx(typoStyle[typo], sprinkles({ color }))}
+      style={{ textDecoration: underline ? 'underline' : 'none', textUnderlinePosition: 'from-font' }}
+    >
+      {children}
+    </span>
+  );
 };

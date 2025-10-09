@@ -15,6 +15,7 @@ interface ButtonProps {
   ariaLabel?: string;
   disabled?: boolean;
   onClick?: () => void;
+  active?: boolean;
 }
 export const Button = ({
   color = 'black',
@@ -25,6 +26,7 @@ export const Button = ({
   ariaLabel,
   disabled = false,
   onClick,
+  active = false,
 }: ButtonProps) => {
   return (
     <button
@@ -43,6 +45,7 @@ export const Button = ({
       onClick={onClick}
       data-color={color}
       data-theme={theme}
+      data-active={active}
       style={{ width, height }}
     >
       {children}

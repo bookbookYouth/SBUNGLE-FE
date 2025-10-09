@@ -40,10 +40,11 @@ export const buttonStyle = style({
       border: `1px solid ${paletteTheme.palette.black}`,
     },
     // active,hover
-    '&[data-theme="clear"][data-color="orange"]:hover, &[data-theme="clear"][data-color="orange"]:active': {
-      backgroundColor: paletteTheme.palette.primary,
-      color: paletteTheme.palette.white,
-      border: 'none',
-    },
+    '&[data-theme="clear"][data-color="gray"]:hover, &[data-theme="clear"][data-color="gray"]:active, &[data-theme="clear"][data-color="gray"][data-active="true"]':
+      {
+        backgroundColor: paletteTheme.palette.primary,
+        color: paletteTheme.palette.white,
+        border: 'none',
+      },
   },
 });

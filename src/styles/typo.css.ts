@@ -60,7 +60,7 @@ export const typo = {
     /* point/Title 18pt_140% */
     fontFamily: 'point',
     fontSize: 'sm',
-    fontWeight: 'regular',
+    fontWeight: 'bold',
     lineHeight: 'sm',
   }),
 };
