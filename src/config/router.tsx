@@ -2,7 +2,6 @@ import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from '
 
 import { Layout } from '@/components/common/Layout';
 import { MainLayout } from '@/components/common/Layout/MainLayout';
-import { NonFooterLayout } from '@/components/common/Layout/NonFooterLayout';
 
 import { ROUTES } from './appConfig';
 
@@ -15,12 +14,10 @@ export const APP_ROUTES = (
       <Route {...ROUTES.wish} />
       <Route {...ROUTES.mypage} />
     </Route>
-    <Route element={<NonFooterLayout />}>
-      <Route {...ROUTES.survey} />
-      <Route {...ROUTES.onboarding} />
-      <Route {...ROUTES.error} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Route>
+    <Route {...ROUTES.survey} />
+    <Route {...ROUTES.onboarding} />
+    <Route {...ROUTES.error} />
+    <Route path="*" element={<Navigate to="/" replace />} />
   </Route>
 );
 
