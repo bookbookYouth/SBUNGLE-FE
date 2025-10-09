@@ -14,8 +14,9 @@ export const APP_ROUTES = (
       <Route {...ROUTES.wish} />
       <Route {...ROUTES.mypage} />
     </Route>
-    <Route {...ROUTES.survey} />
     <Route {...ROUTES.onboarding} />
+    <Route {...ROUTES.survey} />
+    <Route {...ROUTES.splash} />
     <Route {...ROUTES.error} />
     <Route path="*" element={<Navigate to="/" replace />} />
   </Route>
