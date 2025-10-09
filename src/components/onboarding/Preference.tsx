@@ -47,7 +47,14 @@ export const Preference = () => {
         />
       </Flex>
       <Spacing height="206px" />
-      <Button width="100%" height="48px" theme="fill" color="orange" disabled={selectedPreferenceList.length === 0}>
+      <Button
+        type="submit"
+        width="100%"
+        height="48px"
+        theme="fill"
+        color="orange"
+        disabled={selectedPreferenceList.length === 0}
+      >
         <Txt typo="subTitle_bold">완료</Txt>
       </Button>
     </>

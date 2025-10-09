@@ -7,6 +7,7 @@ export type colorType = 'orange' | 'gray' | 'black';
 export type themeType = 'fill' | 'clear';
 
 interface ButtonProps {
+  type?: 'button' | 'submit';
   color?: colorType;
   theme?: themeType;
   children: React.ReactNode;
@@ -18,6 +19,7 @@ interface ButtonProps {
   active?: boolean;
 }
 export const Button = ({
+  type = 'button',
   color = 'black',
   theme = 'clear',
   children,
@@ -30,7 +32,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      type="button"
+      type={type}
       className={clsx(
         buttonStyle,
         sprinkles({
