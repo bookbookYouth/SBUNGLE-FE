@@ -49,4 +49,18 @@ export const typo = {
     fontWeight: 'regular',
     lineHeight: 'xs',
   }),
+  point_lg: sprinkles({
+    /* point/Subtitle 24pt_160% */
+    fontFamily: 'point',
+    fontSize: 'xlg',
+    fontWeight: 'bold',
+    lineHeight: 'lg',
+  }),
+  point_sm: sprinkles({
+    /* point/Title 18pt_140% */
+    fontFamily: 'point',
+    fontSize: 'sm',
+    fontWeight: 'bold',
+    lineHeight: 'sm',
+  }),
 };

@@ -17,8 +17,9 @@ export const paletteTheme = createGlobalThemeContract({
 
 export const fontTheme = createGlobalThemeContract({
   font: {
-    family: { body: 'font-family' },
+    family: { body: 'font-family-body', point: 'font-family-point' },
     size: {
+      xlg: 'font-xlg',
       lg: 'font-lg',
       md: 'fong-md',
       sm: 'font-sm',
@@ -54,8 +55,9 @@ export const lightMode = createGlobalTheme(':root', paletteTheme, {
 
 export const font = createGlobalTheme(':root', fontTheme, {
   font: {
-    family: { body: 'Pretendard' },
+    family: { body: 'Pretendard', point: 'Nanum Myeongjo' },
     size: {
+      xlg: '24px',
       lg: '20px',
       md: '16px',
       sm: '14px',

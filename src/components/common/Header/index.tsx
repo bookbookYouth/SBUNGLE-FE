@@ -7,15 +7,22 @@ import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';
 
 interface HeaderProps {
-  title: string;
+  title?: string;
   isRight?: boolean;
   isLeft?: boolean;
   iconColor?: Parameters<typeof sprinkles>[0]['backgroundColor'];
+  handleBack?: () => void;
 }
 
-export const Header = ({ title, isRight = true, isLeft = true, iconColor = 'gray300' }: HeaderProps) => {
+export const Header = ({
+  title = '',
+  isRight = false,
+  isLeft = false,
+  iconColor = 'gray300',
+  handleBack,
+}: HeaderProps) => {
   return (
-    <div style={{ height: '52px', width: '100%', padding: '0 10px' }}>
+    <div style={{ height: '52px', width: '100%', padding: '0 2px' }}>
       <Flex height="100%" width="100%" justifyContent="space-between" alignItems="center">
         {isLeft ? (
           <BackIcon
@@ -23,6 +30,7 @@ export const Header = ({ title, isRight = true, isLeft = true, iconColor = 'gray
             width="44px"
             height="44px"
             style={{ color: paletteTheme.palette[iconColor] }}
+            onClick={handleBack}
           />
         ) : (
           <div style={{ width: '44px', height: '44px' }} />
