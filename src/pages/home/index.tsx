@@ -1,6 +1,7 @@
 import { Carousel } from '@/components/base/Carousel';
 import { Flex } from '@/components/base/Flex';
 import { Grid } from '@/components/base/Grid';
+import { Link } from '@/components/base/Link';
 import { Slider } from '@/components/base/Slider';
 import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
@@ -12,9 +13,10 @@ import { getGenreImg } from '@/utils/home/getGenreImg';
 import arrowIcon from '@/assets/arrow.svg';
 import bannerImg1 from '@/assets/banner.svg';
 
+export const user = '지효';
+
 function HomePage() {
   const imgArray = [bannerImg1, bannerImg1, bannerImg1, bannerImg1, bannerImg1];
-  const user = '지효';
 
   return (
     <>
@@ -32,12 +34,14 @@ function HomePage() {
           <Txt typo="subTitle_regular">
             <Txt typo="subTitle_bold">{user}</Txt>님을 위한 오늘의 추천 도서
           </Txt>
-          <Flex alignItems="center" gap="4px" style={{ cursor: 'pointer' }}>
-            <Txt typo="content_sm" color="gray300">
-              모든 책 보기
-            </Txt>
-            <img src={arrowIcon} alt="arrow" />
-          </Flex>
+          <Link url="/book-list">
+            <Flex alignItems="center" gap="4px" style={{ cursor: 'pointer' }}>
+              <Txt typo="content_sm" color="gray300">
+                모든 책 보기
+              </Txt>
+              <img src={arrowIcon} alt="arrow" />
+            </Flex>
+          </Link>
         </Flex>
         <Slider>
           {bookForUserData.map((book) => (

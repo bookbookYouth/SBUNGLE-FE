@@ -9,6 +9,7 @@ export const APP_ROUTES = (
   <Route element={<Layout />}>
     <Route element={<MainLayout />}>
       <Route {...ROUTES.home} />
+      <Route {...ROUTES.bookList} />
       <Route {...ROUTES.gift} />
       <Route {...ROUTES.bookstore} />
       <Route {...ROUTES.wish} />
