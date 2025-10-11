@@ -14,7 +14,7 @@ import societyImg from '@/assets/society.svg';
  * @example getImg('art') = artImg
  */
 
-export const getImg = (genre: GenreListType) => {
+export const getGenreImg = (genre: GenreListType) => {
   switch (genre) {
     case 'art':
       return artImg;
