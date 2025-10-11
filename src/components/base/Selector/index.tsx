@@ -11,7 +11,7 @@ interface SelectorProps {
 }
 export const Selector = ({ list, selectedItem, handleSelectedItem }: SelectorProps) => {
   return (
-    <Grid colCount={2} gap="12px">
+    <Grid>
       {list.map((item) => (
         <Grid.Col key={item.key}>
           <Button

@@ -13,23 +13,28 @@ interface CardProps {
 export const Card = ({ theme = 'large', top, bottom }: CardProps) => {
   return (
     <div
+      className={sprinkles({ cursor: 'pointer' })}
       style={{
         border: `1px solid ${paletteTheme.palette.black}`,
         minWidth: theme === 'large' ? '180px' : '152px',
         height: '268px',
+        overflow: 'hidden',
       }}
     >
-      <Flex direction="column">
-        <div
-          className={sprinkles({ alignItems: 'center', justifyContent: 'center' })}
-          style={{ height: '200px', width: '100%' }}
-        >
-          {top}
-        </div>
-        <Hr height="1px" />
-        <Flex alignItems="center" justifyContent="center" style={{ width: '100%', height: '68px' }}>
-          {bottom}
-        </Flex>
+      <Flex
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        height="200px"
+        width="100%"
+        overflowX="hidden"
+        overflowY="hidden"
+      >
+        {top}
+      </Flex>
+      <Hr height="1px" />
+      <Flex width="100%" height="68px" alignItems="center" style={{ padding: theme === 'small' ? '0 8px' : '0 12px' }}>
+        {bottom}
       </Flex>
     </div>
   );

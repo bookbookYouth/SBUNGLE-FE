@@ -31,6 +31,7 @@ export const Footer = () => {
 
   return (
     <div
+      className={sprinkles({ backgroundColor: 'background' })}
       style={{
         borderTop: `1px solid ${paletteTheme.palette.gray100}`,
         height: '48px',

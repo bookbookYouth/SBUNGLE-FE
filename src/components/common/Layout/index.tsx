@@ -9,6 +9,7 @@ export const Layout = () => {
     <Flex width="100%" height="100vh" alignItems="center" justifyContent="center">
       <Flex
         width="402px"
+        height="100%"
         direction="column"
         alignItems="stretch"
         style={{

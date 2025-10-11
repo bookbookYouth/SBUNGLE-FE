@@ -5,7 +5,7 @@ import { Footer } from '../Footer';
 export const MainLayout = () => {
   return (
     <>
-      <main>
+      <main style={{ paddingBottom: '88px' }}>
         <Outlet />
       </main>
       <Footer />

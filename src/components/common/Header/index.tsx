@@ -28,40 +28,45 @@ export const Header = ({
 }: HeaderProps) => {
   const navigate = useNavigate();
   return (
-    <div style={{ height: '52px', width: '100%' }}>
-      <Flex height="100%" width="100%" justifyContent="space-between" alignItems="center">
-        {isLeft ? (
-          <BackIcon
-            className={sprinkles({ cursor: 'pointer' })}
-            width="44px"
-            height="44px"
-            style={{ color: paletteTheme.palette[iconColor], paddingLeft: '2px' }}
-            onClick={handleBack ? handleBack : history.back}
-          />
-        ) : isLogo ? (
-          <img
-            src={logoIcon}
-            alt="blur"
-            height="40px"
-            onClick={() => navigate('/')}
-            className={sprinkles({ cursor: 'pointer' })}
-            style={{ paddingLeft: '20px' }}
-          />
-        ) : (
-          <div style={{ width: '44px', height: '44px' }} />
-        )}
-        <Txt typo="title">{title}</Txt>
-        {isRight ? (
-          <CartIcon
-            className={sprinkles({ cursor: 'pointer' })}
-            width="44px"
-            height="44px"
-            style={{ color: paletteTheme.palette[iconColor], paddingRight: '10px' }}
-          />
-        ) : (
-          <div style={{ width: '44px', height: '44px' }} />
-        )}
-      </Flex>
-    </div>
+    <Flex
+      height="52px"
+      width="402px"
+      justifyContent="space-between"
+      alignItems="center"
+      backgroundColor="background"
+      style={{ position: 'sticky', top: 0 }}
+    >
+      {isLeft ? (
+        <BackIcon
+          className={sprinkles({ cursor: 'pointer' })}
+          width="44px"
+          height="44px"
+          style={{ color: paletteTheme.palette[iconColor], paddingLeft: '2px' }}
+          onClick={handleBack ? handleBack : history.back}
+        />
+      ) : isLogo ? (
+        <img
+          src={logoIcon}
+          alt="blur"
+          height="40px"
+          onClick={() => navigate('/')}
+          className={sprinkles({ cursor: 'pointer' })}
+          style={{ paddingLeft: '20px' }}
+        />
+      ) : (
+        <div style={{ width: '44px', height: '44px' }} />
+      )}
+      <Txt typo="title">{title}</Txt>
+      {isRight ? (
+        <CartIcon
+          className={sprinkles({ cursor: 'pointer' })}
+          width="44px"
+          height="44px"
+          style={{ color: paletteTheme.palette[iconColor], paddingRight: '10px' }}
+        />
+      ) : (
+        <div style={{ width: '44px', height: '44px' }} />
+      )}
+    </Flex>
   );
 };

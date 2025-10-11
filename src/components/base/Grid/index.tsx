@@ -6,7 +6,8 @@ import { sprinkles } from '@/styles/sprinkles.css';
 
 interface GridProps {
   children: React.ReactElement<typeof GridCol> | React.ReactElement<typeof GridCol>[];
-  gap?: string;
+  colGap?: string;
+  rowGap?: string;
   colCount?: number;
 }
 
@@ -20,6 +21,8 @@ const GridCol = ({ children, span = 1 }: GridColProps) => {
     <Flex
       justifyContent="center"
       alignItems="center"
+      overflowX="hidden"
+      overflowY="hidden"
       style={{
         gridColumn: `span ${span}`,
       }}
@@ -29,11 +32,11 @@ const GridCol = ({ children, span = 1 }: GridColProps) => {
   );
 };
 
-export const Grid = ({ children, gap = '20px', colCount = 2 }: GridProps) => {
+export const Grid = ({ children, colGap = '12px', rowGap = '12px', colCount = 2 }: GridProps) => {
   return (
     <div
       className={sprinkles({ display: 'grid' })}
-      style={{ gridTemplateColumns: `repeat(${colCount}, 1fr)`, width: '100%', gap }}
+      style={{ gridTemplateColumns: `repeat(${colCount}, 1fr)`, width: '100%', rowGap: rowGap, columnGap: colGap }}
     >
       {children}
     </div>

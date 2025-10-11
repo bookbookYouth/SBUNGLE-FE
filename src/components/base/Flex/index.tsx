@@ -47,7 +47,7 @@ export const Flex = ({
           boxSizing: 'border-box',
         }),
       )}
-      style={{ width, height, gap, overflowX, overflowY, minWidth: 0, flex: '1 1 0%', ...style }}
+      style={{ width, height, gap, overflowX, overflowY, minWidth: 0, ...style }}
     >
       {children}
     </div>

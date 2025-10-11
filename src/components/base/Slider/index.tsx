@@ -12,7 +12,7 @@ export const Slider = ({ children }: SliderProps) => {
       height="fit-content"
       overflowX="auto"
       overflowY="hidden"
-      style={{ minWidth: 0, flex: '1 1 0%' }}
+      style={{ padding: '0 20px' }}
     >
       {children}
     </Flex>

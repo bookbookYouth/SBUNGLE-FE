@@ -11,7 +11,7 @@ interface MultiSelectorProps {
 }
 export const MultiSelector = ({ list, selectedList, handleSelectedList }: MultiSelectorProps) => {
   return (
-    <Grid colCount={2} gap="12px">
+    <Grid>
       {list.map((item) => (
         <Grid.Col key={item.key}>
           <Button
