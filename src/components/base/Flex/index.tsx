@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import type React from 'react';
 
 import { flexStyle } from '@/styles/base/flex.css';
 import { sprinkles } from '@/styles/sprinkles.css';
@@ -15,6 +16,7 @@ interface FlexProps {
   gap?: string;
   overflowX?: 'hidden' | 'scroll' | 'auto';
   overflowY?: 'hidden' | 'scroll' | 'auto';
+  style?: React.CSSProperties;
 }
 
 export const Flex = ({
@@ -29,6 +31,7 @@ export const Flex = ({
   gap,
   overflowX = 'auto',
   overflowY = 'auto',
+  style,
 }: FlexProps) => {
   return (
     <div
@@ -41,9 +44,10 @@ export const Flex = ({
           alignItems: alignItems,
           flexWrap: wrap,
           backgroundColor: backgroundColor,
+          boxSizing: 'border-box',
         }),
       )}
-      style={{ width, height, gap, overflowX, overflowY }}
+      style={{ width, height, gap, overflowX, overflowY, minWidth: 0, flex: '1 1 0%', ...style }}
     >
       {children}
     </div>

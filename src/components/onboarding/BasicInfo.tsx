@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 
 import { ageList, genderList, STEPS } from '@/constants/onboarding';
-import type { AgeListType, GenderListType } from '@/type/onboarding';
+import type { AgeListType, GenderListType } from '@/types/onboarding';
 
 import { Button } from '../base/Button';
 import { Flex } from '../base/Flex';

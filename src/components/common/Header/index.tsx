@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import BackIcon from '@/assets/back.svg?react';
 import CartIcon from '@/assets/cart.svg?react';
 import { Flex } from '@/components/base/Flex';
@@ -5,11 +7,13 @@ import { Txt } from '@/components/base/Txt';
 
 import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';
+import logoIcon from '@/assets/logo.png';
 
 interface HeaderProps {
   title?: string;
   isRight?: boolean;
   isLeft?: boolean;
+  isLogo?: boolean;
   iconColor?: Parameters<typeof sprinkles>[0]['backgroundColor'];
   handleBack?: () => void;
 }
@@ -18,19 +22,30 @@ export const Header = ({
   title = '',
   isRight = false,
   isLeft = false,
+  isLogo = false,
   iconColor = 'gray300',
   handleBack,
 }: HeaderProps) => {
+  const navigate = useNavigate();
   return (
-    <div style={{ height: '52px', width: '100%', padding: '0 2px' }}>
+    <div style={{ height: '52px', width: '100%' }}>
       <Flex height="100%" width="100%" justifyContent="space-between" alignItems="center">
         {isLeft ? (
           <BackIcon
             className={sprinkles({ cursor: 'pointer' })}
             width="44px"
             height="44px"
-            style={{ color: paletteTheme.palette[iconColor] }}
-            onClick={handleBack}
+            style={{ color: paletteTheme.palette[iconColor], paddingLeft: '2px' }}
+            onClick={handleBack ? handleBack : history.back}
+          />
+        ) : isLogo ? (
+          <img
+            src={logoIcon}
+            alt="blur"
+            height="40px"
+            onClick={() => navigate('/')}
+            className={sprinkles({ cursor: 'pointer' })}
+            style={{ paddingLeft: '20px' }}
           />
         ) : (
           <div style={{ width: '44px', height: '44px' }} />
@@ -41,7 +56,7 @@ export const Header = ({
             className={sprinkles({ cursor: 'pointer' })}
             width="44px"
             height="44px"
-            style={{ color: paletteTheme.palette[iconColor] }}
+            style={{ color: paletteTheme.palette[iconColor], paddingRight: '10px' }}
           />
         ) : (
           <div style={{ width: '44px', height: '44px' }} />

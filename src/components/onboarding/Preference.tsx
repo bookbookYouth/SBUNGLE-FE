@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 
 import { preferenceList, STEPS } from '@/constants/onboarding';
-import type { PreferenceListType } from '@/type/onboarding';
+import type { PreferenceListType } from '@/types/onboarding';
 
 import { Button } from '../base/Button';
 import { Flex } from '../base/Flex';

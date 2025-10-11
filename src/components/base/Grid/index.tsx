@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Flex } from '../Flex';
+
 import { sprinkles } from '@/styles/sprinkles.css';
 
 interface GridProps {
@@ -15,18 +17,15 @@ interface GridColProps {
 
 const GridCol = ({ children, span = 1 }: GridColProps) => {
   return (
-    <div
-      className={sprinkles({
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      })}
+    <Flex
+      justifyContent="center"
+      alignItems="center"
       style={{
         gridColumn: `span ${span}`,
       }}
     >
       {children}
-    </div>
+    </Flex>
   );
 };
 

@@ -1,4 +1,4 @@
-import type { ListType } from '@/type/onboarding';
+import type { ListType } from '@/types/onboarding';
 
 import { Button } from '../Button';
 import { Grid } from '../Grid';

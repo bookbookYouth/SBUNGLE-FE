@@ -6,7 +6,14 @@ interface SliderProps {
 
 export const Slider = ({ children }: SliderProps) => {
   return (
-    <Flex gap="12px" width="100%" overflowX="scroll" overflowY="hidden">
+    <Flex
+      gap="12px"
+      width="100%"
+      height="fit-content"
+      overflowX="auto"
+      overflowY="hidden"
+      style={{ minWidth: 0, flex: '1 1 0%' }}
+    >
       {children}
     </Flex>
   );

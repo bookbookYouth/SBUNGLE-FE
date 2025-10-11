@@ -27,12 +27,9 @@ export const Card = ({ theme = 'large', top, bottom }: CardProps) => {
           {top}
         </div>
         <Hr height="1px" />
-        <div
-          className={sprinkles({ display: 'flex', alignItems: 'center', justifyContent: 'center' })}
-          style={{ width: '100%', height: '68px' }}
-        >
+        <Flex alignItems="center" justifyContent="center" style={{ width: '100%', height: '68px' }}>
           {bottom}
-        </div>
+        </Flex>
       </Flex>
     </div>
   );

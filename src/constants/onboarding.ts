@@ -1,4 +1,4 @@
-import type { ListType } from '@/type/onboarding';
+import type { ListType } from '@/types/onboarding';
 
 export const STEPS = ['기본 정보', '장르', '취향'];
 
