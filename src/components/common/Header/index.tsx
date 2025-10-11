@@ -34,7 +34,7 @@ export const Header = ({
       justifyContent="space-between"
       alignItems="center"
       backgroundColor="background"
-      style={{ position: 'sticky', top: 0 }}
+      style={{ position: 'sticky', top: 0, zIndex: 20 }}
     >
       {isLeft ? (
         <BackIcon
