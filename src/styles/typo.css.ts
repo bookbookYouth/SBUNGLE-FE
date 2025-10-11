@@ -36,11 +36,17 @@ export const typo = {
     fontWeight: 'regular',
     lineHeight: 'lg',
   }),
-  content_xs: sprinkles({
+  content_xs_regular: sprinkles({
     //Content 12pt_140%
     fontFamily: 'body',
     fontSize: 'xs',
     fontWeight: 'regular',
+    lineHeight: 'sm',
+  }),
+  content_xs_bold: sprinkles({
+    fontFamily: 'body',
+    fontSize: 'xs',
+    fontWeight: 'bold',
     lineHeight: 'sm',
   }),
   menu: sprinkles({

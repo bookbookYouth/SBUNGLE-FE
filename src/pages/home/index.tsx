@@ -1,13 +1,13 @@
-import { Card } from '@/components/base/Card';
 import { Carousel } from '@/components/base/Carousel';
 import { Flex } from '@/components/base/Flex';
 import { Grid } from '@/components/base/Grid';
 import { Slider } from '@/components/base/Slider';
 import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
+import { Card } from '@/components/common/Card';
 import { Header } from '@/components/common/Header';
 import { bookForTodayData, bookForUserData } from '@/mock/bookData';
-import { getImg } from '@/utils/home/getImg';
+import { getGenreImg } from '@/utils/home/getGenreImg';
 
 import arrowIcon from '@/assets/arrow.svg';
 import bannerImg1 from '@/assets/banner.svg';
@@ -44,12 +44,15 @@ function HomePage() {
             <Card
               key={book.id}
               theme="small"
-              top={<img src={getImg(book.genre)} alt={book.title} style={{ objectFit: 'cover' }} />}
+              like
+              liked={book.liked}
+              genre={book.genre}
+              top={<img src={getGenreImg(book.genre)} alt={book.title} style={{ objectFit: 'cover' }} />}
               bottom={
                 <Flex direction="column">
                   <Txt typo="point_sm">{book.title}</Txt>
                   <Txt typo="content_sm" color="gray300">
-                    {book.price}
+                    {book.price.toLocaleString()}
                   </Txt>
                 </Flex>
               }
@@ -62,15 +65,19 @@ function HomePage() {
             <Txt typo="subTitle_bold">Blur 독자들의 랭킹</Txt>
           </Flex>
           <Grid colGap="2px" rowGap="20px">
-            {bookForTodayData.map((book) => (
+            {bookForTodayData.map((book, rank) => (
               <Grid.Col key={book.id}>
                 <Card
-                  top={<img src={getImg(book.genre)} alt={book.title} style={{ objectFit: 'cover' }} />}
+                  rank={rank + 1}
+                  like
+                  liked={book.liked}
+                  genre={book.genre}
+                  top={<img src={getGenreImg(book.genre)} alt={book.title} style={{ objectFit: 'cover' }} />}
                   bottom={
                     <Flex direction="column">
                       <Txt typo="point_sm">{book.title}</Txt>
                       <Txt typo="content_sm" color="gray300">
-                        {book.price}
+                        {book.price.toLocaleString()}
                       </Txt>
                     </Flex>
                   }
