@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import BackIcon from '@/assets/back.svg?react';
 import CartIcon from '@/assets/cart.svg?react';
+import DeleteIcon from '@/assets/delete.svg?react';
 import { Flex } from '@/components/base/Flex';
 import { Txt } from '@/components/base/Txt';
 
@@ -11,18 +12,20 @@ import logoIcon from '@/assets/logo.png';
 
 interface HeaderProps {
   title?: string;
-  isRight?: boolean;
-  isLeft?: boolean;
+  isCart?: boolean;
+  isBack?: boolean;
   isLogo?: boolean;
+  isDelete?: boolean;
   iconColor?: Parameters<typeof sprinkles>[0]['backgroundColor'];
   handleBack?: () => void;
 }
 
 export const Header = ({
   title = '',
-  isRight = false,
-  isLeft = false,
+  isCart = false,
+  isBack = false,
   isLogo = false,
+  isDelete = false,
   iconColor = 'gray300',
   handleBack,
 }: HeaderProps) => {
@@ -36,7 +39,7 @@ export const Header = ({
       backgroundColor="background"
       style={{ position: 'sticky', top: 0, zIndex: 20 }}
     >
-      {isLeft ? (
+      {isBack ? (
         <BackIcon
           className={sprinkles({ cursor: 'pointer' })}
           width="44px"
@@ -57,12 +60,19 @@ export const Header = ({
         <div style={{ width: '44px', height: '44px' }} />
       )}
       <Txt typo="title">{title}</Txt>
-      {isRight ? (
+      {isCart ? (
         <CartIcon
           className={sprinkles({ cursor: 'pointer' })}
           width="44px"
           height="44px"
           style={{ color: paletteTheme.palette[iconColor], paddingRight: '10px' }}
+        />
+      ) : isDelete ? (
+        <DeleteIcon
+          className={sprinkles({ cursor: 'pointer' })}
+          width="44px"
+          height="44px"
+          style={{ paddingRight: '10px' }}
         />
       ) : (
         <div style={{ width: '44px', height: '44px' }} />
