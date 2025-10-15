@@ -1,25 +1,84 @@
+import { useState } from 'react';
+
+import { Chip } from '@/components/base/Chip';
 import { Flex } from '@/components/base/Flex';
+import GenericForm from '@/components/base/GenericForm';
 import { Grid } from '@/components/base/Grid';
 import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
 import { Card } from '@/components/common/Card';
 import { Header } from '@/components/common/Header';
+import { FilteringModal, type FormValues } from '@/components/home/FilteringModal';
+import { alignmentList } from '@/constants/home';
+import { useModal } from '@/hooks/useModal';
 import { bookData } from '@/mock/bookData';
+import type { AlignmentListType, LiteratureListType, NonLiteratureListType } from '@/types/home';
+import type { PreferenceListType } from '@/types/onboarding';
 import { getGenreImg } from '@/utils/home/getGenreImg';
 
 import { user } from '.';
 
+import { paletteTheme } from '@/styles/theme.css';
+
 function BookListPage() {
+  const { isOpen, closeModal, openModal } = useModal();
+  // 필터링 값 상태
+  const [filteredAlignmentItem, setFilteredAlignmentItem] = useState<AlignmentListType>('recommend');
+  const [filteredLiteratureList, setFilteredLiteratureList] = useState<LiteratureListType[]>([]);
+  const [filteredNonLiteratureList, setFilteredNonLiteratureList] = useState<NonLiteratureListType[]>([]);
+  const [filteredAtmosphereList, setFilteredAtmosphereList] = useState<PreferenceListType[]>([]);
+
+  const handleFilteredAlignmentItem = (selectedAlignment: AlignmentListType) =>
+    setFilteredAlignmentItem(selectedAlignment);
+  const handleFilteredLiteratureList = (selectedLiteratureList: LiteratureListType[]) =>
+    setFilteredLiteratureList(selectedLiteratureList);
+  const handleFilteredNonLiteratureList = (selectedNonLiteratureList: NonLiteratureListType[]) =>
+    setFilteredNonLiteratureList(selectedNonLiteratureList);
+  const handleFilteredAtmosphereList = (selectedAtmosphereList: PreferenceListType[]) =>
+    setFilteredAtmosphereList(selectedAtmosphereList);
+
+  const onSubmit = (data: FormValues) => {
+    handleFilteredAlignmentItem(data.selectedAlignmentItem);
+    handleFilteredLiteratureList(data.selectedLiteratureList);
+    handleFilteredNonLiteratureList(data.selectedNonLiteratureList);
+    handleFilteredAtmosphereList(data.selectedAtmosphereList);
+  };
+
   return (
     <>
-      <Header isLogo isRight />
-      <Flex direction="column" style={{ padding: '0 20px' }}>
+      <Header isLogo isCart />
+      <Flex
+        direction="column"
+        style={{
+          position: 'sticky',
+          top: '52px',
+          zIndex: 20,
+          padding: '0 20px 12px',
+          backgroundColor: paletteTheme.palette.background,
+        }}
+      >
         <Flex height="40px" alignItems="center" justifyContent="center">
           <Txt typo="subTitle_regular">
             <Txt typo="subTitle_bold">{user}</Txt>님을 위한 도서
           </Txt>
         </Flex>
-        <Spacing height="24px" />
+        <Flex alignItems="center" justifyContent="center" gap="12px" wrap="wrap">
+          <Chip style={{ cursor: 'pointer' }} onClick={openModal}>
+            {alignmentList.find((item) => item.key === filteredAlignmentItem)?.name}
+          </Chip>
+          <Chip style={{ cursor: 'pointer' }} onClick={openModal}>
+            문학
+          </Chip>
+          <Chip style={{ cursor: 'pointer' }} onClick={openModal}>
+            비문학
+          </Chip>
+          <Chip style={{ cursor: 'pointer' }} onClick={openModal}>
+            분위기
+          </Chip>
+        </Flex>
+      </Flex>
+      <Flex direction="column" style={{ padding: '0 20px' }}>
+        <Spacing height="12px" />
         <Grid colGap="2px" rowGap="20px">
           {bookData.map((book) => (
             <Grid.Col key={book.id}>
@@ -41,6 +100,17 @@ function BookListPage() {
           ))}
         </Grid>
       </Flex>
+      {isOpen && (
+        <GenericForm formOptions={{ mode: 'onChange' }} onSubmit={onSubmit}>
+          <FilteringModal
+            filteredAlignmentItem={filteredAlignmentItem}
+            filteredLiteratureList={filteredLiteratureList}
+            filteredNonLiteratureList={filteredNonLiteratureList}
+            filteredAtmosphereList={filteredAtmosphereList}
+            closeModal={closeModal}
+          />
+        </GenericForm>
+      )}
     </>
   );
 }
