@@ -8,6 +8,13 @@ export const typo = {
     fontWeight: 'bold',
     lineHeight: 'lg',
   }),
+  title_ml: sprinkles({
+    //Title 18pt_140%
+    fontFamily: 'body',
+    fontSize: 'ml',
+    fontWeight: 'bold',
+    lineHeight: 'sm',
+  }),
   subTitle_bold: sprinkles({
     //SubTitle 16pt_140%_bold
     fontFamily: 'body',

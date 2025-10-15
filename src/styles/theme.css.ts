@@ -21,6 +21,7 @@ export const fontTheme = createGlobalThemeContract({
     size: {
       xlg: 'font-xlg',
       lg: 'font-lg',
+      ml: 'font-ml',
       md: 'fong-md',
       sm: 'font-sm',
       xs: 'font-xs',
@@ -59,6 +60,7 @@ export const font = createGlobalTheme(':root', fontTheme, {
     size: {
       xlg: '24px',
       lg: '20px',
+      ml: '18px',
       md: '16px',
       sm: '14px',
       xs: '12px',
