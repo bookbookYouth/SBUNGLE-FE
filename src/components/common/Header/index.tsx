@@ -18,6 +18,7 @@ interface HeaderProps {
   isDelete?: boolean;
   iconColor?: Parameters<typeof sprinkles>[0]['backgroundColor'];
   handleBack?: () => void;
+  handleClose?: () => void;
 }
 
 export const Header = ({
@@ -28,6 +29,7 @@ export const Header = ({
   isDelete = false,
   iconColor = 'gray300',
   handleBack,
+  handleClose,
 }: HeaderProps) => {
   const navigate = useNavigate();
   return (
@@ -73,6 +75,7 @@ export const Header = ({
           width="44px"
           height="44px"
           style={{ paddingRight: '10px' }}
+          onClick={handleClose}
         />
       ) : (
         <div style={{ width: '44px', height: '44px' }} />

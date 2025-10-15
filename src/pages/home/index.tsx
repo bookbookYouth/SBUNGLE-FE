@@ -20,7 +20,7 @@ function HomePage() {
 
   return (
     <>
-      <Header isLogo isRight />
+      <Header isLogo isCart />
       <Flex direction="column">
         <Carousel imgArray={imgArray} />
         <Spacing height="19px" />

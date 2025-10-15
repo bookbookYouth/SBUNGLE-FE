@@ -30,7 +30,7 @@ function SurveyPage() {
 
   return (
     <Flex direction="column">
-      <Header isLeft={STEPS.indexOf(currentStep) === 0 ? false : true} handleBack={hanldePrevClick} />
+      <Header isBack={STEPS.indexOf(currentStep) === 0 ? false : true} handleBack={hanldePrevClick} />
       <div className={container}>
         <GenericForm<SurveySetupProps> formOptions={{ mode: 'onChange' }} onSubmit={onSubmit}>
           <SurveySetup handleNextClick={handleNextClick} Funnel={Funnel} Step={Step} />
