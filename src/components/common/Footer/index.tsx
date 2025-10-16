@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { Flex } from '@/components/base/Flex';
 import { Txt } from '@/components/base/Txt';
@@ -18,15 +18,20 @@ import mypageIcon from '@/assets/mypage.svg';
 import wishIcon from '@/assets/wish.svg';
 
 export const Footer = () => {
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
-
-  const menuItems = [
-    { icon: homeIcon, clickedIcon: clickedHomeIcon, label: '홈', route: ROUTES.home.path },
-    { icon: giftIcon, clickedIcon: clickedGiftIcon, label: '선물하기', route: ROUTES.gift.path },
-    { icon: bookstoreIcon, clickedIcon: clickedBookstoreIcon, label: '독립서점', route: ROUTES.bookstore.path },
-    { icon: wishIcon, clickedIcon: clickedWishIcon, alt: 'wish', label: '찜', route: ROUTES.wish.path },
-    { icon: mypageIcon, clickedIcon: clickedMypageIcon, alt: 'mypage', label: '마이페이지', route: ROUTES.mypage.path },
+  const HOME_ACTIVE_PATH: string[] = [ROUTES.home, ROUTES.bookList];
+  const MENU_ITEMS = [
+    {
+      icon: homeIcon,
+      clickedIcon: clickedHomeIcon,
+      label: '홈',
+      path: ROUTES.home,
+      exact: true,
+      activeCondition: (pathname: string) => HOME_ACTIVE_PATH.includes(pathname),
+    },
+    { icon: giftIcon, clickedIcon: clickedGiftIcon, label: '선물하기', path: ROUTES.gift },
+    { icon: bookstoreIcon, clickedIcon: clickedBookstoreIcon, label: '독립서점', path: ROUTES.bookstore },
+    { icon: wishIcon, clickedIcon: clickedWishIcon, alt: 'wish', label: '찜', path: ROUTES.wish },
+    { icon: mypageIcon, clickedIcon: clickedMypageIcon, alt: 'mypage', label: '마이페이지', path: ROUTES.mypage },
   ];
 
   return (
@@ -42,25 +47,26 @@ export const Footer = () => {
       }}
     >
       <Flex height="100%" width="100%" gap="36px" justifyContent="center" alignItems="center">
-        {menuItems.map((item) => (
-          <button
-            key={item.route}
-            onClick={() => navigate(item.route)}
-            className={sprinkles({ cursor: 'pointer', backgroundColor: 'transparent' })}
-            style={{ width: '44px', padding: '0', border: 'none' }}
+        {MENU_ITEMS.map(({ icon, clickedIcon, label, path, exact, activeCondition }) => (
+          <NavLink
+            key={path}
+            to={path}
+            end={!!exact}
+            className={sprinkles({ backgroundColor: 'transparent', cursor: 'pointer' })}
+            style={{ width: '44px', padding: 0, border: 'none', textDecoration: 'none' }}
           >
-            <Flex direction="column" alignItems="center" justifyContent="center" width="44px" height="44px">
-              <img
-                src={pathname === item.route ? item.clickedIcon : item.icon}
-                alt={item.route}
-                height="24px"
-                width="24px"
-              />
-              <Txt typo="menu" color={pathname === item.route ? 'black' : 'gray200'}>
-                {item.label}
-              </Txt>
-            </Flex>
-          </button>
+            {({ isActive }) => {
+              const active = isActive || activeCondition;
+              return (
+                <Flex direction="column" alignItems="center" justifyContent="center" width="44px" height="44px">
+                  <img src={active ? clickedIcon : icon} alt={path} height="24px" width="24px" />
+                  <Txt typo="menu" color={active ? 'black' : 'gray200'}>
+                    {label}
+                  </Txt>
+                </Flex>
+              );
+            }}
+          </NavLink>
         ))}
       </Flex>
     </div>

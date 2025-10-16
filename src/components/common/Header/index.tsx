@@ -5,6 +5,7 @@ import CartIcon from '@/assets/cart.svg?react';
 import DeleteIcon from '@/assets/delete.svg?react';
 import { Flex } from '@/components/base/Flex';
 import { Txt } from '@/components/base/Txt';
+import { ROUTES } from '@/config/appConfig';
 
 import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';
@@ -54,7 +55,7 @@ export const Header = ({
           src={logoIcon}
           alt="blur"
           height="40px"
-          onClick={() => navigate('/')}
+          onClick={() => navigate(ROUTES.home)}
           className={sprinkles({ cursor: 'pointer' })}
           style={{ paddingLeft: '20px' }}
         />
