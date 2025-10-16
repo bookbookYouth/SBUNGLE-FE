@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { Flex } from '@/components/base/Flex';
 import { Txt } from '@/components/base/Txt';
@@ -18,6 +18,8 @@ import mypageIcon from '@/assets/mypage.svg';
 import wishIcon from '@/assets/wish.svg';
 
 export const Footer = () => {
+  const { pathname } = useLocation();
+
   const HOME_ACTIVE_PATH: string[] = [ROUTES.home, ROUTES.bookList];
   const MENU_ITEMS = [
     {
@@ -56,7 +58,8 @@ export const Footer = () => {
             style={{ width: '44px', padding: 0, border: 'none', textDecoration: 'none' }}
           >
             {({ isActive }) => {
-              const active = isActive || activeCondition;
+              const extraActive = activeCondition ? activeCondition(pathname) : false;
+              const active = isActive || extraActive;
               return (
                 <Flex direction="column" alignItems="center" justifyContent="center" width="44px" height="44px">
                   <img src={active ? clickedIcon : icon} alt={path} height="24px" width="24px" />
