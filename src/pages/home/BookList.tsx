@@ -8,7 +8,7 @@ import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
 import { Card } from '@/components/common/Card';
 import { Header } from '@/components/common/Header';
-import { FilteringModal, type FormValues } from '@/components/home/FilteringModal';
+import { FilteringModal } from '@/components/home/FilteringModal';
 import { alignmentList } from '@/constants/home';
 import { useModal } from '@/hooks/useModal';
 import { bookData } from '@/mock/bookData';
@@ -20,6 +20,13 @@ import { user } from '.';
 
 import { paletteTheme } from '@/styles/theme.css';
 
+export type FormValues = {
+  selectedAlignmentItem: AlignmentListType;
+  selectedLiteratureList: LiteratureListType[];
+  selectedNonLiteratureList: NonLiteratureListType[];
+  selectedAtmosphereList: PreferenceListType[];
+};
+
 function BookListPage() {
   const { isOpen, closeModal, openModal } = useModal();
   // 필터링 값 상태
@@ -28,20 +35,12 @@ function BookListPage() {
   const [filteredNonLiteratureList, setFilteredNonLiteratureList] = useState<NonLiteratureListType[]>([]);
   const [filteredAtmosphereList, setFilteredAtmosphereList] = useState<PreferenceListType[]>([]);
 
-  const handleFilteredAlignmentItem = (selectedAlignment: AlignmentListType) =>
-    setFilteredAlignmentItem(selectedAlignment);
-  const handleFilteredLiteratureList = (selectedLiteratureList: LiteratureListType[]) =>
-    setFilteredLiteratureList(selectedLiteratureList);
-  const handleFilteredNonLiteratureList = (selectedNonLiteratureList: NonLiteratureListType[]) =>
-    setFilteredNonLiteratureList(selectedNonLiteratureList);
-  const handleFilteredAtmosphereList = (selectedAtmosphereList: PreferenceListType[]) =>
-    setFilteredAtmosphereList(selectedAtmosphereList);
-
   const onSubmit = (data: FormValues) => {
-    handleFilteredAlignmentItem(data.selectedAlignmentItem);
-    handleFilteredLiteratureList(data.selectedLiteratureList);
-    handleFilteredNonLiteratureList(data.selectedNonLiteratureList);
-    handleFilteredAtmosphereList(data.selectedAtmosphereList);
+    setFilteredAlignmentItem(data.selectedAlignmentItem);
+    setFilteredLiteratureList(data.selectedLiteratureList);
+    setFilteredNonLiteratureList(data.selectedNonLiteratureList);
+    setFilteredAtmosphereList(data.selectedAtmosphereList);
+    closeModal();
   };
 
   return (
@@ -101,14 +100,19 @@ function BookListPage() {
         </Grid>
       </Flex>
       {isOpen && (
-        <GenericForm formOptions={{ mode: 'onChange' }} onSubmit={onSubmit}>
-          <FilteringModal
-            filteredAlignmentItem={filteredAlignmentItem}
-            filteredLiteratureList={filteredLiteratureList}
-            filteredNonLiteratureList={filteredNonLiteratureList}
-            filteredAtmosphereList={filteredAtmosphereList}
-            closeModal={closeModal}
-          />
+        <GenericForm
+          formOptions={{
+            mode: 'onChange',
+            defaultValues: {
+              selectedAlignmentItem: filteredAlignmentItem,
+              selectedLiteratureList: filteredLiteratureList,
+              selectedNonLiteratureList: filteredNonLiteratureList,
+              selectedAtmosphereList: filteredAtmosphereList,
+            },
+          }}
+          onSubmit={onSubmit}
+        >
+          <FilteringModal closeModal={closeModal} />
         </GenericForm>
       )}
     </>

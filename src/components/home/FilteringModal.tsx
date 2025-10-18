@@ -2,6 +2,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { alignmentList, literatureList, nonLiteratureList } from '@/constants/home';
 import { preferenceList } from '@/constants/onboarding';
+import { type FormValues } from '@/pages/home/BookList';
 import type { AlignmentListType, LiteratureListType, NonLiteratureListType } from '@/types/home';
 import type { PreferenceListType } from '@/types/onboarding';
 
@@ -16,65 +17,56 @@ import { Header } from '../common/Header';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';
 
-export type FormValues = {
-  selectedAlignmentItem: AlignmentListType;
-  selectedLiteratureList: LiteratureListType[];
-  selectedNonLiteratureList: NonLiteratureListType[];
-  selectedAtmosphereList: PreferenceListType[];
-};
-
 interface FilteringModalProps {
   closeModal: () => void;
-  filteredAlignmentItem: AlignmentListType;
-  filteredLiteratureList: LiteratureListType[];
-  filteredNonLiteratureList: NonLiteratureListType[];
-  filteredAtmosphereList: PreferenceListType[];
 }
 
-export const FilteringModal = ({
-  closeModal,
-  filteredAlignmentItem,
-  filteredLiteratureList,
-  filteredNonLiteratureList,
-  filteredAtmosphereList,
-}: FilteringModalProps) => {
+export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
   const { watch, setValue } = useFormContext<FormValues>();
 
   // 정렬
-  const selectedAlignmentItem = watch('selectedAlignmentItem') ?? filteredAlignmentItem;
-  const handleSelectedAlignmentItem = (key: string) => {
+  const selectedAlignmentItem = watch('selectedAlignmentItem');
+  const handleSelectedAlignmentItem = (key: AlignmentListType) => {
     if (key !== selectedAlignmentItem) setValue('selectedAlignmentItem', key);
     else setValue('selectedAlignmentItem', 'recommend');
   };
   //문학
-  const selectedLiteratureList = watch('selectedLiteratureList') ?? filteredLiteratureList;
-  const handleSelectedLiteratureList = (key: string) => {
+  const selectedLiteratureList = watch('selectedLiteratureList');
+  const handleSelectedLiteratureList = (key: LiteratureListType) => {
     if (selectedLiteratureList.includes(key))
       setValue(
         'selectedLiteratureList',
-        selectedLiteratureList.filter((item) => item !== key),
+        selectedLiteratureList.filter((item: LiteratureListType) => item !== key),
       );
     else setValue('selectedLiteratureList', [...selectedLiteratureList, key]);
   };
   //비문학
-  const selectedNonLiteratureList = watch('selectedNonLiteratureList') ?? filteredNonLiteratureList;
-  const handleSelectedNonLiteratureList = (key: string) => {
+  const selectedNonLiteratureList = watch('selectedNonLiteratureList');
+  const handleSelectedNonLiteratureList = (key: NonLiteratureListType) => {
     if (selectedNonLiteratureList.includes(key))
       setValue(
         'selectedNonLiteratureList',
-        selectedNonLiteratureList.filter((item) => item !== key),
+        selectedNonLiteratureList.filter((item: NonLiteratureListType) => item !== key),
       );
     else setValue('selectedNonLiteratureList', [...selectedNonLiteratureList, key]);
   };
   //분위기
-  const selectedAtmosphereList = watch('selectedAtmosphereList') ?? filteredAtmosphereList;
-  const handleSelectedAtmosphereList = (key: string) => {
+  const selectedAtmosphereList = watch('selectedAtmosphereList');
+  const handleSelectedAtmosphereList = (key: PreferenceListType) => {
     if (selectedAtmosphereList.includes(key))
       setValue(
         'selectedAtmosphereList',
-        selectedAtmosphereList.filter((item) => item !== key),
+        selectedAtmosphereList.filter((item: PreferenceListType) => item !== key),
       );
     else setValue('selectedAtmosphereList', [...selectedAtmosphereList, key]);
+  };
+
+  //초기화
+  const handleReset = () => {
+    setValue('selectedAlignmentItem', 'recommend');
+    setValue('selectedLiteratureList', []);
+    setValue('selectedNonLiteratureList', []);
+    setValue('selectedAtmosphereList', []);
   };
 
   return (
@@ -131,7 +123,7 @@ export const FilteringModal = ({
           borderTop: `1px solid ${paletteTheme.palette.gray100}`,
         }}
       >
-        <Button theme="clear" color="orange" width="87px" height="48px">
+        <Button theme="clear" color="orange" width="87px" height="48px" onClick={handleReset}>
           <Txt typo="title_ml">초기화</Txt>
         </Button>
         <Button type="submit" theme="fill" color="orange" width="275px" height="48px">
