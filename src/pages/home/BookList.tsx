@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import AlignmentIcon from '@/assets/alignment.svg?react';
 import { Chip } from '@/components/base/Chip';
 import { Flex } from '@/components/base/Flex';
 import GenericForm from '@/components/base/GenericForm';
@@ -62,16 +63,43 @@ function BookListPage() {
           </Txt>
         </Flex>
         <Flex alignItems="center" justifyContent="center" gap="12px" wrap="wrap">
-          <Chip style={{ cursor: 'pointer' }} onClick={openModal}>
-            {alignmentList.find((item) => item.key === filteredAlignmentItem)?.name}
+          <Chip
+            style={{ cursor: 'pointer' }}
+            onClick={openModal}
+            color={filteredAlignmentItem === 'recommend' ? 'gray400' : 'white'}
+            borderColor={filteredAlignmentItem === 'recommend' ? 'gray200' : 'primary'}
+            backgroundColor={filteredAlignmentItem === 'recommend' ? 'transparent' : 'primary'}
+          >
+            <Flex gap="4px" alignItems="center" justifyContent="center">
+              {alignmentList.find((item) => item.key === filteredAlignmentItem)?.name}
+              <AlignmentIcon color={filteredAlignmentItem === 'recommend' ? 'gray400' : 'white'} width="10px" />
+            </Flex>
           </Chip>
-          <Chip style={{ cursor: 'pointer' }} onClick={openModal}>
+          <Chip
+            style={{ cursor: 'pointer' }}
+            onClick={openModal}
+            color={filteredLiteratureList.length === 0 ? 'gray400' : 'white'}
+            borderColor={filteredLiteratureList.length === 0 ? 'gray200' : 'primary'}
+            backgroundColor={filteredLiteratureList.length === 0 ? 'transparent' : 'primary'}
+          >
             문학
           </Chip>
-          <Chip style={{ cursor: 'pointer' }} onClick={openModal}>
+          <Chip
+            style={{ cursor: 'pointer' }}
+            onClick={openModal}
+            color={filteredNonLiteratureList.length === 0 ? 'gray400' : 'white'}
+            borderColor={filteredNonLiteratureList.length === 0 ? 'gray200' : 'primary'}
+            backgroundColor={filteredNonLiteratureList.length === 0 ? 'transparent' : 'primary'}
+          >
             비문학
           </Chip>
-          <Chip style={{ cursor: 'pointer' }} onClick={openModal}>
+          <Chip
+            style={{ cursor: 'pointer' }}
+            onClick={openModal}
+            color={filteredAtmosphereList.length === 0 ? 'gray400' : 'white'}
+            borderColor={filteredAtmosphereList.length === 0 ? 'gray200' : 'primary'}
+            backgroundColor={filteredAtmosphereList.length === 0 ? 'transparent' : 'primary'}
+          >
             분위기
           </Chip>
         </Flex>

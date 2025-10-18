@@ -8,16 +8,24 @@ interface ChipProps {
   children: React.ReactNode;
   color?: Parameters<typeof sprinkles>[0]['color'];
   borderColor?: Parameters<typeof sprinkles>[0]['color'];
+  backgroundColor?: Parameters<typeof sprinkles>[0]['color'];
   style?: React.CSSProperties;
   onClick?: () => void;
 }
 
-export const Chip = ({ children, color = 'gray400', borderColor = 'gray200', onClick, style }: ChipProps) => {
+export const Chip = ({
+  children,
+  color = 'gray400',
+  borderColor = 'gray200',
+  backgroundColor = 'transparent',
+  onClick,
+  style,
+}: ChipProps) => {
   return (
     <button
       className={clsx(
         typo['content_sm'],
-        sprinkles({ display: 'inline-block', color: color, backgroundColor: 'transparent', boxSizing: 'border-box' }),
+        sprinkles({ display: 'inline-block', color: color, backgroundColor: backgroundColor, boxSizing: 'border-box' }),
       )}
       style={{
         width: 'fit-content',
