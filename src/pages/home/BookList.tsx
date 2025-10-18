@@ -91,13 +91,7 @@ function BookListPage() {
         </Flex>
         <Flex alignItems="center" justifyContent="center" gap="12px" wrap="wrap">
           {chipContentList.map(({ label, isValue }) => (
-            <Chip
-              style={{ cursor: 'pointer' }}
-              onClick={openModal}
-              color={isValue ? 'white' : 'gray400'}
-              borderColor={isValue ? 'primary' : 'gray200'}
-              backgroundColor={isValue ? 'primary' : 'transparent'}
-            >
+            <Chip style={{ cursor: 'pointer' }} onClick={openModal} theme={isValue ? 'orange' : 'gray'}>
               {label}
             </Chip>
           ))}
