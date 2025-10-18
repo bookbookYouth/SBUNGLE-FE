@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import AlignmentIcon from '@/assets/alignment.svg?react';
 import { Chip } from '@/components/base/Chip';
@@ -13,7 +13,7 @@ import { FilteringModal } from '@/components/home/FilteringModal';
 import { alignmentList } from '@/constants/home';
 import { useModal } from '@/hooks/useModal';
 import { bookData } from '@/mock/bookData';
-import type { AlignmentListType, LiteratureListType, NonLiteratureListType } from '@/types/home';
+import type { AlignmentListType, ChipContentType, LiteratureListType, NonLiteratureListType } from '@/types/home';
 import type { PreferenceListType } from '@/types/onboarding';
 import { getGenreImg } from '@/utils/home/getGenreImg';
 
@@ -44,6 +44,33 @@ function BookListPage() {
     closeModal();
   };
 
+  const chipContentList = useMemo<ChipContentType[]>(
+    () => [
+      {
+        label: (
+          <Flex gap="4px" alignItems="center" justifyContent="center">
+            {alignmentList.find((item) => item.key === filteredAlignmentItem)?.name}
+            <AlignmentIcon color={filteredAlignmentItem !== 'recommend' ? 'white' : 'gray400'} width="10px" />
+          </Flex>
+        ),
+        isValue: filteredAlignmentItem !== 'recommend',
+      },
+      {
+        label: '문학',
+        isValue: filteredLiteratureList.length > 0,
+      },
+      {
+        label: '비문학',
+        isValue: filteredNonLiteratureList.length > 0,
+      },
+      {
+        label: '분위기',
+        isValue: filteredAtmosphereList.length > 0,
+      },
+    ],
+    [filteredAlignmentItem, filteredLiteratureList, filteredNonLiteratureList, filteredAtmosphereList],
+  );
+
   return (
     <>
       <Header isLogo isCart />
@@ -63,45 +90,17 @@ function BookListPage() {
           </Txt>
         </Flex>
         <Flex alignItems="center" justifyContent="center" gap="12px" wrap="wrap">
-          <Chip
-            style={{ cursor: 'pointer' }}
-            onClick={openModal}
-            color={filteredAlignmentItem === 'recommend' ? 'gray400' : 'white'}
-            borderColor={filteredAlignmentItem === 'recommend' ? 'gray200' : 'primary'}
-            backgroundColor={filteredAlignmentItem === 'recommend' ? 'transparent' : 'primary'}
-          >
-            <Flex gap="4px" alignItems="center" justifyContent="center">
-              {alignmentList.find((item) => item.key === filteredAlignmentItem)?.name}
-              <AlignmentIcon color={filteredAlignmentItem === 'recommend' ? 'gray400' : 'white'} width="10px" />
-            </Flex>
-          </Chip>
-          <Chip
-            style={{ cursor: 'pointer' }}
-            onClick={openModal}
-            color={filteredLiteratureList.length === 0 ? 'gray400' : 'white'}
-            borderColor={filteredLiteratureList.length === 0 ? 'gray200' : 'primary'}
-            backgroundColor={filteredLiteratureList.length === 0 ? 'transparent' : 'primary'}
-          >
-            문학
-          </Chip>
-          <Chip
-            style={{ cursor: 'pointer' }}
-            onClick={openModal}
-            color={filteredNonLiteratureList.length === 0 ? 'gray400' : 'white'}
-            borderColor={filteredNonLiteratureList.length === 0 ? 'gray200' : 'primary'}
-            backgroundColor={filteredNonLiteratureList.length === 0 ? 'transparent' : 'primary'}
-          >
-            비문학
-          </Chip>
-          <Chip
-            style={{ cursor: 'pointer' }}
-            onClick={openModal}
-            color={filteredAtmosphereList.length === 0 ? 'gray400' : 'white'}
-            borderColor={filteredAtmosphereList.length === 0 ? 'gray200' : 'primary'}
-            backgroundColor={filteredAtmosphereList.length === 0 ? 'transparent' : 'primary'}
-          >
-            분위기
-          </Chip>
+          {chipContentList.map(({ label, isValue }) => (
+            <Chip
+              style={{ cursor: 'pointer' }}
+              onClick={openModal}
+              color={isValue ? 'white' : 'gray400'}
+              borderColor={isValue ? 'primary' : 'gray200'}
+              backgroundColor={isValue ? 'primary' : 'transparent'}
+            >
+              {label}
+            </Chip>
+          ))}
         </Flex>
       </Flex>
       <Flex direction="column" style={{ padding: '0 20px' }}>

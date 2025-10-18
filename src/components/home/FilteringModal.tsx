@@ -1,10 +1,13 @@
+import { useCallback, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { alignmentList, literatureList, nonLiteratureList } from '@/constants/home';
 import { preferenceList } from '@/constants/onboarding';
 import { type FormValues } from '@/pages/home/BookList';
-import type { AlignmentListType, LiteratureListType, NonLiteratureListType } from '@/types/home';
+import type { AlignmentListType, filteringContentType, LiteratureListType, NonLiteratureListType } from '@/types/home';
 import type { PreferenceListType } from '@/types/onboarding';
+import { handleMultiSelector } from '@/utils/home/handleMultiSelector';
+import { handleSelector } from '@/utils/home/handleSelector';
 
 import { Button } from '../base/Button';
 import { Flex } from '../base/Flex';
@@ -26,48 +29,88 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
 
   // 정렬
   const selectedAlignmentItem = watch('selectedAlignmentItem');
-  const handleSelectedAlignmentItem = (key: AlignmentListType) => {
-    if (key !== selectedAlignmentItem) setValue('selectedAlignmentItem', key);
-    else setValue('selectedAlignmentItem', 'recommend');
-  };
-  //문학
+  const handleSelectedAlignmentItem = useCallback(
+    (key: AlignmentListType) => {
+      setValue('selectedAlignmentItem', handleSelector(selectedAlignmentItem, key, 'recommend'));
+    },
+    [selectedAlignmentItem, setValue],
+  );
+  // 문학
   const selectedLiteratureList = watch('selectedLiteratureList');
-  const handleSelectedLiteratureList = (key: LiteratureListType) => {
-    if (selectedLiteratureList.includes(key))
-      setValue(
-        'selectedLiteratureList',
-        selectedLiteratureList.filter((item: LiteratureListType) => item !== key),
-      );
-    else setValue('selectedLiteratureList', [...selectedLiteratureList, key]);
-  };
-  //비문학
+  const handleSelectedLiteratureList = useCallback(
+    (key: LiteratureListType) => {
+      setValue('selectedLiteratureList', handleMultiSelector(selectedLiteratureList, key));
+    },
+    [selectedLiteratureList, setValue],
+  );
+  // 비문학
   const selectedNonLiteratureList = watch('selectedNonLiteratureList');
-  const handleSelectedNonLiteratureList = (key: NonLiteratureListType) => {
-    if (selectedNonLiteratureList.includes(key))
-      setValue(
-        'selectedNonLiteratureList',
-        selectedNonLiteratureList.filter((item: NonLiteratureListType) => item !== key),
-      );
-    else setValue('selectedNonLiteratureList', [...selectedNonLiteratureList, key]);
-  };
-  //분위기
+  const handleSelectedNonLiteratureList = useCallback(
+    (key: NonLiteratureListType) => {
+      setValue('selectedNonLiteratureList', handleMultiSelector(selectedNonLiteratureList, key));
+    },
+    [selectedNonLiteratureList, setValue],
+  );
+  // 분위기
   const selectedAtmosphereList = watch('selectedAtmosphereList');
-  const handleSelectedAtmosphereList = (key: PreferenceListType) => {
-    if (selectedAtmosphereList.includes(key))
-      setValue(
-        'selectedAtmosphereList',
-        selectedAtmosphereList.filter((item: PreferenceListType) => item !== key),
-      );
-    else setValue('selectedAtmosphereList', [...selectedAtmosphereList, key]);
-  };
+  const handleSelectedAtmosphereList = useCallback(
+    (key: PreferenceListType) => {
+      setValue('selectedAtmosphereList', handleMultiSelector(selectedAtmosphereList, key));
+    },
+    [selectedAtmosphereList, setValue],
+  );
 
-  //초기화
+  // 초기화
   const handleReset = () => {
     setValue('selectedAlignmentItem', 'recommend');
     setValue('selectedLiteratureList', []);
     setValue('selectedNonLiteratureList', []);
     setValue('selectedAtmosphereList', []);
   };
+
+  // filtering 항목
+  const filteringContentList = useMemo<filteringContentType[]>(
+    () => [
+      {
+        label: '정렬',
+        isMulti: false,
+        list: alignmentList,
+        selectedItem: selectedAlignmentItem,
+        handleSelectedItem: handleSelectedAlignmentItem,
+      },
+      {
+        label: '문학',
+        isMulti: true,
+        list: literatureList,
+        selectedItem: selectedLiteratureList,
+        handleSelectedItem: handleSelectedLiteratureList,
+      },
+      {
+        label: '비문학',
+        isMulti: true,
+        list: nonLiteratureList,
+        selectedItem: selectedNonLiteratureList,
+        handleSelectedItem: handleSelectedNonLiteratureList,
+      },
+      {
+        label: '분위기',
+        isMulti: true,
+        list: preferenceList,
+        selectedItem: selectedAtmosphereList,
+        handleSelectedItem: handleSelectedAtmosphereList,
+      },
+    ],
+    [
+      selectedAlignmentItem,
+      selectedLiteratureList,
+      selectedNonLiteratureList,
+      selectedAtmosphereList,
+      handleSelectedAlignmentItem,
+      handleSelectedLiteratureList,
+      handleSelectedNonLiteratureList,
+      handleSelectedAtmosphereList,
+    ],
+  );
 
   return (
     <Flex
@@ -79,38 +122,20 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
       <Header isDelete title="필터" handleClose={closeModal} />
       <Flex width="100%" style={{ flex: 1, overflowY: 'scroll' }}>
         <Flex direction="column" width="100%" gap="32px" style={{ padding: '0 20px' }}>
-          <Flex direction="column" width="100%" gap="12px">
-            <Txt typo="point_lg">정렬</Txt>
-            <Selector
-              list={alignmentList}
-              selectedItem={selectedAlignmentItem}
-              handleSelectedItem={handleSelectedAlignmentItem}
-            />
-          </Flex>
-          <Flex direction="column" width="100%" gap="12px">
-            <Txt typo="point_lg">문학</Txt>
-            <MultiSelector
-              list={literatureList}
-              selectedList={selectedLiteratureList}
-              handleSelectedList={handleSelectedLiteratureList}
-            />
-          </Flex>
-          <Flex direction="column" width="100%" gap="12px">
-            <Txt typo="point_lg">비문학</Txt>
-            <MultiSelector
-              list={nonLiteratureList}
-              selectedList={selectedNonLiteratureList}
-              handleSelectedList={handleSelectedNonLiteratureList}
-            />
-          </Flex>
-          <Flex direction="column" width="100%" gap="12px">
-            <Txt typo="point_lg">분위기</Txt>
-            <MultiSelector
-              list={preferenceList}
-              selectedList={selectedAtmosphereList}
-              handleSelectedList={handleSelectedAtmosphereList}
-            />
-          </Flex>
+          {filteringContentList.map(({ label, isMulti, list, selectedItem, handleSelectedItem }) => (
+            <Flex direction="column" width="100%" gap="12px">
+              <Txt typo="point_lg">{label}</Txt>
+              {isMulti ? (
+                <MultiSelector
+                  list={list}
+                  selectedList={selectedItem as string[]}
+                  handleSelectedList={handleSelectedItem}
+                />
+              ) : (
+                <Selector list={list} selectedItem={selectedItem as string} handleSelectedItem={handleSelectedItem} />
+              )}
+            </Flex>
+          ))}
           <Spacing height="12px" />
         </Flex>
       </Flex>
