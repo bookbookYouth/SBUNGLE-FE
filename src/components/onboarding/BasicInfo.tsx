@@ -1,7 +1,9 @@
+import { useCallback } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { ageList, genderList, STEPS } from '@/constants/onboarding';
 import type { AgeListType, GenderListType } from '@/types/onboarding';
+import { handleSelector } from '@/utils/home/handleSelector';
 
 import { Button } from '../base/Button';
 import { Flex } from '../base/Flex';
@@ -23,15 +25,19 @@ export const BasicInfo = ({ onNext }: { onNext: () => void }) => {
   const selectedGenderItem = watch('gender') ?? '';
   const selectedAgeItem = watch('age') ?? '';
 
-  const handleSelectedGenreItem = (key: string) => {
-    if (key !== selectedGenderItem) setValue('gender', key);
-    else setValue('gender', '');
-  };
+  const handleSelectedGenreItem = useCallback(
+    (key: string) => {
+      setValue('gender', handleSelector(selectedGenderItem, key, ''));
+    },
+    [selectedGenderItem, setValue],
+  );
 
-  const handleSelectedAgeItem = (key: string) => {
-    if (key !== selectedAgeItem) setValue('age', key);
-    else setValue('age', '');
-  };
+  const handleSelectedAgeItem = useCallback(
+    (key: string) => {
+      setValue('age', handleSelector(selectedAgeItem, key, ''));
+    },
+    [selectedAgeItem, setValue],
+  );
 
   return (
     <>

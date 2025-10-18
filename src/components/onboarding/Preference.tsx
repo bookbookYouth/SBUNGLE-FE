@@ -1,7 +1,9 @@
+import { useCallback, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { preferenceList, STEPS } from '@/constants/onboarding';
 import type { PreferenceListType } from '@/types/onboarding';
+import { handleMultiSelector } from '@/utils/home/handleMultiSelector';
 
 import { Button } from '../base/Button';
 import { Flex } from '../base/Flex';
@@ -18,16 +20,14 @@ type FormValues = {
 export const Preference = () => {
   const { watch, setValue } = useFormContext<FormValues>();
 
-  const selectedPreferenceList = watch('preference') ?? [];
+  const selectedPreferenceList = useMemo(() => watch('preference') ?? [], [watch]);
 
-  const handleSelectedPreferenceList = (key: string) => {
-    if (selectedPreferenceList.includes(key))
-      setValue(
-        'preference',
-        selectedPreferenceList.filter((item) => item !== key),
-      );
-    else setValue('preference', [...selectedPreferenceList, key]);
-  };
+  const handleSelectedPreferenceList = useCallback(
+    (key: string) => {
+      setValue('preference', handleMultiSelector(selectedPreferenceList, key));
+    },
+    [selectedPreferenceList, setValue],
+  );
 
   return (
     <>

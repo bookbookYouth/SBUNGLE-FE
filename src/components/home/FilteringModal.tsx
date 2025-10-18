@@ -28,7 +28,7 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
   const { watch, setValue } = useFormContext<FormValues>();
 
   // 정렬
-  const selectedAlignmentItem = watch('selectedAlignmentItem');
+  const selectedAlignmentItem = useMemo(() => watch('selectedAlignmentItem'), [watch]);
   const handleSelectedAlignmentItem = useCallback(
     (key: AlignmentListType) => {
       setValue('selectedAlignmentItem', handleSelector(selectedAlignmentItem, key, 'recommend'));
@@ -36,7 +36,7 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
     [selectedAlignmentItem, setValue],
   );
   // 문학
-  const selectedLiteratureList = watch('selectedLiteratureList');
+  const selectedLiteratureList = useMemo(() => watch('selectedLiteratureList'), [watch]);
   const handleSelectedLiteratureList = useCallback(
     (key: LiteratureListType) => {
       setValue('selectedLiteratureList', handleMultiSelector(selectedLiteratureList, key));
@@ -44,7 +44,7 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
     [selectedLiteratureList, setValue],
   );
   // 비문학
-  const selectedNonLiteratureList = watch('selectedNonLiteratureList');
+  const selectedNonLiteratureList = useMemo(() => watch('selectedNonLiteratureList'), [watch]);
   const handleSelectedNonLiteratureList = useCallback(
     (key: NonLiteratureListType) => {
       setValue('selectedNonLiteratureList', handleMultiSelector(selectedNonLiteratureList, key));
@@ -52,7 +52,7 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
     [selectedNonLiteratureList, setValue],
   );
   // 분위기
-  const selectedAtmosphereList = watch('selectedAtmosphereList');
+  const selectedAtmosphereList = useMemo(() => watch('selectedAtmosphereList'), [watch]);
   const handleSelectedAtmosphereList = useCallback(
     (key: PreferenceListType) => {
       setValue('selectedAtmosphereList', handleMultiSelector(selectedAtmosphereList, key));
