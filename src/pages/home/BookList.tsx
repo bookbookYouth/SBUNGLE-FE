@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import AlignmentIcon from '@/assets/alignment.svg?react';
 import { Chip } from '@/components/base/Chip';
@@ -10,6 +11,7 @@ import { Txt } from '@/components/base/Txt';
 import { Card } from '@/components/common/Card';
 import { Header } from '@/components/common/Header';
 import { FilteringModal } from '@/components/home/FilteringModal';
+import { ROUTES } from '@/config/appConfig';
 import { alignmentList } from '@/constants/home';
 import { useModal } from '@/hooks/useModal';
 import { bookData } from '@/mock/bookData';
@@ -29,7 +31,9 @@ export type FormValues = {
 };
 
 function BookListPage() {
+  const navigate = useNavigate();
   const { isOpen, closeModal, openModal } = useModal();
+
   // 필터링 값 상태
   const [filteredAlignmentItem, setFilteredAlignmentItem] = useState<AlignmentListType>('recommend');
   const [filteredLiteratureList, setFilteredLiteratureList] = useState<LiteratureListType[]>([]);
@@ -115,6 +119,7 @@ function BookListPage() {
                     </Txt>
                   </Flex>
                 }
+                onClick={() => navigate(ROUTES.bookDetail.link(book.id))}
               />
             </Grid.Col>
           ))}

@@ -5,6 +5,7 @@ const APP_CONFIG = {
     splash: '/onboarding/splash',
     home: '/',
     bookList: '/book-list',
+    bookDetail: { path: '/book-list/:id', link: (id: string) => `/book-list/${id}` },
     gift: '/gift',
     bookstore: '/bookstore',
     wish: '/wish',

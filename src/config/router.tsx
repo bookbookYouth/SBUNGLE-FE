@@ -11,6 +11,7 @@ const SurveyPage = lazy(() => import('@/pages/onboarding/Survey'));
 const SplashPage = lazy(() => import('@/pages/onboarding/Splash'));
 const HomePage = lazy(() => import('@/pages/home/index'));
 const BookListPage = lazy(() => import('@/pages/home/BookList'));
+const BookDetailPage = lazy(() => import('@/pages/home/BookDetail'));
 const GiftPage = lazy(() => import('@/pages/gift/index'));
 const BookstorePage = lazy(() => import('@/pages/bookstore/index'));
 const WishPage = lazy(() => import('@/pages/wish/index'));
@@ -22,6 +23,7 @@ export const routeTree = (
     <Route element={<MainLayout />}>
       <Route path={ROUTES.home} element={<HomePage />} />
       <Route path={ROUTES.bookList} element={<BookListPage />} />
+      <Route path={ROUTES.bookDetail.path} element={<BookDetailPage />} />
       <Route path={ROUTES.gift} element={<GiftPage />} />
       <Route path={ROUTES.bookstore} element={<BookstorePage />} />
       <Route path={ROUTES.wish} element={<WishPage />} />
