@@ -62,6 +62,13 @@ export const typo = {
     fontWeight: 'regular',
     lineHeight: 'xs',
   }),
+  point_title: sprinkles({
+    /* point/Content 36pt_140% */
+    fontFamily: 'point',
+    fontSize: 'xxlg',
+    fontWeight: 'bold',
+    lineHeight: 'sm',
+  }),
   point_lg: sprinkles({
     /* point/Subtitle 24pt_160% */
     fontFamily: 'point',

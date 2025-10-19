@@ -19,6 +19,7 @@ export const fontTheme = createGlobalThemeContract({
   font: {
     family: { body: 'font-family-body', point: 'font-family-point' },
     size: {
+      xxlg: 'font-xxlg',
       xlg: 'font-xlg',
       lg: 'font-lg',
       ml: 'font-ml',
@@ -58,6 +59,7 @@ export const font = createGlobalTheme(':root', fontTheme, {
   font: {
     family: { body: 'Pretendard', point: 'Nanum Myeongjo' },
     size: {
+      xxlg: '36px',
       xlg: '24px',
       lg: '20px',
       ml: '18px',
