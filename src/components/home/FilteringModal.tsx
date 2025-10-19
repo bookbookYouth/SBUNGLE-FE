@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 
 import { alignmentList, literatureList, nonLiteratureList } from '@/constants/home';
 import { preferenceList } from '@/constants/onboarding';
@@ -25,37 +25,37 @@ interface FilteringModalProps {
 }
 
 export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
-  const { watch, setValue } = useFormContext<FormValues>();
+  const { control, setValue } = useFormContext<FormValues>();
 
   // 정렬
-  const selectedAlignmentItem = useMemo(() => watch('selectedAlignmentItem'), [watch]);
+  const selectedAlignmentItem = useWatch({ control, name: 'selectedAlignmentItem' });
   const handleSelectedAlignmentItem = useCallback(
     (key: AlignmentListType) => {
-      setValue('selectedAlignmentItem', handleSelector(selectedAlignmentItem, key, 'recommend'));
+      setValue('selectedAlignmentItem', handleSelector<AlignmentListType>(selectedAlignmentItem, key, 'recommend'));
     },
     [selectedAlignmentItem, setValue],
   );
   // 문학
-  const selectedLiteratureList = useMemo(() => watch('selectedLiteratureList'), [watch]);
+  const selectedLiteratureList = useWatch({ control, name: 'selectedLiteratureList' });
   const handleSelectedLiteratureList = useCallback(
     (key: LiteratureListType) => {
-      setValue('selectedLiteratureList', handleMultiSelector(selectedLiteratureList, key));
+      setValue('selectedLiteratureList', handleMultiSelector<LiteratureListType>(selectedLiteratureList, key));
     },
     [selectedLiteratureList, setValue],
   );
   // 비문학
-  const selectedNonLiteratureList = useMemo(() => watch('selectedNonLiteratureList'), [watch]);
+  const selectedNonLiteratureList = useWatch({ control, name: 'selectedNonLiteratureList' });
   const handleSelectedNonLiteratureList = useCallback(
     (key: NonLiteratureListType) => {
-      setValue('selectedNonLiteratureList', handleMultiSelector(selectedNonLiteratureList, key));
+      setValue('selectedNonLiteratureList', handleMultiSelector<NonLiteratureListType>(selectedNonLiteratureList, key));
     },
     [selectedNonLiteratureList, setValue],
   );
   // 분위기
-  const selectedAtmosphereList = useMemo(() => watch('selectedAtmosphereList'), [watch]);
+  const selectedAtmosphereList = useWatch({ control, name: 'selectedAtmosphereList' });
   const handleSelectedAtmosphereList = useCallback(
     (key: PreferenceListType) => {
-      setValue('selectedAtmosphereList', handleMultiSelector(selectedAtmosphereList, key));
+      setValue('selectedAtmosphereList', handleMultiSelector<PreferenceListType>(selectedAtmosphereList, key));
     },
     [selectedAtmosphereList, setValue],
   );

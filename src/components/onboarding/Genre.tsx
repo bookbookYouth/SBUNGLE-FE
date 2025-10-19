@@ -1,5 +1,4 @@
-import { useCallback, useMemo } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 
 import { genreList, STEPS } from '@/constants/onboarding';
 import type { GenreListType } from '@/types/onboarding';
@@ -18,16 +17,13 @@ type FormValues = {
 };
 
 export const Genre = ({ onNext }: { onNext: () => void }) => {
-  const { watch, setValue } = useFormContext<FormValues>();
+  const { control, setValue } = useFormContext<FormValues>();
 
-  const selectedGenreList = useMemo(() => watch('genre') ?? [], [watch]);
+  const selectedGenreList = useWatch({ control, name: 'genre', defaultValue: [] });
 
-  const handleSelectedGenreList = useCallback(
-    (key: string) => {
-      setValue('genre', handleMultiSelector(selectedGenreList, key));
-    },
-    [selectedGenreList, setValue],
-  );
+  const handleSelectedGenreList = (key: string) => {
+    setValue('genre', handleMultiSelector<GenreListType>(selectedGenreList, key));
+  };
 
   return (
     <>

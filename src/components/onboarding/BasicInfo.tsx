@@ -1,5 +1,4 @@
-import { useCallback } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 
 import { ageList, genderList, STEPS } from '@/constants/onboarding';
 import type { AgeListType, GenderListType } from '@/types/onboarding';
@@ -20,24 +19,18 @@ type FormValues = {
 };
 
 export const BasicInfo = ({ onNext }: { onNext: () => void }) => {
-  const { watch, setValue } = useFormContext<FormValues>();
+  const { control, setValue } = useFormContext<FormValues>();
 
-  const selectedGenderItem = watch('gender') ?? '';
-  const selectedAgeItem = watch('age') ?? '';
+  const selectedGenderItem = useWatch({ control, name: 'gender', defaultValue: '' });
+  const selectedAgeItem = useWatch({ control, name: 'age', defaultValue: '' });
 
-  const handleSelectedGenreItem = useCallback(
-    (key: string) => {
-      setValue('gender', handleSelector(selectedGenderItem, key, ''));
-    },
-    [selectedGenderItem, setValue],
-  );
+  const handleSelectedGenreItem = (key: string) => {
+    setValue('gender', handleSelector<GenderListType>(selectedGenderItem, key, ''));
+  };
 
-  const handleSelectedAgeItem = useCallback(
-    (key: string) => {
-      setValue('age', handleSelector(selectedAgeItem, key, ''));
-    },
-    [selectedAgeItem, setValue],
-  );
+  const handleSelectedAgeItem = (key: string) => {
+    setValue('age', handleSelector<AgeListType>(selectedAgeItem, key, ''));
+  };
 
   return (
     <>

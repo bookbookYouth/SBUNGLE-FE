@@ -121,7 +121,7 @@ function BookListPage() {
         </Grid>
       </Flex>
       {isOpen && (
-        <GenericForm
+        <GenericForm<FormValues>
           formOptions={{
             mode: 'onChange',
             defaultValues: {
