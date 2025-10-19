@@ -17,22 +17,25 @@ interface CardProps {
   genre?: string;
   like?: boolean;
   liked?: boolean;
+  onClick?: () => void;
 }
 
-export const Card = ({ theme = 'large', top, bottom, rank, genre, like = false, liked }: CardProps) => {
+export const Card = ({ theme = 'large', top, bottom, rank, genre, like = false, liked, onClick }: CardProps) => {
   const handleLiked = () => {
     // api 연동
   };
 
   return (
-    <div
+    <button
       className={sprinkles({ cursor: 'pointer' })}
       style={{
         border: `1px solid ${paletteTheme.palette.black}`,
         minWidth: theme === 'large' ? '180px' : '152px',
         height: '268px',
         overflow: 'hidden',
+        padding: 0,
       }}
+      onClick={onClick}
     >
       <Flex
         direction="column"
@@ -98,6 +101,6 @@ export const Card = ({ theme = 'large', top, bottom, rank, genre, like = false, 
       <Flex width="100%" height="68px" alignItems="center" style={{ padding: theme === 'small' ? '0 8px' : '0 12px' }}>
         {bottom}
       </Flex>
-    </div>
+    </button>
   );
 };
