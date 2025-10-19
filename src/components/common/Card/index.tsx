@@ -98,7 +98,13 @@ export const Card = ({ theme = 'large', top, bottom, rank, genre, like = false, 
         </>
       </Flex>
       <Hr height="1px" />
-      <Flex width="100%" height="68px" alignItems="center" style={{ padding: theme === 'small' ? '0 8px' : '0 12px' }}>
+      <Flex
+        width="100%"
+        height="68px"
+        alignItems="center"
+        justifyContent="flex-start"
+        style={{ padding: theme === 'small' ? '0 8px' : '0 12px', textAlign: 'start' }}
+      >
         {bottom}
       </Flex>
     </button>
