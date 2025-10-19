@@ -8,12 +8,12 @@ export const Layout = () => {
   return (
     <Flex width="100%" height="100vh" alignItems="center" justifyContent="center">
       <Flex
-        width="402px"
+        width="100%"
         height="100%"
+        overflowY="auto"
         direction="column"
         alignItems="stretch"
         style={{
-          width: '402px',
           maxWidth: '402px',
           minHeight: '100vh',
           backgroundColor: paletteTheme.palette.background,

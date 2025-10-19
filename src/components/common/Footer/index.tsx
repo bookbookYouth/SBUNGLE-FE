@@ -42,7 +42,8 @@ export const Footer = () => {
       style={{
         borderTop: `1px solid ${paletteTheme.palette.gray100}`,
         height: '48px',
-        width: '402px',
+        width: '100%',
+        maxWidth: '402px',
         position: 'fixed',
         bottom: 0,
         paddingTop: '4px',

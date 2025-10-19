@@ -30,7 +30,8 @@ export const Card = ({ theme = 'large', top, bottom, rank, genre, like = false, 
       className={sprinkles({ cursor: 'pointer' })}
       style={{
         border: `1px solid ${paletteTheme.palette.black}`,
-        minWidth: theme === 'large' ? '180px' : '152px',
+        width: theme === 'large' ? '180px' : '152px',
+        minWidth: theme === 'large' ? '100%' : '152px',
         height: '268px',
         overflow: 'hidden',
         padding: 0,

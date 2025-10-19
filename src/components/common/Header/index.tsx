@@ -36,11 +36,11 @@ export const Header = ({
   return (
     <Flex
       height="52px"
-      width="402px"
+      width="100%"
       justifyContent="space-between"
       alignItems="center"
       backgroundColor="background"
-      style={{ position: 'sticky', top: 0, zIndex: 20 }}
+      style={{ maxWidth: '402px', position: 'sticky', top: 0, zIndex: 20 }}
     >
       {isBack ? (
         <BackIcon
