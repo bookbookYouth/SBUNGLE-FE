@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom';
 import { Spacing } from '@/components/base/Spacing';
 import { Tab } from '@/components/base/Tab';
 import { Header } from '@/components/common/Header';
+import { DetailInfo } from '@/components/home/DetailInfo';
 import { ImgCard } from '@/components/home/ImgCard';
-import { type Book, bookData } from '@/mock/bookData';
+import { bookData, type BookDetail } from '@/mock/bookData';
 
 function BookDetailPage() {
   const params = useParams();
-  const bookDetailData: Book | undefined = bookData.find((item) => item.id === params.id);
+  const bookDetailData: BookDetail | undefined = bookData.find((item) => item.id === params.id);
 
   const [clickedTabItem, setClickedTabItem] = useState<'detail' | 'review'>('detail');
 
@@ -26,6 +27,15 @@ function BookDetailPage() {
           리뷰
         </Tab.Item>
       </Tab>
+      <Spacing height="20px" />
+      {clickedTabItem === 'detail' && (
+        <DetailInfo
+          genre={bookDetailData?.genre || ''}
+          title={bookDetailData?.title || ''}
+          price={bookDetailData?.price.toLocaleString() || ''}
+          description={bookDetailData?.description || ''}
+        />
+      )}
     </>
   );
 }
