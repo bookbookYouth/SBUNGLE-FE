@@ -14,7 +14,11 @@ export const Txt = ({ children, typo = 'content_sm', color, underline = false }:
   return (
     <span
       className={clsx(typoStyle[typo], sprinkles({ color }))}
-      style={{ textDecoration: underline ? 'underline' : 'none', textUnderlinePosition: 'from-font' }}
+      style={{
+        textDecoration: underline ? 'underline' : 'none',
+        textUnderlinePosition: 'from-font',
+        wordBreak: 'break-all',
+      }}
     >
       {children}
     </span>
