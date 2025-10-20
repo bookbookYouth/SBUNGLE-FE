@@ -65,7 +65,7 @@ export const Card = ({ theme = 'large', top, bottom, rank, genre, like = false, 
                   height="100%"
                   style={{ border: `1px solid ${paletteTheme.palette.black}` }}
                 >
-                  <Txt typo="point_sm">{rank}</Txt>
+                  <Txt typo="point_ml">{rank}</Txt>
                 </Flex>
               )}
               {genre && (

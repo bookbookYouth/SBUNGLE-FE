@@ -54,7 +54,7 @@ function HomePage() {
               top={<img src={getGenreImg(book.genre)} alt={book.title} style={{ objectFit: 'cover' }} />}
               bottom={
                 <Flex direction="column">
-                  <Txt typo="point_sm">{book.title}</Txt>
+                  <Txt typo="point_sm_bold">{book.title}</Txt>
                   <Txt typo="content_sm" color="gray300">
                     {book.price.toLocaleString()}
                   </Txt>
@@ -79,7 +79,7 @@ function HomePage() {
                   top={<img src={getGenreImg(book.genre)} alt={book.title} style={{ objectFit: 'cover' }} />}
                   bottom={
                     <Flex direction="column">
-                      <Txt typo="point_sm">{book.title}</Txt>
+                      <Txt typo="point_sm_bold">{book.title}</Txt>
                       <Txt typo="content_sm" color="gray300">
                         {book.price.toLocaleString()}
                       </Txt>

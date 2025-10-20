@@ -22,7 +22,7 @@ export const MultiSelector = ({ list, selectedList, handleSelectedList }: MultiS
             active={selectedList.includes(item.key)}
             onClick={() => handleSelectedList(item.key)}
           >
-            <Txt typo="point_sm">{item.name}</Txt>
+            <Txt typo="point_ml">{item.name}</Txt>
           </Button>
         </Grid.Col>
       ))}

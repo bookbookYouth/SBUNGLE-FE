@@ -76,11 +76,25 @@ export const typo = {
     fontWeight: 'bold',
     lineHeight: 'lg',
   }),
-  point_sm: sprinkles({
+  point_ml: sprinkles({
     /* point/Title 18pt_140% */
+    fontFamily: 'point',
+    fontSize: 'ml',
+    fontWeight: 'bold',
+    lineHeight: 'sm',
+  }),
+  point_sm_bold: sprinkles({
+    /* point/Content 14pt_160%/bold */
     fontFamily: 'point',
     fontSize: 'sm',
     fontWeight: 'bold',
+    lineHeight: 'sm',
+  }),
+  point_sm: sprinkles({
+    /* point/Content 14pt_160% */
+    fontFamily: 'point',
+    fontSize: 'sm',
+    fontWeight: 'regular',
     lineHeight: 'sm',
   }),
 };

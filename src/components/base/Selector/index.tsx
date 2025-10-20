@@ -22,7 +22,7 @@ export const Selector = ({ list, selectedItem, handleSelectedItem }: SelectorPro
             active={selectedItem === item.key}
             onClick={() => handleSelectedItem(item.key)}
           >
-            <Txt typo="point_sm">{item.name}</Txt>
+            <Txt typo="point_ml">{item.name}</Txt>
           </Button>
         </Grid.Col>
       ))}
