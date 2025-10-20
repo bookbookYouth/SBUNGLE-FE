@@ -15,9 +15,12 @@ interface TableProps {
 }
 
 interface TableHCellProps {
+  theme?: 'dashed' | 'solid';
   children: React.ReactNode;
+  colSpan?: number;
   width?: string;
   align?: 'left' | 'center' | 'right';
+  style?: React.CSSProperties;
 }
 
 interface TableRowProps {
@@ -25,23 +28,28 @@ interface TableRowProps {
 }
 
 interface TableCellProps {
+  theme?: 'dashed' | 'solid';
   children: React.ReactNode;
+  width?: string;
   align?: 'left' | 'center' | 'right';
+  style?: React.CSSProperties;
 }
 
-const TableHCell = ({ children, width, align = 'left' }: TableHCellProps) => {
+const TableHCell = ({ theme = 'dashed', children, width, align = 'left', colSpan, style }: TableHCellProps) => {
   const isEmpty = !children || (typeof children === 'string' && children.trim() === '');
 
   return (
     <th
+      colSpan={colSpan}
       className={isEmpty ? tableHCellNoBorderStyle : tableHCellBorderStyle}
       style={{
         height: '48px',
         textAlign: align,
         verticalAlign: 'middle',
         width,
-        paddingLeft: '20px',
-        borderBottom: `1px dashed ${paletteTheme.palette.black}`,
+        borderBottom:
+          theme === 'dashed' ? `1px dashed ${paletteTheme.palette.black}` : `1px solid ${paletteTheme.palette.black}`,
+        ...style,
       }}
     >
       {children}
@@ -53,18 +61,20 @@ const TableRow = ({ children }: TableRowProps) => {
   return <tr>{children}</tr>;
 };
 
-const TableCell = ({ children, align = 'left' }: TableCellProps) => {
+const TableCell = ({ theme = 'dashed', children, width, align = 'left', style }: TableCellProps) => {
   const isEmpty = !children || (typeof children === 'string' && children.trim() === '');
 
   return (
     <td
       className={isEmpty ? tableCellNoBorderStyle : tableCellBorderStyle}
       style={{
+        width,
         height: '38px',
         textAlign: align,
         verticalAlign: 'middle',
-        paddingLeft: '20px',
-        borderBottom: `1px dashed ${paletteTheme.palette.black}`,
+        borderBottom:
+          theme === 'dashed' ? `1px dashed ${paletteTheme.palette.black}` : `1px solid ${paletteTheme.palette.black}`,
+        ...style,
       }}
     >
       {children}
