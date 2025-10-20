@@ -23,7 +23,6 @@ export const routeTree = (
     <Route element={<MainLayout />}>
       <Route path={ROUTES.home} element={<HomePage />} />
       <Route path={ROUTES.bookList} element={<BookListPage />} />
-      <Route path={ROUTES.bookDetail.path} element={<BookDetailPage />} />
       <Route path={ROUTES.gift} element={<GiftPage />} />
       <Route path={ROUTES.bookstore} element={<BookstorePage />} />
       <Route path={ROUTES.wish} element={<WishPage />} />
@@ -32,6 +31,7 @@ export const routeTree = (
     <Route path={ROUTES.onboarding} element={<OnboardingPage />} />
     <Route path={ROUTES.survey} element={<SurveyPage />} />
     <Route path={ROUTES.splash} element={<SplashPage />} />
+    <Route path={ROUTES.bookDetail.path} element={<BookDetailPage />} />
     <Route path={ROUTES.error} element={<NotFoundPage />} />
     <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
   </Route>
