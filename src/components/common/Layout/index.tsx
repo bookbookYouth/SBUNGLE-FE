@@ -31,7 +31,9 @@ export const Layout = () => {
           backgroundColor: paletteTheme.palette.background,
         }}
       >
-        <Outlet />
+        <div style={{ flex: '1 0 auto' }}>
+          <Outlet />
+        </div>
       </Flex>
     </Flex>
   );

@@ -115,9 +115,15 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
   return (
     <Flex
       direction="column"
-      width="402px"
+      width="100%"
       height="100vh"
-      style={{ zIndex: 30, position: 'fixed', top: 0, backgroundColor: paletteTheme.palette.background }}
+      style={{
+        zIndex: 30,
+        position: 'fixed',
+        top: 0,
+        maxWidth: '402px',
+        backgroundColor: paletteTheme.palette.background,
+      }}
     >
       <Header isDelete title="필터" handleClose={closeModal} />
       <Flex width="100%" style={{ flex: 1, overflowY: 'scroll' }}>
