@@ -68,10 +68,11 @@ function BookDetailPage() {
       >
         <Flex direction="column" alignItems="center" justifyContent="center">
           <Like
+            className={sprinkles({ cursor: 'pointer' })}
             height="32px"
             width="32px"
-            color={bookDetailData?.liked ? `${paletteTheme.palette.black}` : `${paletteTheme.palette.gray300}`}
-            fill={bookDetailData?.liked ? `${paletteTheme.palette.black}` : 'transparent'}
+            color={paletteTheme.palette.gray300}
+            fill={bookDetailData?.liked ? `${paletteTheme.palette.gray300}` : 'transparent'}
             onClick={handleLiked}
           />
           <Txt typo="content_xxs">찜</Txt>
