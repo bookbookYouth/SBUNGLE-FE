@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import type React from 'react';
 
 import { Flex } from '../Flex';
 import { Txt } from '../Txt';
@@ -13,10 +14,19 @@ interface InputProps {
   label?: string;
   placeholder?: string;
   required?: boolean;
-  onChange?: () => void;
+  inputValue?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = ({ height, width = '100%', label, placeholder = '', required = false, onChange }: InputProps) => {
+export const Input = ({
+  height,
+  width = '100%',
+  label,
+  placeholder = '',
+  required = false,
+  inputValue,
+  onChange,
+}: InputProps) => {
   return (
     <Flex width="100%" alignItems="flex-start" justifyContent="space-between">
       {label && (
@@ -35,6 +45,7 @@ export const Input = ({ height, width = '100%', label, placeholder = '', require
         aria-label={label ?? 'input'}
         className={clsx(inputStyle, typo['content_sm'], sprinkles({ color: 'black' }))}
         placeholder={placeholder}
+        value={inputValue}
         onChange={onChange}
         style={{
           height,
