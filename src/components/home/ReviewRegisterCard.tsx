@@ -1,15 +1,17 @@
 import { useState } from 'react';
 
-import Star from '@/assets/star.svg?react';
-
 import { Flex } from '../base/Flex';
 import { Input } from '../base/Input';
 import { Txt } from '../base/Txt';
+import { StarRate } from './StarRate';
 
 import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';
 
 export const ReviewRegisterCard = () => {
+  //starRate
+  const [starRating, setStarRating] = useState<number>(0);
+
   // input
   const [inputValue, setInputValue] = useState<string>('');
   const changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,10 +40,8 @@ export const ReviewRegisterCard = () => {
       <Flex height="22px">
         <Txt typo="subTitle_sm_bold">별점을 선택해주세요.</Txt>
       </Flex>
-      <Flex direction="row" gap="8px" alignItems="center" justifyContent="center" height="44px">
-        {Array.from({ length: 5 }).map(() => (
-          <Star height="28px" width="28px" className={sprinkles({ cursor: 'pointer' })} />
-        ))}
+      <Flex height="44px" alignItems="center">
+        <StarRate starRating={starRating} setStarRating={setStarRating} />
       </Flex>
       <Flex
         direction="row"
