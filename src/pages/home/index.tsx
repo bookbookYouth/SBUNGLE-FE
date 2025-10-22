@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Carousel } from '@/components/base/Carousel';
 import { Flex } from '@/components/base/Flex';
 import { Grid } from '@/components/base/Grid';
@@ -7,6 +9,7 @@ import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
 import { Card } from '@/components/common/Card';
 import { Header } from '@/components/common/Header';
+import { ROUTES } from '@/config/appConfig';
 import { bookForTodayData, bookForUserData } from '@/mock/bookData';
 import { getGenreImg } from '@/utils/home/getGenreImg';
 
@@ -16,6 +19,7 @@ import bannerImg1 from '@/assets/banner.svg';
 export const user = '지효';
 
 function HomePage() {
+  const navigate = useNavigate();
   const imgArray = [bannerImg1, bannerImg1, bannerImg1, bannerImg1, bannerImg1];
 
   return (
@@ -60,6 +64,7 @@ function HomePage() {
                   </Txt>
                 </Flex>
               }
+              onClick={() => navigate(ROUTES.bookDetail.link(book.id))}
             />
           ))}
         </Slider>
@@ -85,6 +90,7 @@ function HomePage() {
                       </Txt>
                     </Flex>
                   }
+                  onClick={() => navigate(ROUTES.bookDetail.link(book.id))}
                 />
               </Grid.Col>
             ))}
