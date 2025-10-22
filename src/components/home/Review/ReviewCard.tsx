@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 import { format } from 'date-fns/format';
 
 import { Badge } from '@/components/base/Badge';
@@ -11,7 +11,7 @@ import type { Review } from '@/mock/bookData';
 import thumbDownIcon from '@/assets/thumbDown.svg';
 import thumbUpIcon from '@/assets/thumbUp.svg';
 
-export const ReviewCard = ({ id, score, reviewer, content, like, unlike, isSpoiled, registeredAt }: Review) => {
+export const ReviewCard = memo(({ id, score, reviewer, content, like, unlike, isSpoiled, registeredAt }: Review) => {
   const [isBlurred, setIsBlurred] = useState<boolean>(isSpoiled);
 
   // spolier blur
@@ -20,19 +20,22 @@ export const ReviewCard = ({ id, score, reviewer, content, like, unlike, isSpoil
   }, [setIsBlurred]);
 
   // like
-  const handleLike = (id: string) => {
+  const handleLike = useCallback((id: string) => {
     // api 연동
-  };
+  }, []);
 
   // unlike
-  const handleUnlike = (id: string) => {
+  const handleUnlike = useCallback((id: string) => {
     // api 연동
-  };
+  }, []);
 
-  const buttonList = [
-    { label: 'like', icon: thumbUpIcon, count: like, handler: () => handleLike(id) },
-    { label: 'unlike', icon: thumbDownIcon, count: unlike, handler: () => handleUnlike(id) },
-  ];
+  const buttonList = useMemo(
+    () => [
+      { label: 'like', icon: thumbUpIcon, count: like, handler: () => handleLike(id) },
+      { label: 'unlike', icon: thumbDownIcon, count: unlike, handler: () => handleUnlike(id) },
+    ],
+    [like, unlike, handleLike, handleUnlike, id],
+  );
 
   return (
     <Flex
@@ -128,4 +131,4 @@ export const ReviewCard = ({ id, score, reviewer, content, like, unlike, isSpoil
       </Flex>
     </Flex>
   );
-};
+});

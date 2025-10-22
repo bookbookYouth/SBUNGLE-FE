@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 import Star from '@/assets/star.svg?react';
@@ -9,7 +10,7 @@ interface StarDisplayProps {
   score: number;
 }
 
-export const StarDisplay = ({ size = 'small', score }: StarDisplayProps) => {
+export const StarDisplay = memo(({ size = 'small', score }: StarDisplayProps) => {
   return (
     <Rating
       initialValue={score}
@@ -40,4 +41,4 @@ export const StarDisplay = ({ size = 'small', score }: StarDisplayProps) => {
       }
     />
   );
-};
+});
