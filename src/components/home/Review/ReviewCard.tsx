@@ -21,12 +21,12 @@ export const ReviewCard = memo(({ id, score, reviewer, content, like, unlike, is
   }, [setIsBlurred]);
 
   // like
-  const handleLike = useCallback((id: string) => {
+  const handleLike = useCallback((_id: string) => {
     // api 연동
   }, []);
 
   // unlike
-  const handleUnlike = useCallback((id: string) => {
+  const handleUnlike = useCallback((_id: string) => {
     // api 연동
   }, []);
 
