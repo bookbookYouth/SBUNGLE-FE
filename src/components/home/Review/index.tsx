@@ -7,9 +7,10 @@ import { Table } from '@/components/base/Table';
 import { Txt } from '@/components/base/Txt';
 import { ReviewCard } from '@/components/home/Review/ReviewCard';
 import { ReviewRegisterCard } from '@/components/home/Review/ReviewRegisterCard';
+import { StarDisplay } from '@/components/home/Review/StarDisplay';
 import { reviewList } from '@/mock/bookData';
 
-import { StarDisplay } from './StarDisplay';
+import { reviewStyle } from '@/styles/page/home.css';
 
 interface ReviewProps {
   bookId: string;
@@ -60,14 +61,16 @@ export const Review = ({ bookId }: ReviewProps) => {
                 </Flex>
               </Table.Cell>
             </Table.Row>
-            {reviewData &&
-              reviewData.reviews.map((review) => (
-                <Table.Row>
-                  <Table.Cell theme="solid">
-                    <ReviewCard key={review.id} {...review} />
-                  </Table.Cell>
-                </Table.Row>
-              ))}
+            <div className={reviewStyle}>
+              {reviewData &&
+                reviewData.reviews.map((review) => (
+                  <Table.Row key={review.id}>
+                    <Table.Cell theme="solid">
+                      <ReviewCard {...review} />
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+            </div>
           </>
         }
       />

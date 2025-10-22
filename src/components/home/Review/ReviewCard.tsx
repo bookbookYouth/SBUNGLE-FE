@@ -35,13 +35,21 @@ export const ReviewCard = ({ id, score, reviewer, content, like, unlike, isSpoil
   ];
 
   return (
-    <Flex direction="column" alignItems="center" justifyContent="center" gap="8px" style={{ padding: '20px' }}>
+    <Flex
+      width="100%"
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      gap="8px"
+      style={{ padding: '20px' }}
+    >
       <Flex
         direction="row"
         height="35px"
+        width="100%"
         justifyContent="space-between"
         alignItems="center"
-        style={{ padding: '0 12px', width: '100%' }}
+        style={{ padding: '0 12px' }}
       >
         <Flex direction="row" justifyContent="center" alignItems="center" gap="8px">
           <StarDisplay score={score} size="small" />
@@ -53,7 +61,7 @@ export const ReviewCard = ({ id, score, reviewer, content, like, unlike, isSpoil
           </Txt>
         </Badge>
       </Flex>
-      <Flex height="22px" direction="row" justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
+      <Flex height="22px" width="100%" direction="row" justifyContent="space-between" alignItems="center">
         <Txt typo="subTitle_bold">{reviewer.slice(0, -1) + '*'}</Txt>
         <Txt typo="content_sm" color="gray300">
           {format(new Date(registeredAt), 'yyyy.MM.dd')}

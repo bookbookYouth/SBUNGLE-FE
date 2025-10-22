@@ -10,6 +10,7 @@ import { Txt } from '@/components/base/Txt';
 import { Header } from '@/components/common/Header';
 import { DetailInfo } from '@/components/home/DetailInfo';
 import { ImgCard } from '@/components/home/ImgCard';
+import { Review } from '@/components/home/Review';
 import { bookData, type BookDetail } from '@/mock/bookData';
 
 import { sprinkles } from '@/styles/sprinkles.css';
@@ -47,6 +48,7 @@ function BookDetailPage() {
           description={bookDetailData?.description || ''}
         />
       )}
+      {clickedTabItem === 'review' && <Review bookId={bookDetailData?.id || ''} />}
       <Spacing height="108px" />
       <footer
         className={sprinkles({
