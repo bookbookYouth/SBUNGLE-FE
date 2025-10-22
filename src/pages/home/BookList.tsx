@@ -6,6 +6,7 @@ import { Chip } from '@/components/base/Chip';
 import { Flex } from '@/components/base/Flex';
 import GenericForm from '@/components/base/GenericForm';
 import { Grid } from '@/components/base/Grid';
+import { If } from '@/components/base/If';
 import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
 import { Card } from '@/components/common/Card';
@@ -125,7 +126,7 @@ function BookListPage() {
           ))}
         </Grid>
       </Flex>
-      {isOpen && (
+      <If condition={isOpen}>
         <GenericForm<FormValues>
           formOptions={{
             mode: 'onChange',
@@ -140,7 +141,7 @@ function BookListPage() {
         >
           <FilteringModal closeModal={closeModal} />
         </GenericForm>
-      )}
+      </If>
     </>
   );
 }

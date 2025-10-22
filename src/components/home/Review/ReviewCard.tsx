@@ -4,6 +4,7 @@ import { format } from 'date-fns/format';
 import { Badge } from '@/components/base/Badge';
 import { Button } from '@/components/base/Button';
 import { Flex } from '@/components/base/Flex';
+import { If } from '@/components/base/If';
 import { Txt } from '@/components/base/Txt';
 import { StarDisplay } from '@/components/home/Review/StarDisplay';
 import type { Review } from '@/mock/bookData';
@@ -86,7 +87,7 @@ export const ReviewCard = memo(({ id, score, reviewer, content, like, unlike, is
             {content}
           </Txt>
         </Flex>
-        {isBlurred && (
+        <If condition={!!isBlurred}>
           <Txt
             typo="subTitle_bold"
             color="primary"
@@ -102,7 +103,7 @@ export const ReviewCard = memo(({ id, score, reviewer, content, like, unlike, is
           >
             탭하여 스포일러 리뷰 읽기
           </Txt>
-        )}
+        </If>
       </div>
       <Flex
         direction="row"

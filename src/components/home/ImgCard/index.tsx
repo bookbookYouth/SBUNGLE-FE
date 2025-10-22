@@ -1,3 +1,4 @@
+import { If } from '@/components/base/If';
 import { getGenreColor } from '@/utils/home/getGenreColor';
 import { getGenreImg } from '@/utils/home/getGenreImg';
 import { getGenreName } from '@/utils/home/getGenreName';
@@ -25,7 +26,7 @@ export const ImgCard = ({ genre, title }: ImgCardProps) => {
       }}
     >
       <Flex direction="column" width="100%" gap="8px" style={{ position: 'absolute', top: 0, padding: '28px' }}>
-        {genre && (
+        <If condition={!!genre}>
           <Flex
             height="100%"
             justify-content="center"
@@ -40,14 +41,14 @@ export const ImgCard = ({ genre, title }: ImgCardProps) => {
               {getGenreName(genre)}
             </Txt>
           </Flex>
-        )}
-        {title && (
+        </If>
+        <If condition={!!title}>
           <Flex style={{ textAlign: 'start' }}>
             <Txt typo="point_title" color={getGenreColor(genre)}>
               {title}
             </Txt>
           </Flex>
-        )}
+        </If>
       </Flex>
       <img src={getGenreImg(genre)} height="100%" alt={title} style={{ objectFit: 'cover' }} />
     </div>

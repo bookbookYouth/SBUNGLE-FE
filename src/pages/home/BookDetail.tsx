@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Like from '@/assets/like.svg?react';
 import { Button } from '@/components/base/Button';
 import { Flex } from '@/components/base/Flex';
+import { If } from '@/components/base/If';
 import { Spacing } from '@/components/base/Spacing';
 import { Tab } from '@/components/base/Tab';
 import { Txt } from '@/components/base/Txt';
@@ -48,15 +49,17 @@ function BookDetailPage() {
         ))}
       </Tab>
       <Spacing height="20px" />
-      {clickedTabItem === 'detail' && (
+      <If condition={clickedTabItem === 'detail'}>
         <DetailInfo
           genre={bookDetailData?.genre || ''}
           title={bookDetailData?.title || ''}
           price={bookDetailData?.price.toLocaleString() || ''}
           description={bookDetailData?.description || ''}
         />
-      )}
-      {clickedTabItem === 'review' && <Review bookId={bookDetailData?.id || ''} />}
+      </If>
+      <If condition={clickedTabItem === 'review'}>
+        <Review bookId={bookDetailData?.id || ''} />
+      </If>
       <Spacing height="108px" />
       <footer
         className={sprinkles({

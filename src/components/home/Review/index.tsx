@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { Chip } from '@/components/base/Chip';
 import { Flex } from '@/components/base/Flex';
+import { If } from '@/components/base/If';
 import { Spacing } from '@/components/base/Spacing';
 import { Table } from '@/components/base/Table';
 import { Txt } from '@/components/base/Txt';
@@ -72,14 +73,15 @@ export const Review = ({ bookId }: ReviewProps) => {
                 </Flex>
               </Table.Cell>
             </Table.Row>
-            {reviewData &&
-              reviewData.reviews.map((review) => (
+            <If condition={!!reviewData}>
+              {reviewData!.reviews.map((review) => (
                 <Table.Row key={review.id}>
                   <Table.Cell theme="solid">
                     <ReviewCard {...review} />
                   </Table.Cell>
                 </Table.Row>
               ))}
+            </If>
           </>
         }
       />
