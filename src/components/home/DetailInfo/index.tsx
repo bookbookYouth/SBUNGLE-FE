@@ -30,7 +30,7 @@ export const DetailInfo = ({ title, genre, price, description }: DetailInfoProps
         body={
           <>
             {cellContentList.map((item) => (
-              <Table.Row>
+              <Table.Row key={item.label}>
                 <Table.Cell width="35%" style={{ paddingLeft: '20px' }}>
                   <Txt typo="subTitle_bold">{item.label}</Txt>
                 </Table.Cell>

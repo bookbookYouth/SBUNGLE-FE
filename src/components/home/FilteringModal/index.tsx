@@ -128,7 +128,7 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
       <Flex width="100%" style={{ flex: 1, overflowY: 'scroll' }}>
         <Flex direction="column" width="100%" gap="32px" style={{ padding: '0 20px' }}>
           {filteringContentList.map(({ label, isMulti, list, selectedItem, handleSelectedItem }) => (
-            <Flex direction="column" width="100%" gap="12px">
+            <Flex key={label} direction="column" width="100%" gap="12px">
               <Txt typo="point_lg">{label}</Txt>
               {isMulti ? (
                 <MultiSelector

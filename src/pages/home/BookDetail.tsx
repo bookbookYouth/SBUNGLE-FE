@@ -26,18 +26,26 @@ function BookDetailPage() {
     // api 연동
   };
 
+  const tabList = [
+    { label: '상세 정보', value: 'detail' as const },
+    { label: '리뷰', value: 'review' as const },
+  ];
+
   return (
     <>
       <Header isBack isCart />
       <ImgCard genre={bookDetailData?.genre || ''} title={bookDetailData?.title || ''} />
       <Spacing height="20px" />
       <Tab>
-        <Tab.Item onClick={() => setClickedTabItem('detail')} active={clickedTabItem === 'detail'}>
-          상세 정보
-        </Tab.Item>
-        <Tab.Item onClick={() => setClickedTabItem('review')} active={clickedTabItem === 'review'}>
-          리뷰
-        </Tab.Item>
+        {tabList.map((item) => (
+          <Tab.Item
+            key={item.value}
+            onClick={() => setClickedTabItem(item.value)}
+            active={clickedTabItem === item.value}
+          >
+            {item.label}
+          </Tab.Item>
+        ))}
       </Tab>
       <Spacing height="20px" />
       {clickedTabItem === 'detail' && (

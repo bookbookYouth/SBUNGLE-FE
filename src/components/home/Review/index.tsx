@@ -51,6 +51,7 @@ export const Review = ({ bookId }: ReviewProps) => {
                   <Flex direction="row" justifyContent="center" alignItems="center" gap="7px">
                     {chipList.map((chip) => (
                       <Chip
+                        key={chip.value}
                         theme={chip.value === alignReviewList ? 'orange' : 'gray'}
                         onClick={() => setAlignReviewList(chip.value as 'liked' | 'latest')}
                       >

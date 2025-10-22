@@ -110,7 +110,7 @@ export const ReviewCard = ({ id, score, reviewer, content, like, unlike, isSpoil
         style={{ paddingTop: '8px' }}
       >
         {buttonList.map((button) => (
-          <Button width="fit-content" height="40px" key={button.label} onClick={button.handler}>
+          <Button key={button.label} width="fit-content" height="40px" onClick={button.handler}>
             <Flex
               width="48px"
               height="24px"
