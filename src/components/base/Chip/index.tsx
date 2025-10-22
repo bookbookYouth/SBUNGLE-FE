@@ -21,6 +21,7 @@ export const Chip = ({ children, theme = 'gray', onClick, style }: ChipProps) =>
           color: theme === 'gray' ? 'gray400' : 'white',
           backgroundColor: theme === 'gray' ? 'transparent' : 'primary',
           boxSizing: 'border-box',
+          cursor: 'pointer',
         }),
       )}
       style={{
