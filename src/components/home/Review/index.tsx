@@ -10,7 +10,7 @@ import { ReviewRegisterCard } from '@/components/home/Review/ReviewRegisterCard'
 import { StarDisplay } from '@/components/home/Review/StarDisplay';
 import { reviewList } from '@/mock/bookData';
 
-import { reviewStyle } from '@/styles/page/home.css';
+import { paletteTheme } from '@/styles/theme.css';
 
 interface ReviewProps {
   bookId: string;
@@ -36,10 +36,20 @@ export const Review = ({ bookId }: ReviewProps) => {
             <Txt typo="subTitle_bold">독자 리뷰</Txt>
           </Table.HCell>
         }
+        scrollableBody={true}
         body={
           <>
             <Table.Row>
-              <Table.Cell theme="solid">
+              <Table.Cell
+                theme="solid"
+                style={{
+                  position: 'sticky',
+                  top: 0,
+                  backgroundColor: paletteTheme.palette.background,
+                  borderBottom: `1px solid ${paletteTheme.palette.black}`,
+                  zIndex: 10,
+                }}
+              >
                 <Flex
                   height="44px"
                   direction="row"
@@ -62,16 +72,14 @@ export const Review = ({ bookId }: ReviewProps) => {
                 </Flex>
               </Table.Cell>
             </Table.Row>
-            <div className={reviewStyle}>
-              {reviewData &&
-                reviewData.reviews.map((review) => (
-                  <Table.Row key={review.id}>
-                    <Table.Cell theme="solid">
-                      <ReviewCard {...review} />
-                    </Table.Cell>
-                  </Table.Row>
-                ))}
-            </div>
+            {reviewData &&
+              reviewData.reviews.map((review) => (
+                <Table.Row key={review.id}>
+                  <Table.Cell theme="solid">
+                    <ReviewCard {...review} />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
           </>
         }
       />

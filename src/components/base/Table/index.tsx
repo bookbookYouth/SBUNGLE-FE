@@ -5,6 +5,7 @@ import {
   tableCellNoBorderStyle,
   tableHCellBorderStyle,
   tableHCellNoBorderStyle,
+  tableScrollableBodyStyle,
   tableStyle,
 } from '@/styles/base/table.css';
 import { paletteTheme } from '@/styles/theme.css';
@@ -12,6 +13,7 @@ import { paletteTheme } from '@/styles/theme.css';
 interface TableProps {
   head?: React.ReactElement<typeof TableHCell> | React.ReactElement<typeof TableHCell>[];
   body?: React.ReactElement<typeof TableRow> | React.ReactElement<typeof TableRow>[];
+  scrollableBody?: boolean;
 }
 
 interface TableHCellProps {
@@ -25,6 +27,7 @@ interface TableHCellProps {
 
 interface TableRowProps {
   children: React.ReactElement<typeof TableCell> | React.ReactElement<typeof TableCell>[];
+  style?: React.CSSProperties;
 }
 
 interface TableCellProps {
@@ -82,7 +85,7 @@ const TableCell = ({ theme = 'dashed', children, width, align = 'left', style }:
   );
 };
 
-export const Table = ({ head, body }: TableProps) => {
+export const Table = ({ head, body, scrollableBody = false }: TableProps) => {
   return (
     <table className={tableStyle}>
       {head && (
@@ -90,12 +93,16 @@ export const Table = ({ head, body }: TableProps) => {
           <tr>{head}</tr>
         </thead>
       )}
-      {body && <tbody>{body}</tbody>}
+      {body && <tbody className={scrollableBody ? tableScrollableBodyStyle : undefined}>{body}</tbody>}
     </table>
   );
 };
 
 Table.Root = Table;
+Table.HCell = TableHCell;
+Table.Row = TableRow;
+Table.Cell = TableCell;
+
 Table.HCell = TableHCell;
 Table.Row = TableRow;
 Table.Cell = TableCell;
