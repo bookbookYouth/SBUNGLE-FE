@@ -20,7 +20,7 @@ export const Badge = ({ children, color = 'primary' }: BadgeProps) => {
         width: 'fit-content',
         border: `1px solid ${paletteTheme.palette[color]}`,
         borderRadius: '100px',
-        padding: '2px 12px',
+        padding: '0 12px',
       }}
     >
       {children}

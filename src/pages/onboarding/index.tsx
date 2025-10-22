@@ -11,7 +11,7 @@ import onboardingImg3 from '@/assets/onboarding3.svg';
 
 function OnboardingPage() {
   return (
-    <Flex direction="column" alignItems="center" width="100%">
+    <Flex direction="column" alignItems="center">
       <Spacing height="106px" />
       <Txt typo="point_lg">
         더 이상 책 앞에서 고민하지 말고, <br />

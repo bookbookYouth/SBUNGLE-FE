@@ -1,6 +1,6 @@
-import { Flex } from '../base/Flex';
-import { Link } from '../base/Link';
-import { Txt } from '../base/Txt';
+import { Flex } from '@/components/base/Flex';
+import { Link } from '@/components/base/Link';
+import { Txt } from '@/components/base/Txt';
 
 interface TitleProps {
   pointTitle: string;

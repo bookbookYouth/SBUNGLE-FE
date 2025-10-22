@@ -1,4 +1,4 @@
-import { sprinkles } from './sprinkles.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const typo = {
   title: sprinkles({
@@ -7,6 +7,13 @@ export const typo = {
     fontSize: 'lg',
     fontWeight: 'bold',
     lineHeight: 'lg',
+  }),
+  title_ml: sprinkles({
+    //Title 18pt_140%
+    fontFamily: 'body',
+    fontSize: 'ml',
+    fontWeight: 'bold',
+    lineHeight: 'sm',
   }),
   subTitle_bold: sprinkles({
     //SubTitle 16pt_140%_bold
@@ -36,18 +43,37 @@ export const typo = {
     fontWeight: 'regular',
     lineHeight: 'lg',
   }),
-  content_xs: sprinkles({
+  content_xs_regular: sprinkles({
     //Content 12pt_140%
     fontFamily: 'body',
     fontSize: 'xs',
     fontWeight: 'regular',
     lineHeight: 'sm',
   }),
+  content_xs_bold: sprinkles({
+    fontFamily: 'body',
+    fontSize: 'xs',
+    fontWeight: 'bold',
+    lineHeight: 'sm',
+  }),
+  content_xxs: sprinkles({
+    fontFamily: 'body',
+    fontSize: 'xxs',
+    fontWeight: 'regular',
+    lineHeight: 'xs',
+  }),
   menu: sprinkles({
     fontFamily: 'body',
     fontSize: 'xxs',
     fontWeight: 'regular',
     lineHeight: 'xs',
+  }),
+  point_title: sprinkles({
+    /* point/Content 36pt_140% */
+    fontFamily: 'point',
+    fontSize: 'xxlg',
+    fontWeight: 'bold',
+    lineHeight: 'sm',
   }),
   point_lg: sprinkles({
     /* point/Subtitle 24pt_160% */
@@ -56,11 +82,25 @@ export const typo = {
     fontWeight: 'bold',
     lineHeight: 'lg',
   }),
-  point_sm: sprinkles({
+  point_ml: sprinkles({
     /* point/Title 18pt_140% */
+    fontFamily: 'point',
+    fontSize: 'ml',
+    fontWeight: 'bold',
+    lineHeight: 'sm',
+  }),
+  point_sm_bold: sprinkles({
+    /* point/Content 14pt_160%/bold */
     fontFamily: 'point',
     fontSize: 'sm',
     fontWeight: 'bold',
+    lineHeight: 'sm',
+  }),
+  point_sm: sprinkles({
+    /* point/Content 14pt_160% */
+    fontFamily: 'point',
+    fontSize: 'sm',
+    fontWeight: 'regular',
     lineHeight: 'sm',
   }),
 };

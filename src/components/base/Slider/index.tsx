@@ -1,4 +1,4 @@
-import { Flex } from '../Flex';
+import { Flex } from '@/components/base/Flex';
 
 interface SliderProps {
   children: React.ReactNode;
@@ -6,7 +6,14 @@ interface SliderProps {
 
 export const Slider = ({ children }: SliderProps) => {
   return (
-    <Flex gap="12px" width="100%" overflowX="scroll" overflowY="hidden">
+    <Flex
+      gap="12px"
+      width="100%"
+      height="fit-content"
+      overflowX="auto"
+      overflowY="hidden"
+      style={{ padding: '0 20px' }}
+    >
       {children}
     </Flex>
   );

@@ -1,32 +1,27 @@
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 
+import { Button } from '@/components/base/Button';
+import { Flex } from '@/components/base/Flex';
+import { MultiSelector } from '@/components/base/MultiSelector';
+import { Spacing } from '@/components/base/Spacing';
+import { Txt } from '@/components/base/Txt';
+import { StepBar } from '@/components/onboarding/StepBar';
+import { Title } from '@/components/onboarding/Title';
 import { preferenceList, STEPS } from '@/constants/onboarding';
-import type { PreferenceListType } from '@/type/onboarding';
-
-import { Button } from '../base/Button';
-import { Flex } from '../base/Flex';
-import { MultiSelector } from '../base/MultiSelector';
-import { Spacing } from '../base/Spacing';
-import { Txt } from '../base/Txt';
-import { StepBar } from './StepBar';
-import { Title } from './Title';
+import type { PreferenceListType } from '@/types/onboarding';
+import { handleMultiSelector } from '@/utils/home/handleMultiSelector';
 
 type FormValues = {
   preference: PreferenceListType[];
 };
 
 export const Preference = () => {
-  const { watch, setValue } = useFormContext<FormValues>();
+  const { control, setValue } = useFormContext<FormValues>();
 
-  const selectedPreferenceList = watch('preference') ?? [];
+  const selectedPreferenceList = useWatch({ control, name: 'preference', defaultValue: [] });
 
   const handleSelectedPreferenceList = (key: string) => {
-    if (selectedPreferenceList.includes(key))
-      setValue(
-        'preference',
-        selectedPreferenceList.filter((item) => item !== key),
-      );
-    else setValue('preference', [...selectedPreferenceList, key]);
+    setValue('preference', handleMultiSelector<PreferenceListType>(selectedPreferenceList, key));
   };
 
   return (

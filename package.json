@@ -24,10 +24,12 @@
   "dependencies": {
     "@vanilla-extract/sprinkles": "^1.6.5",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.64.0",
-    "react-router-dom": "^7.9.3"
+    "react-router-dom": "^7.9.3",
+    "react-simple-star-rating": "^5.1.7"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "4.1.1",

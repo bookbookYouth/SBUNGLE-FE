@@ -4,6 +4,7 @@ import { Flex } from '@/components/base/Flex';
 import GenericForm from '@/components/base/GenericForm';
 import { Header } from '@/components/common/Header';
 import { SurveySetup, type SurveySetupProps } from '@/components/onboarding';
+import { ROUTES } from '@/config/appConfig';
 import { STEPS } from '@/constants/onboarding';
 import { useFunnel } from '@/hooks/useFunnel';
 
@@ -25,12 +26,12 @@ function SurveyPage() {
   const onSubmit = (data: SurveySetupProps) => {
     // api 연동
     console.log(data);
-    navigate('/');
+    navigate(ROUTES.home);
   };
 
   return (
-    <Flex direction="column" width="100%">
-      <Header isLeft={STEPS.indexOf(currentStep) === 0 ? false : true} handleBack={hanldePrevClick} />
+    <Flex direction="column">
+      <Header isBack={STEPS.indexOf(currentStep) === 0 ? false : true} handleBack={hanldePrevClick} />
       <div className={container}>
         <GenericForm<SurveySetupProps> formOptions={{ mode: 'onChange' }} onSubmit={onSubmit}>
           <SurveySetup handleNextClick={handleNextClick} Funnel={Funnel} Step={Step} />

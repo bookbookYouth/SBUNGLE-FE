@@ -1,4 +1,6 @@
+import { forwardRef } from 'react';
 import clsx from 'clsx';
+import type React from 'react';
 
 import { flexStyle } from '@/styles/base/flex.css';
 import { sprinkles } from '@/styles/sprinkles.css';
@@ -15,37 +17,46 @@ interface FlexProps {
   gap?: string;
   overflowX?: 'hidden' | 'scroll' | 'auto';
   overflowY?: 'hidden' | 'scroll' | 'auto';
+  style?: React.CSSProperties;
 }
 
-export const Flex = ({
-  children,
-  direction = 'row',
-  justifyContent = 'flex-start',
-  alignItems = 'flex-start',
-  wrap = 'nowrap',
-  backgroundColor,
-  width,
-  height,
-  gap,
-  overflowX = 'auto',
-  overflowY = 'auto',
-}: FlexProps) => {
-  return (
-    <div
-      className={clsx(
-        flexStyle,
-        sprinkles({
-          display: 'flex',
-          flexDirection: direction,
-          justifyContent: justifyContent,
-          alignItems: alignItems,
-          flexWrap: wrap,
-          backgroundColor: backgroundColor,
-        }),
-      )}
-      style={{ width, height, gap, overflowX, overflowY }}
-    >
-      {children}
-    </div>
-  );
-};
+export const Flex = forwardRef<HTMLDivElement, FlexProps>(
+  (
+    {
+      children,
+      direction = 'row',
+      justifyContent = 'flex-start',
+      alignItems = 'flex-start',
+      wrap = 'nowrap',
+      backgroundColor,
+      width,
+      height,
+      gap,
+      overflowX = 'auto',
+      overflowY = 'auto',
+      style,
+    },
+    ref,
+  ) => {
+    return (
+      <div
+        ref={ref}
+        className={clsx(
+          flexStyle,
+          sprinkles({
+            display: 'flex',
+            flexDirection: direction,
+            justifyContent: justifyContent,
+            alignItems: alignItems,
+            flexWrap: wrap,
+            backgroundColor: backgroundColor,
+            boxSizing: 'border-box',
+          }),
+        )}
+        style={{ width, height, gap, overflowX, overflowY, minWidth: 0, ...style }}
+      >
+        {children}
+      </div>
+    );
+  },
+);

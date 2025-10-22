@@ -1,4 +1,5 @@
-import type { ListType } from '@/type/onboarding';
+import { literatureList, nonLiteratureList } from '@/constants/home';
+import type { ListType } from '@/types/onboarding';
 
 export const STEPS = ['기본 정보', '장르', '취향'];
 
@@ -6,6 +7,7 @@ export const genderList: ListType[] = [
   { name: '여성', key: 'woman' },
   { name: '남성', key: 'man' },
 ];
+
 export const ageList: ListType[] = [
   { name: '만 19세 이하', key: '19' },
   { name: '만 20~24세 이하', key: '20' },
@@ -15,14 +17,7 @@ export const ageList: ListType[] = [
   { name: '만 40세 이상', key: '40' },
 ];
 
-export const genreList: ListType[] = [
-  { name: '소설', key: 'novel' },
-  { name: '시/에세이', key: 'essay' },
-  { name: '자기계발', key: 'self' },
-  { name: '인문/사회', key: 'society' },
-  { name: '예술', key: 'art' },
-  { name: '경제/경영', key: 'economy' },
-];
+export const genreList: ListType[] = [...literatureList, ...nonLiteratureList];
 
 export const preferenceList: ListType[] = [
   { name: '잔잔하고 따뜻한', key: 'warm' },

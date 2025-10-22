@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { paletteTheme } from '../theme.css';
+import { paletteTheme } from '@/styles/theme.css';
 
 export const inputStyle = style({
   border: `1px solid ${paletteTheme.palette.black}`,

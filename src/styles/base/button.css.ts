@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { paletteTheme } from '../theme.css';
+import { paletteTheme } from '@/styles/theme.css';
 
 export const iconButtonStyle = style({
   transition: 'all .2s',

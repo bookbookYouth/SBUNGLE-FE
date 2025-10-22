@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
 
-import { Footer } from '../Footer';
+import { Footer } from '@/components/common/Footer';
 
 export const MainLayout = () => {
   return (
     <>
-      <main>
+      <main style={{ paddingBottom: '88px' }}>
         <Outlet />
       </main>
       <Footer />

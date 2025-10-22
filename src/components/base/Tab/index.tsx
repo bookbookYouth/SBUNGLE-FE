@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 
-import { Flex } from '../Flex';
+import { Flex } from '@/components/base/Flex';
 
-import { tabStyle } from '@/styles/base/tab.css';
+import { tabItemStyle, tabStyle } from '@/styles/base/tab.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { typo } from '@/styles/typo.css';
-
 interface TabProps {
   children: React.ReactElement<typeof TabItem> | React.ReactElement<typeof TabItem>[];
 }
@@ -21,7 +20,7 @@ const TabItem = ({ children, onClick, active = false }: TabItemProps) => {
     <button
       className={clsx(
         typo['subTitle_regular'],
-        tabStyle,
+        tabItemStyle,
         sprinkles({ color: 'gray200', cursor: 'pointer', backgroundColor: 'transparent' }),
       )}
       onClick={onClick}
@@ -40,8 +39,10 @@ const TabItem = ({ children, onClick, active = false }: TabItemProps) => {
 
 export const Tab = ({ children }: TabProps) => {
   return (
-    <div style={{ width: '100%' }}>
-      <Flex>{children}</Flex>
+    <div className={tabStyle}>
+      <div style={{ width: 'calc(100% - 40px)' }}>
+        <Flex>{children}</Flex>
+      </div>
     </div>
   );
 };

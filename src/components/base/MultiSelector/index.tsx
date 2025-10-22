@@ -1,8 +1,7 @@
-import type { ListType } from '@/type/onboarding';
-
-import { Button } from '../Button';
-import { Grid } from '../Grid';
-import { Txt } from '../Txt';
+import { Button } from '@/components/base/Button';
+import { Grid } from '@/components/base/Grid';
+import { Txt } from '@/components/base/Txt';
+import type { ListType } from '@/types/onboarding';
 
 interface MultiSelectorProps {
   list: ListType[];
@@ -11,7 +10,7 @@ interface MultiSelectorProps {
 }
 export const MultiSelector = ({ list, selectedList, handleSelectedList }: MultiSelectorProps) => {
   return (
-    <Grid colCount={2} gap="12px">
+    <Grid>
       {list.map((item) => (
         <Grid.Col key={item.key}>
           <Button
@@ -22,7 +21,7 @@ export const MultiSelector = ({ list, selectedList, handleSelectedList }: MultiS
             active={selectedList.includes(item.key)}
             onClick={() => handleSelectedList(item.key)}
           >
-            <Txt typo="point_sm">{item.name}</Txt>
+            <Txt typo="point_ml">{item.name}</Txt>
           </Button>
         </Grid.Col>
       ))}
