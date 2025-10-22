@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react';
 import { format } from 'date-fns/format';
 
 import type { Review } from '@/mock/bookData';
@@ -12,9 +13,19 @@ import thumbDownIcon from '@/assets/thumbDown.svg';
 import thumbUpIcon from '@/assets/thumbUp.svg';
 
 export const ReviewCard = ({ id, score, reviewer, content, like, unlike, isSpoiled, registeredAt }: Review) => {
+  const [isBlurred, setIsBlurred] = useState<boolean>(isSpoiled);
+
+  // spolier blur
+  const handleSpoilerBlur = useCallback(() => {
+    setIsBlurred(false);
+  }, [setIsBlurred]);
+
+  // like
   const handleLike = (id: string) => {
     // api 연동
   };
+
+  // unlike
   const handleUnlike = (id: string) => {
     // api 연동
   };
@@ -49,9 +60,40 @@ export const ReviewCard = ({ id, score, reviewer, content, like, unlike, isSpoil
           {format(new Date(registeredAt), 'yyyy.MM.dd')}
         </Txt>
       </Flex>
-      <Txt typo="subTitle_regular" style={{ width: '100%' }}>
-        {content}
-      </Txt>
+      <div
+        role="button"
+        style={{ position: 'relative', width: '100%', cursor: isBlurred ? 'pointer' : 'default' }}
+        onClick={handleSpoilerBlur}
+      >
+        <Flex
+          height="fit-content"
+          width="100%"
+          alignItems="center"
+          justifyContent="center"
+          style={{ filter: isBlurred ? 'blur(3.5px)' : 'none' }}
+        >
+          <Txt typo="subTitle_regular" style={{ width: '100%' }}>
+            {content}
+          </Txt>
+        </Flex>
+        {isBlurred && (
+          <Txt
+            typo="subTitle_bold"
+            color="primary"
+            style={{
+              width: '100%',
+              position: 'absolute',
+              textAlign: 'center',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 1,
+            }}
+          >
+            탭하여 스포일러 리뷰 읽기
+          </Txt>
+        )}
+      </div>
       <Flex
         direction="row"
         width="100%"
