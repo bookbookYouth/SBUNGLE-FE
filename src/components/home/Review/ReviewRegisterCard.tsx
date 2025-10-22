@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { Flex } from '../base/Flex';
-import { Input } from '../base/Input';
-import { Txt } from '../base/Txt';
-import { StarRate } from './StarRate';
+import { Flex } from '@/components/base/Flex';
+import { Input } from '@/components/base/Input';
+import { Txt } from '@/components/base/Txt';
+import { StarRate } from '@/components/home/Review/StarRate';
 
 import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';

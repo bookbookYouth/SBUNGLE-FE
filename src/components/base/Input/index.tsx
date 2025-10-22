@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type React from 'react';
 
-import { Flex } from '../Flex';
-import { Txt } from '../Txt';
+import { Flex } from '@/components/base/Flex';
+import { Txt } from '@/components/base/Txt';
 
 import { inputStyle } from '@/styles/base/input.css';
 import { sprinkles } from '@/styles/sprinkles.css';

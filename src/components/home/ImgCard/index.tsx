@@ -2,8 +2,8 @@ import { getGenreColor } from '@/utils/home/getGenreColor';
 import { getGenreImg } from '@/utils/home/getGenreImg';
 import { getGenreName } from '@/utils/home/getGenreName';
 
-import { Flex } from '../base/Flex';
-import { Txt } from '../base/Txt';
+import { Flex } from '../../base/Flex';
+import { Txt } from '../../base/Txt';
 
 import { paletteTheme } from '@/styles/theme.css';
 

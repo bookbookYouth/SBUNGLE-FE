@@ -1,6 +1,6 @@
 import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles';
 
-import { fontTheme, paletteTheme } from './theme.css';
+import { fontTheme, paletteTheme } from '@/styles/theme.css';
 
 const layoutProperties = defineProperties({
   properties: {

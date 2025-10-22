@@ -1,4 +1,4 @@
-import { Flex } from '../Flex';
+import { Flex } from '@/components/base/Flex';
 
 interface SliderProps {
   children: React.ReactNode;

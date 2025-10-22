@@ -1,6 +1,13 @@
 import { useCallback, useMemo } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
 
+import { Button } from '@/components/base/Button';
+import { Flex } from '@/components/base/Flex';
+import { MultiSelector } from '@/components/base/MultiSelector';
+import { Selector } from '@/components/base/Selector';
+import { Spacing } from '@/components/base/Spacing';
+import { Txt } from '@/components/base/Txt';
+import { Header } from '@/components/common/Header';
 import { alignmentList, literatureList, nonLiteratureList } from '@/constants/home';
 import { preferenceList } from '@/constants/onboarding';
 import { type FormValues } from '@/pages/home/BookList';
@@ -8,14 +15,6 @@ import type { AlignmentListType, filteringContentType, LiteratureListType, NonLi
 import type { PreferenceListType } from '@/types/onboarding';
 import { handleMultiSelector } from '@/utils/home/handleMultiSelector';
 import { handleSelector } from '@/utils/home/handleSelector';
-
-import { Button } from '../base/Button';
-import { Flex } from '../base/Flex';
-import { MultiSelector } from '../base/MultiSelector';
-import { Selector } from '../base/Selector';
-import { Spacing } from '../base/Spacing';
-import { Txt } from '../base/Txt';
-import { Header } from '../common/Header';
 
 import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';

@@ -1,4 +1,4 @@
-import { Txt } from '../base/Txt';
+import { Txt } from '@/components/base/Txt';
 
 interface QuestionProps {
   pointTxt: string;

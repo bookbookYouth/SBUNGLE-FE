@@ -1,6 +1,5 @@
+import { literatureList, nonLiteratureList } from '@/constants/home';
 import type { ListType } from '@/types/onboarding';
-
-import { literatureList, nonLiteratureList } from './home';
 
 export const STEPS = ['기본 정보', '장르', '취향'];
 

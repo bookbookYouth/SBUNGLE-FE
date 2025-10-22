@@ -1,6 +1,5 @@
 import type { alignmentList, literatureList, nonLiteratureList } from '@/constants/home';
-
-import type { ListType, PreferenceListType } from './onboarding';
+import type { ListType, PreferenceListType } from '@/types/onboarding';
 
 export type AlignmentListType = (typeof alignmentList)[number]['key'];
 export type LiteratureListType = (typeof literatureList)[number]['key'];

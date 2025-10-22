@@ -1,6 +1,6 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 
-import { paletteTheme } from '../theme.css';
+import { paletteTheme } from '@/styles/theme.css';
 
 export const tableStyle = style({
   borderCollapse: 'collapse',

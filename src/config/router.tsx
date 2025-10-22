@@ -3,8 +3,7 @@ import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from '
 
 import { Layout } from '@/components/common/Layout';
 import { MainLayout } from '@/components/common/Layout/MainLayout';
-
-import { ROUTES } from './appConfig';
+import { ROUTES } from '@/config/appConfig';
 
 const OnboardingPage = lazy(() => import('@/pages/onboarding/index'));
 const SurveyPage = lazy(() => import('@/pages/onboarding/Survey'));

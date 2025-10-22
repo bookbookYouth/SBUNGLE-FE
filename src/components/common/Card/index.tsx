@@ -1,10 +1,9 @@
 import Like from '@/assets/like.svg?react';
+import { Flex } from '@/components/base/Flex';
+import { Hr } from '@/components/base/Hr';
+import { Txt } from '@/components/base/Txt';
 import { getGenreColor } from '@/utils/home/getGenreColor';
 import { getGenreName } from '@/utils/home/getGenreName';
-
-import { Flex } from '../../base/Flex';
-import { Hr } from '../../base/Hr';
-import { Txt } from '../../base/Txt';
 
 import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';

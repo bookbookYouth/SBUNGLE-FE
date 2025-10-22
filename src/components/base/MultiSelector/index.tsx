@@ -1,8 +1,7 @@
+import { Button } from '@/components/base/Button';
+import { Grid } from '@/components/base/Grid';
+import { Txt } from '@/components/base/Txt';
 import type { ListType } from '@/types/onboarding';
-
-import { Button } from '../Button';
-import { Grid } from '../Grid';
-import { Txt } from '../Txt';
 
 interface MultiSelectorProps {
   list: ListType[];

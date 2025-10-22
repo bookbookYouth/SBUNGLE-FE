@@ -1,9 +1,8 @@
+import { BasicInfo } from '@/components/onboarding/BasicInfo';
+import { Genre } from '@/components/onboarding/Genre';
+import { Preference } from '@/components/onboarding/Preference';
 import { STEPS } from '@/constants/onboarding';
 import type { FunnelProps, StepProps } from '@/hooks/useFunnel';
-
-import { BasicInfo } from './BasicInfo';
-import { Genre } from './Genre';
-import { Preference } from './Preference';
 
 export interface SurveySetupProps {
   handleNextClick: (nextStep: string) => void;

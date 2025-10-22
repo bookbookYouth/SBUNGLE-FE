@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 
-import { Flex } from '../Flex';
+import { Flex } from '@/components/base/Flex';
 
 import { tabItemStyle, tabStyle } from '@/styles/base/tab.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { typo } from '@/styles/typo.css';
-
 interface TabProps {
   children: React.ReactElement<typeof TabItem> | React.ReactElement<typeof TabItem>[];
 }

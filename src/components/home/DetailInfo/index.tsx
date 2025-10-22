@@ -1,9 +1,8 @@
+import { Flex } from '@/components/base/Flex';
+import { Spacing } from '@/components/base/Spacing';
+import { Table } from '@/components/base/Table';
+import { Txt } from '@/components/base/Txt';
 import { getGenreName } from '@/utils/home/getGenreName';
-
-import { Flex } from '../base/Flex';
-import { Spacing } from '../base/Spacing';
-import { Table } from '../base/Table';
-import { Txt } from '../base/Txt';
 
 interface DetailInfoProps {
   title: string;

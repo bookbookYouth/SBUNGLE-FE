@@ -1,4 +1,4 @@
-import { sprinkles } from './sprinkles.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const typo = {
   title: sprinkles({

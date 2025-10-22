@@ -1,13 +1,12 @@
 import { useCallback, useState } from 'react';
 import { format } from 'date-fns/format';
 
+import { Badge } from '@/components/base/Badge';
+import { Button } from '@/components/base/Button';
+import { Flex } from '@/components/base/Flex';
+import { Txt } from '@/components/base/Txt';
+import { StarDisplay } from '@/components/home/Review/StarDisplay';
 import type { Review } from '@/mock/bookData';
-
-import { Badge } from '../base/Badge';
-import { Button } from '../base/Button';
-import { Flex } from '../base/Flex';
-import { Txt } from '../base/Txt';
-import { StarDisplay } from './StarDisplay';
 
 import thumbDownIcon from '@/assets/thumbDown.svg';
 import thumbUpIcon from '@/assets/thumbUp.svg';

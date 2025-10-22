@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from '../Flex';
+import { Flex } from '@/components/base/Flex';
 
 import { sprinkles } from '@/styles/sprinkles.css';
 
