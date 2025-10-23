@@ -89,7 +89,7 @@ function BookListPage() {
           backgroundColor: paletteTheme.palette.background,
         }}
       >
-        <Flex height="40px" alignItems="center" justifyContent="center">
+        <Flex height="48px" alignItems="center" justifyContent="center">
           <Txt typo="subTitle_regular">
             <Txt typo="subTitle_bold">{user}</Txt>님을 위한 도서
           </Txt>
