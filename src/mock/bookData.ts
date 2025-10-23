@@ -878,3 +878,21 @@ export const reviewList: { bookId: string; averageScore: number; reviews: Review
     ],
   },
 ];
+
+// 맞춤 선물 랭킹
+export const giftRankingData: Book[] = [
+  { id: 'g-1', genre: 'essay', title: '오늘도 내 마음을 안아줘', price: 15800, liked: true },
+  { id: 'g-2', genre: 'novel', title: '달러구트 꿈 백화점', price: 14800, liked: false },
+  { id: 'g-3', genre: 'self', title: '아주 작은 습관의 힘', price: 16500, liked: true },
+  { id: 'g-4', genre: 'art', title: '하루 한 장, 마음을 채우는 미술관', price: 17200, liked: false },
+];
+
+// 선물하기 좋은 책
+export const goodGiftBookData: Book[] = [
+  { id: 'gg-1', genre: 'novel', title: '모모', price: 13500, liked: true },
+  { id: 'gg-2', genre: 'essay', title: '당신이 옳다', price: 15000, liked: false },
+  { id: 'gg-3', genre: 'self', title: '미라클 모닝', price: 16000, liked: true },
+  { id: 'gg-4', genre: 'society', title: '정의란 무엇인가', price: 17800, liked: false },
+  { id: 'gg-5', genre: 'economy', title: '부의 인문학', price: 18500, liked: true },
+  { id: 'gg-6', genre: 'art', title: '클림트, 사랑을 그리다', price: 17000, liked: false },
+];
