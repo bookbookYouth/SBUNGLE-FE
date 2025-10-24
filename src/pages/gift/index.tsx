@@ -103,7 +103,7 @@ function GiftPage() {
                     </Txt>
                   </Flex>
                 }
-                onClick={() => navigate(ROUTES.bookDetail.link(book.id))}
+                onClick={() => navigate(ROUTES.bookDetail.link(book.id, 'gift' as const))}
               />
             </Grid.Col>
           ))}

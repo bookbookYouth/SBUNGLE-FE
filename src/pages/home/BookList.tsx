@@ -120,7 +120,7 @@ function BookListPage() {
                     </Txt>
                   </Flex>
                 }
-                onClick={() => navigate(ROUTES.bookDetail.link(book.id))}
+                onClick={() => navigate(ROUTES.bookDetail.link(book.id, 'home' as const))}
               />
             </Grid.Col>
           ))}

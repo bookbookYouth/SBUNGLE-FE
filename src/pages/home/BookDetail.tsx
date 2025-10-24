@@ -18,8 +18,8 @@ import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';
 
 function BookDetailPage() {
-  const params = useParams();
-  const bookDetailData: BookDetail | undefined = bookData.find((item) => item.id === params.id);
+  const { id, type } = useParams();
+  const bookDetailData: BookDetail | undefined = bookData.find((item) => item.id === id);
 
   const [clickedTabItem, setClickedTabItem] = useState<'detail' | 'review'>('detail');
 
@@ -94,7 +94,7 @@ function BookDetailPage() {
           <Txt typo="title_ml">장바구니</Txt>
         </Button>
         <Button type="submit" theme="fill" color="orange" width="153px" height="48px">
-          <Txt typo="title_ml">주문하기</Txt>
+          <Txt typo="title_ml">{type === 'home' ? '주문하기' : '선물하기'}</Txt>
         </Button>
       </footer>
     </>
