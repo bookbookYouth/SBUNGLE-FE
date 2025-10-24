@@ -22,6 +22,7 @@ export const ReviewRegisterCard = () => {
   const handleRegister = () => {
     // api 연동
     setInputValue('');
+    setStarRating(0);
   };
 
   return (
