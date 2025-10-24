@@ -13,11 +13,13 @@ import { Header } from '@/components/common/Header';
 import { FilteringModal } from '@/components/gift/FilteringModal';
 import { ROUTES } from '@/config/appConfig';
 import { useModal } from '@/hooks/useModal';
-import { giftRankingData, goodGiftBookData } from '@/mock/bookData';
+import { bookData } from '@/mock/bookData';
 import type { RelationListType } from '@/types/gift';
 import type { ChipContentType } from '@/types/home';
 import type { AgeListType, GenderListType } from '@/types/onboarding';
 import { getGenreImg } from '@/utils/home/getGenreImg';
+
+import { paletteTheme } from '@/styles/theme.css';
 
 export type FormValues = {
   selectedGenderItem: GenderListType;
@@ -62,9 +64,18 @@ function GiftPage() {
   return (
     <>
       <Header title="선물하기" isCart />
-      <Flex direction="column" style={{ padding: '0 20px' }}>
+      <Flex
+        direction="column"
+        style={{
+          position: 'sticky',
+          top: '52px',
+          zIndex: 20,
+          padding: '0 20px 12px',
+          backgroundColor: paletteTheme.palette.background,
+        }}
+      >
         <Flex height="48px" alignItems="center" justifyContent="center">
-          <Txt typo="subTitle_bold">맞춤 선물 랭킹</Txt>
+          <Txt typo="subTitle_bold">선물하기 좋은 책들</Txt>
         </Flex>
         <Flex alignItems="center" justifyContent="center" gap="12px" wrap="wrap">
           {chipContentList.map(({ label, isValue }, idx) => (
@@ -73,39 +84,15 @@ function GiftPage() {
             </Chip>
           ))}
         </Flex>
-        <Spacing height="24px" />
+      </Flex>
+      <Flex direction="column" style={{ padding: '0 20px' }}>
+        <Spacing height="12px" />
         <Grid colGap="2px" rowGap="20px">
-          {giftRankingData.map((book, idx) => (
-            <Grid.Col key={book.id}>
-              <Card
-                rank={idx + 1}
-                like
-                liked={book.liked}
-                genre={book.genre}
-                top={<img src={getGenreImg(book.genre)} alt={book.title} style={{ objectFit: 'cover' }} />}
-                bottom={
-                  <Flex direction="column">
-                    <Txt typo="point_sm_bold">{book.title}</Txt>
-                    <Txt typo="content_sm" color="gray300">
-                      {book.price.toLocaleString()}
-                    </Txt>
-                  </Flex>
-                }
-                onClick={() => navigate(ROUTES.bookDetail.link(book.id))}
-              />
-            </Grid.Col>
-          ))}
-        </Grid>
-        <Spacing height="40px" />
-        <Flex justifyContent="flex-start" alignItems="center" height="48px" width="100%">
-          <Txt typo="subTitle_bold">선물하기 좋은 책들</Txt>
-        </Flex>
-        <Grid colGap="2px" rowGap="20px">
-          {goodGiftBookData.map((book) => (
+          {bookData.map((book) => (
             <Grid.Col key={book.id}>
               <Card
                 like
-                liked={book.liked}
+                liked={book.likedForGift}
                 genre={book.genre}
                 top={<img src={getGenreImg(book.genre)} alt={book.title} style={{ objectFit: 'cover' }} />}
                 bottom={
