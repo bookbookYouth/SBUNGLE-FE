@@ -102,7 +102,3 @@ Table.Root = Table;
 Table.HCell = TableHCell;
 Table.Row = TableRow;
 Table.Cell = TableCell;
-
-Table.HCell = TableHCell;
-Table.Row = TableRow;
-Table.Cell = TableCell;

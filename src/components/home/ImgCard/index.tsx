@@ -29,8 +29,8 @@ export const ImgCard = ({ genre, title }: ImgCardProps) => {
         <If condition={!!genre}>
           <Flex
             height="100%"
-            justify-content="center"
-            align-items="center"
+            justifyContent="center"
+            alignItems="center"
             backgroundColor="transparent"
             style={{
               padding: '7px 12px',
