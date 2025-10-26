@@ -14,10 +14,9 @@ interface FilteringModalProps {
   closeModal: () => void;
   handleReset: () => void;
   filteringContentList: filteringContentType[];
-  isDisabled: boolean;
 }
 
-export const FilteringModal = ({ closeModal, handleReset, filteringContentList, isDisabled }: FilteringModalProps) => {
+export const FilteringModal = ({ closeModal, handleReset, filteringContentList }: FilteringModalProps) => {
   return (
     <Flex
       direction="column"
@@ -63,7 +62,7 @@ export const FilteringModal = ({ closeModal, handleReset, filteringContentList, 
         <Button theme="clear" color="orange" width="87px" height="48px" onClick={handleReset}>
           <Txt typo="title_ml">초기화</Txt>
         </Button>
-        <Button type="submit" theme="fill" color="orange" width="275px" height="48px" disabled={isDisabled}>
+        <Button type="submit" theme="fill" color="orange" width="275px" height="48px">
           <Txt typo="title_ml">결과 보기</Txt>
         </Button>
       </footer>

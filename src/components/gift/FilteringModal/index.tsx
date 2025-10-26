@@ -86,16 +86,11 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
     ],
   );
 
-  const isDisabled = useMemo(() => {
-    return selectedGenderItem === '' && selectedAgeItem === '' && selectedRelationItem === '';
-  }, [selectedGenderItem, selectedAgeItem, selectedRelationItem]);
-
   return (
     <CommonFilteringModal
       closeModal={closeModal}
       handleReset={handleReset}
       filteringContentList={filteringContentList}
-      isDisabled={isDisabled}
     />
   );
 };

@@ -102,21 +102,11 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
     ],
   );
 
-  const isDisabled = useMemo(() => {
-    return (
-      selectedAlignmentItem === '' &&
-      selectedLiteratureList.length === 0 &&
-      selectedNonLiteratureList.length === 0 &&
-      selectedAtmosphereList.length === 0
-    );
-  }, [selectedAlignmentItem, selectedLiteratureList, selectedNonLiteratureList, selectedAtmosphereList]);
-
   return (
     <CommonFilteringModal
       closeModal={closeModal}
       handleReset={handleReset}
       filteringContentList={filteringContentList}
-      isDisabled={isDisabled}
     />
   );
 };
