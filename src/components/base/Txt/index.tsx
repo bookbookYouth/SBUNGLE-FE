@@ -19,7 +19,7 @@ export const Txt = ({ children, typo = 'content_sm', color, underline = false, s
       style={{
         textDecoration: underline ? 'underline' : 'none',
         textUnderlinePosition: 'from-font',
-        wordBreak: 'break-all',
+        wordBreak: 'break-word',
         ...style,
       }}
     >

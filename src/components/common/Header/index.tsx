@@ -48,7 +48,7 @@ export const Header = ({
           width="44px"
           height="44px"
           style={{ color: paletteTheme.palette[iconColor], paddingLeft: '2px' }}
-          onClick={() => (handleBack ? handleBack : history.back())}
+          onClick={handleBack ? handleBack : () => history.back()}
         />
       ) : isLogo ? (
         <img

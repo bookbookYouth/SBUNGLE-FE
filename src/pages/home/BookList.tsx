@@ -89,14 +89,19 @@ function BookListPage() {
           backgroundColor: paletteTheme.palette.background,
         }}
       >
-        <Flex height="40px" alignItems="center" justifyContent="center">
+        <Flex height="48px" alignItems="center" justifyContent="center">
           <Txt typo="subTitle_regular">
             <Txt typo="subTitle_bold">{user}</Txt>님을 위한 도서
           </Txt>
         </Flex>
         <Flex alignItems="center" justifyContent="center" gap="12px" wrap="wrap">
           {chipContentList.map(({ label, isValue }, idx) => (
-            <Chip key={idx} style={{ cursor: 'pointer' }} onClick={openModal} theme={isValue ? 'orange' : 'gray'}>
+            <Chip
+              key={`${idx}-${label}`}
+              style={{ cursor: 'pointer' }}
+              onClick={openModal}
+              theme={isValue ? 'orange' : 'gray'}
+            >
               {label}
             </Chip>
           ))}
@@ -120,7 +125,7 @@ function BookListPage() {
                     </Txt>
                   </Flex>
                 }
-                onClick={() => navigate(ROUTES.bookDetail.link(book.id))}
+                onClick={() => navigate(ROUTES.bookDetail.link(book.id, 'home' as const))}
               />
             </Grid.Col>
           ))}

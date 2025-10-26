@@ -21,7 +21,7 @@ export const FilteringModal = ({ closeModal }: FilteringModalProps) => {
   const selectedAlignmentItem = useWatch({ control, name: 'selectedAlignmentItem' });
   const handleSelectedAlignmentItem = useCallback(
     (key: AlignmentListType) => {
-      setValue('selectedAlignmentItem', handleSelector<AlignmentListType>(selectedAlignmentItem, key, 'recommend'));
+      setValue('selectedAlignmentItem', handleSelector<AlignmentListType>(selectedAlignmentItem, key, ''));
     },
     [selectedAlignmentItem, setValue],
   );
