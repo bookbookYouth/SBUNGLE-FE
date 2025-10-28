@@ -1,0 +1,63 @@
+name: Build and Deploy to Netlify
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: '배포 브랜치 선택'
+        required: true
+        type: choice
+        default: develop
+        options:
+          - develop
+          - main
+
+concurrency:
+  group: netlify-${{ github.event.inputs.branch }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    env:
+      IS_PROD: ${{ github.event.inputs.branch == 'main' }}
+    steps:
+      - name: Checkout selected branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Verify build output
+        run: test -d dist && ls -la dist
+
+      - name: Deploy to Netlify (develop → TEST site, main → PROD site)
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: './dist'
+          production-deploy: ${{ env.IS_PROD == 'true' }}
+          alias: ${{ env.IS_PROD == 'true' && '' || 'develop' }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy from ${{ github.event.inputs.branch }}: ${{ github.sha }}'
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+          github-deployment-environment: ${{ env.IS_PROD == 'true' && 'production' || 'staging' }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
