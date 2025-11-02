@@ -11,6 +11,10 @@ const APP_CONFIG = {
     },
     gift: '/gift',
     bookstore: '/bookstore',
+    bookStoreDetail: {
+      path: '/bookstore/:name',
+      link: (name: string) => `/bookstore/${name}`,
+    },
     wish: '/wish',
     mypage: '/mypage',
     error: '/404',
