@@ -5,7 +5,7 @@ import { Slider } from '@/components/base/Slider';
 import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
 import { BookstoreList } from '@/components/bookstore/BookstoreList';
-import BookstoreStory from '@/components/bookstore/BookstoreStory';
+import { BookstoreStory } from '@/components/bookstore/BookstoreStory';
 import { Header } from '@/components/common/Header';
 import { ROUTES } from '@/config/appConfig';
 import { best5BookStoreData, subRecommendedBookStoreData, userRecommendedBookStoreData } from '@/mock/bookStoreData';
