@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Flex } from '@/components/base/Flex';
 import { Slider } from '@/components/base/Slider';
 import { Spacing } from '@/components/base/Spacing';
@@ -5,12 +7,15 @@ import { Txt } from '@/components/base/Txt';
 import { BookStoreList } from '@/components/bookstore/BookStoreList';
 import BookStory from '@/components/bookstore/BookStory';
 import { Header } from '@/components/common/Header';
+import { ROUTES } from '@/config/appConfig';
 import { best5BookStoreData, subRecommendedBookStoreData, userRecommendedBookStoreData } from '@/mock/bookStoreData';
 import { user } from '@/pages/home';
 
 import { paletteTheme } from '@/styles/theme.css';
 
 function BookstorePage() {
+  const navigate = useNavigate();
+
   const subject = '추리소설';
 
   return (
@@ -25,7 +30,12 @@ function BookstorePage() {
         </Flex>
         <Slider>
           {best5BookStoreData.map((item) => (
-            <BookStory key={item.name} name={item.name} src={item.images[0]} />
+            <BookStory
+              key={item.name}
+              name={item.name}
+              src={item.images[0]}
+              onClick={() => navigate(ROUTES.bookStoreDetail.link(item.name))}
+            />
           ))}
         </Slider>
       </Flex>
