@@ -32,7 +32,15 @@ function BookstoreDetailPage() {
 
   return (
     <>
-      <Header isBack isCart />
+      <Header
+        isBack
+        isCart
+        color="white"
+        title="상세 페이지"
+        backgroundColor="transparent"
+        iconColor="white"
+        style={{ position: 'fixed' }}
+      />
       <Flex width="402px" height="480px">
         <Carousel imgArray={bookstoreDetailData?.images || []} />
       </Flex>
