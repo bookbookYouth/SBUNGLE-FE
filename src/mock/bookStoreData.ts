@@ -1,4 +1,5 @@
-export interface BookStore {
+export interface Bookstore {
+  id: string;
   name: string;
   description: string;
   address: string;
@@ -11,8 +12,9 @@ export interface BookStore {
   liked: boolean;
 }
 
-export const best5BookStoreData: BookStore[] = [
+export const best5BookstoreData: Bookstore[] = [
   {
+    id: '1',
     name: '책방 사춘기',
     description:
       '일상 속 작은 쉼표를 선사하는 감성 독립서점. 큐레이션된 에세이와 시집이 중심이며, 주말엔 북토크도 진행합니다.',
@@ -36,6 +38,7 @@ export const best5BookStoreData: BookStore[] = [
     liked: true,
   },
   {
+    id: '2',
     name: '퇴근길 책한잔',
     description:
       '커피 한 잔과 함께 책을 즐길 수 있는 퇴근 후 쉼터. 작가 사인회와 낭독회 등 소규모 이벤트가 자주 열립니다.',
@@ -59,6 +62,7 @@ export const best5BookStoreData: BookStore[] = [
     liked: false,
   },
   {
+    id: '3',
     name: '고요서사',
     description:
       '‘조용히 생각하는 시간’을 주제로 한 독립출판 전문 서점. 일러스트, 사진집, 문학 작품 중심으로 전시와 판매를 진행합니다.',
@@ -82,6 +86,7 @@ export const best5BookStoreData: BookStore[] = [
     liked: true,
   },
   {
+    id: '4',
     name: '리브로책방',
     description: '삶과 예술, 도시와 사람을 잇는 책방. 디자인서와 예술서 중심으로 독립출판물과 잡지들을 큐레이션합니다.',
     address: '부산 수영구 광안로 15',
@@ -104,6 +109,7 @@ export const best5BookStoreData: BookStore[] = [
     liked: false,
   },
   {
+    id: '5',
     name: '문학살롱 하루',
     description: '작은 문학 동호회와 독서모임이 열리는 공간. 시인과 작가들이 직접 운영하는 문학 중심 서점입니다.',
     address: '대구 중구 중앙대로 410',
@@ -127,8 +133,9 @@ export const best5BookStoreData: BookStore[] = [
   },
 ];
 
-export const userRecommendedBookStoreData: BookStore[] = [
+export const userRecommendedBookstoreData: Bookstore[] = [
   {
+    id: '6',
     name: '온도책방',
     description: '따뜻한 감성의 공간으로, 삶과 관계를 주제로 한 책을 중심으로 큐레이션하는 독립서점입니다.',
     address: '서울 성동구 왕십리로 125',
@@ -151,6 +158,7 @@ export const userRecommendedBookStoreData: BookStore[] = [
     liked: true,
   },
   {
+    id: '7',
     name: '비포선셋 북샵',
     description:
       '‘퇴근 전 잠깐의 여유’를 콘셉트로 한 소규모 북카페형 서점. 감각적인 포스터와 사진집도 함께 전시됩니다.',
@@ -174,6 +182,7 @@ export const userRecommendedBookStoreData: BookStore[] = [
     liked: false,
   },
   {
+    id: '8',
     name: '작은별 책방',
     description:
       '‘나만의 속도로 읽는 별빛 같은 책’을 슬로건으로 한 독립서점. 어린이와 어른을 위한 그림책 섹션이 인기입니다.',
@@ -197,6 +206,7 @@ export const userRecommendedBookStoreData: BookStore[] = [
     liked: true,
   },
   {
+    id: '9',
     name: '페이지나우',
     description:
       '디지털 시대에도 ‘종이의 감촉’을 느낄 수 있는 서점. Z세대를 위한 독립출판 코너가 따로 마련되어 있습니다.',
@@ -221,8 +231,9 @@ export const userRecommendedBookStoreData: BookStore[] = [
   },
 ];
 
-export const subRecommendedBookStoreData: BookStore[] = [
+export const subRecommendedBookstoreData: Bookstore[] = [
   {
+    id: '10',
     name: '달의서재',
     description: '밤하늘을 테마로 한 감성 서점. 달빛 아래에서 책을 읽는 듯한 분위기의 인테리어가 인상적입니다.',
     address: '서울 은평구 응암로 214',
@@ -245,6 +256,7 @@ export const subRecommendedBookStoreData: BookStore[] = [
     liked: true,
   },
   {
+    id: '11',
     name: '낮잠책방',
     description: '조용히 낮잠과 독서를 즐길 수 있는 힐링 공간. 작은 카페와 소파 좌석이 마련되어 있습니다.',
     address: '서울 동작구 상도로 178',
@@ -267,6 +279,7 @@ export const subRecommendedBookStoreData: BookStore[] = [
     liked: false,
   },
   {
+    id: '12',
     name: '시월의서점',
     description: '가을 감성 가득한 독립서점. 커피 향과 함께 문학과 예술서적을 추천해주는 소규모 공간입니다.',
     address: '광주 동구 충장로 87',
@@ -289,6 +302,7 @@ export const subRecommendedBookStoreData: BookStore[] = [
     liked: true,
   },
   {
+    id: '13',
     name: '책숲',
     description: '자연 속에서 책을 읽는 듯한 감각을 주는 친환경 서점. 식물과 책이 함께 있는 조용한 공간입니다.',
     address: '제주 제주시 조천읍 함덕리 1221-3',
@@ -310,4 +324,10 @@ export const subRecommendedBookStoreData: BookStore[] = [
     ],
     liked: false,
   },
+];
+
+export const bookstoreData: Bookstore[] = [
+  ...best5BookstoreData,
+  ...userRecommendedBookstoreData,
+  ...subRecommendedBookstoreData,
 ];
