@@ -8,12 +8,12 @@ import { Card } from '@/components/common/Card';
 import { ROUTES } from '@/config/appConfig';
 import type { BookStore } from '@/mock/bookStoreData';
 
-interface BookStoreListProps {
+interface BookstoreListProps {
   title: React.ReactNode;
   bookStoreData: BookStore[];
 }
 
-export const BookStoreList = ({ title, bookStoreData }: BookStoreListProps) => {
+export const BookstoreList = ({ title, bookStoreData }: BookstoreListProps) => {
   const navigate = useNavigate();
 
   return (
@@ -36,7 +36,7 @@ export const BookStoreList = ({ title, bookStoreData }: BookStoreListProps) => {
                   </Txt>
                 </Flex>
               }
-              onClick={() => navigate(ROUTES.bookStoreDetail.link(bookStore.name))}
+              onClick={() => navigate(ROUTES.bookstoreDetail.link(bookStore.name))}
             />
           </Grid.Col>
         ))}

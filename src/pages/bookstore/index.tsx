@@ -4,8 +4,8 @@ import { Flex } from '@/components/base/Flex';
 import { Slider } from '@/components/base/Slider';
 import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
-import { BookStoreList } from '@/components/bookstore/BookStoreList';
-import BookStory from '@/components/bookstore/BookStory';
+import { BookstoreList } from '@/components/bookstore/BookstoreList';
+import BookstoreStory from '@/components/bookstore/BookstoreStory';
 import { Header } from '@/components/common/Header';
 import { ROUTES } from '@/config/appConfig';
 import { best5BookStoreData, subRecommendedBookStoreData, userRecommendedBookStoreData } from '@/mock/bookStoreData';
@@ -30,18 +30,18 @@ function BookstorePage() {
         </Flex>
         <Slider>
           {best5BookStoreData.map((item) => (
-            <BookStory
+            <BookstoreStory
               key={item.name}
               name={item.name}
               src={item.images[0]}
-              onClick={() => navigate(ROUTES.bookStoreDetail.link(item.name))}
+              onClick={() => navigate(ROUTES.bookstoreDetail.link(item.name))}
             />
           ))}
         </Slider>
       </Flex>
       <Spacing height="40px" />
       <Flex direction="column" gap="40px" style={{ padding: '0 20px' }}>
-        <BookStoreList
+        <BookstoreList
           title={
             <Txt typo="subTitle_regular">
               <Txt typo="subTitle_bold">{user}</Txt>님을 위한 독립서점
@@ -49,7 +49,7 @@ function BookstorePage() {
           }
           bookStoreData={userRecommendedBookStoreData}
         />
-        <BookStoreList
+        <BookstoreList
           title={
             <Txt typo="subTitle_bold">
               여름에 보기 좋은

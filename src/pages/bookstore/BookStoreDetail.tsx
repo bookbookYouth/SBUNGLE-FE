@@ -1,5 +1,5 @@
-function BookStoreDetailPage() {
+function BookstoreDetailPage() {
   return <></>;
 }
 
-export default BookStoreDetailPage;
+export default BookstoreDetailPage;

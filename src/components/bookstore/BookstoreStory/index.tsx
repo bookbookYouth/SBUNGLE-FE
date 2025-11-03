@@ -4,13 +4,13 @@ import { Txt } from '@/components/base/Txt';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { paletteTheme } from '@/styles/theme.css';
 
-interface BookStoryProps {
+interface BookstoreStoryProps {
   name: string;
   src: string;
   onClick?: () => void;
 }
 
-export default function BookStory({ name, src, onClick }: BookStoryProps) {
+export default function BookstoreStory({ name, src, onClick }: BookstoreStoryProps) {
   return (
     <Flex
       width="88px"
