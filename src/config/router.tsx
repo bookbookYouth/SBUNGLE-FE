@@ -13,6 +13,7 @@ const BookListPage = lazy(() => import('@/pages/home/BookList'));
 const BookDetailPage = lazy(() => import('@/pages/home/BookDetail'));
 const GiftPage = lazy(() => import('@/pages/gift/index'));
 const BookstorePage = lazy(() => import('@/pages/bookstore/index'));
+const BookstoreDetailPage = lazy(() => import('@/pages/bookstore/BookstoreDetail'));
 const WishPage = lazy(() => import('@/pages/wish/index'));
 const MyPage = lazy(() => import('@/pages/mypage/index'));
 const NotFoundPage = lazy(() => import('@/pages/error/index'));
@@ -31,6 +32,7 @@ export const routeTree = (
     <Route path={ROUTES.survey} element={<SurveyPage />} />
     <Route path={ROUTES.splash} element={<SplashPage />} />
     <Route path={ROUTES.bookDetail.path} element={<BookDetailPage />} />
+    <Route path={ROUTES.bookstoreDetail.path} element={<BookstoreDetailPage />} />
     <Route path={ROUTES.error} element={<NotFoundPage />} />
     <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
   </Route>

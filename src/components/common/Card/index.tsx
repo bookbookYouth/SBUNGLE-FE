@@ -34,6 +34,8 @@ export const Card = ({ theme = 'large', top, bottom, rank, genre, like = false, 
         height: '268px',
         overflow: 'hidden',
         padding: 0,
+        textDecoration: 'none',
+        color: `${paletteTheme.palette.black}`,
       }}
       onClick={onClick}
     >
