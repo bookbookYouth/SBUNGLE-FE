@@ -64,7 +64,7 @@ function HomePage() {
                   </Txt>
                 </Flex>
               }
-              onClick={() => navigate(ROUTES.bookDetail.link(book.id, 'home' as const))}
+              onClick={() => navigate(ROUTES.bookDetail.link(book.id, 'buy' as const))}
             />
           ))}
         </Slider>
@@ -90,7 +90,7 @@ function HomePage() {
                       </Txt>
                     </Flex>
                   }
-                  onClick={() => navigate(ROUTES.bookDetail.link(book.id, 'home' as const))}
+                  onClick={() => navigate(ROUTES.bookDetail.link(book.id, 'buy' as const))}
                 />
               </Grid.Col>
             ))}

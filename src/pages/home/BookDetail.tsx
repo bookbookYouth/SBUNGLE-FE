@@ -94,7 +94,7 @@ function BookDetailPage() {
           <Txt typo="title_ml">장바구니</Txt>
         </Button>
         <Button type="submit" theme="fill" color="orange" width="153px" height="48px">
-          <Txt typo="title_ml">{type === 'home' ? '주문하기' : '선물하기'}</Txt>
+          <Txt typo="title_ml">{type === 'buy' ? '주문하기' : '선물하기'}</Txt>
         </Button>
       </footer>
     </>

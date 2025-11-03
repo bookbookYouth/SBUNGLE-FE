@@ -7,7 +7,7 @@ const APP_CONFIG = {
     bookList: '/book-list',
     bookDetail: {
       path: '/book-list/:id/:type',
-      link: (id: string, type: 'home' | 'gift') => `/book-list/${id}/${type}`,
+      link: (id: string, type: 'buy' | 'gift') => `/book-list/${id}/${type}`,
     },
     gift: '/gift',
     bookstore: '/bookstore',
