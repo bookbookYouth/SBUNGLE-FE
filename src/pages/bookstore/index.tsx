@@ -1,13 +1,18 @@
 import { Flex } from '@/components/base/Flex';
 import { Slider } from '@/components/base/Slider';
+import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
+import { BookStoreList } from '@/components/bookstore/BookStoreList';
 import BookStory from '@/components/bookstore/BookStory';
 import { Header } from '@/components/common/Header';
-import { bookstoreData } from '@/mock/bookStoreData';
+import { best5BookStoreData, subRecommendedBookStoreData, userRecommendedBookStoreData } from '@/mock/bookStoreData';
+import { user } from '@/pages/home';
 
 import { paletteTheme } from '@/styles/theme.css';
 
 function BookstorePage() {
+  const subject = '추리소설';
+
   return (
     <>
       <Header title="독립서점" isCart />
@@ -19,10 +24,33 @@ function BookstorePage() {
           <Txt typo="subTitle_bold">인기 독립서점 best 5</Txt>
         </Flex>
         <Slider>
-          {bookstoreData.best5.map((item) => (
-            <BookStory key={item.name} name={item.name} src={item.imageUrl} />
+          {best5BookStoreData.map((item) => (
+            <BookStory key={item.name} name={item.name} src={item.images[0]} />
           ))}
         </Slider>
+      </Flex>
+      <Spacing height="40px" />
+      <Flex direction="column" gap="40px" style={{ padding: '0 20px' }}>
+        <BookStoreList
+          title={
+            <Txt typo="subTitle_regular">
+              <Txt typo="subTitle_bold">{user}</Txt>님을 위한 독립서점
+            </Txt>
+          }
+          bookStoreData={userRecommendedBookStoreData}
+        />
+        <BookStoreList
+          title={
+            <Txt typo="subTitle_bold">
+              여름에 보기 좋은
+              <Txt typo="subTitle_bold" color="primary">
+                {` #${subject} `}
+              </Txt>
+              전문 서점
+            </Txt>
+          }
+          bookStoreData={subRecommendedBookStoreData}
+        />
       </Flex>
     </>
   );
