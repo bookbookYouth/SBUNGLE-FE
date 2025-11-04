@@ -24,7 +24,7 @@ export interface Review {
   registeredAt: string;
 }
 
-// 전체 책책
+// 전체 책
 export const bookData: BookDetail[] = [
   {
     id: 'u-1',

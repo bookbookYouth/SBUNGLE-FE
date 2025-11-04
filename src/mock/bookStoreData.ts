@@ -1,3 +1,5 @@
+import { bookData, type BookDetail } from '@/mock/bookData';
+
 export interface Bookstore {
   id: string;
   name: string;
@@ -330,4 +332,117 @@ export const bookstoreData: Bookstore[] = [
   ...best5BookstoreData,
   ...userRecommendedBookstoreData,
   ...subRecommendedBookstoreData,
+];
+
+export interface BookListByStore {
+  bookStoreId: string;
+  bookList: BookDetail[];
+}
+
+export const bookListByStoreData: BookListByStore[] = [
+  {
+    bookStoreId: '1', // 책방 사춘기
+    bookList: [
+      bookData[1], // 여행의 이유
+      bookData[9], // 안녕, 소중한 사람
+      bookData[6], // 기분이 태도가 되지 않게
+    ],
+  },
+  {
+    bookStoreId: '2', // 퇴근길 책한잔
+    bookList: [
+      bookData[0], // 나미야 잡화점의 기적
+      bookData[5], // 아몬드
+      bookData[10], // 트렌드 코리아 2025
+      bookData[4], // 예술가처럼 생각하라
+    ],
+  },
+  {
+    bookStoreId: '3', // 고요서사
+    bookList: [
+      bookData[6], // 기분이 태도가 되지 않게
+      bookData[9], // 안녕, 소중한 사람
+      bookData[3], // 정의란 무엇인가
+    ],
+  },
+  {
+    bookStoreId: '4', // 리브로책방
+    bookList: [
+      bookData[4], // 예술가처럼 생각하라
+      bookData[10], // 명화로 읽는 인문학
+      bookData[2], // 그릿
+    ],
+  },
+  {
+    bookStoreId: '5', // 문학살롱 하루
+    bookList: [
+      bookData[0], // 나미야 잡화점의 기적
+      bookData[5], // 아몬드
+      bookData[7], // 세상에서 제일 쉬운 독서법
+    ],
+  },
+  {
+    bookStoreId: '6', // 온도책방
+    bookList: [
+      bookData[6], // 기분이 태도가 되지 않게
+      bookData[9], // 안녕, 소중한 사람
+      bookData[1], // 여행의 이유
+    ],
+  },
+  {
+    bookStoreId: '7', // 비포선셋 북샵
+    bookList: [
+      bookData[0], // 나미야 잡화점의 기적
+      bookData[4], // 예술가처럼 생각하라
+      bookData[5], // 아몬드
+    ],
+  },
+  {
+    bookStoreId: '8', // 작은별 책방
+    bookList: [
+      bookData[7], // 세상에서 제일 쉬운 독서법
+      bookData[8], // 사피엔스
+      bookData[10], // 명화로 읽는 인문학
+    ],
+  },
+  {
+    bookStoreId: '9', // 페이지나우
+    bookList: [
+      bookData[3], // 정의란 무엇인가
+      bookData[8], // 사피엔스
+      bookData[10], // 트렌드 코리아 2025
+    ],
+  },
+  {
+    bookStoreId: '10', // 달의서재
+    bookList: [
+      bookData[9], // 안녕, 소중한 사람
+      bookData[6], // 기분이 태도가 되지 않게
+      bookData[2], // 그릿
+    ],
+  },
+  {
+    bookStoreId: '11', // 낮잠책방
+    bookList: [
+      bookData[1], // 여행의 이유
+      bookData[9], // 안녕, 소중한 사람
+      bookData[5], // 아몬드
+    ],
+  },
+  {
+    bookStoreId: '12', // 시월의서점
+    bookList: [
+      bookData[0], // 나미야 잡화점의 기적
+      bookData[4], // 예술가처럼 생각하라
+      bookData[6], // 기분이 태도가 되지 않게
+    ],
+  },
+  {
+    bookStoreId: '13', // 책숲
+    bookList: [
+      bookData[2], // 그릿
+      bookData[8], // 사피엔스
+      bookData[10], // 명화로 읽는 인문학
+    ],
+  },
 ];
