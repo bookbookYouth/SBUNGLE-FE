@@ -12,6 +12,7 @@ import { Txt } from '@/components/base/Txt';
 import { BookList } from '@/components/bookstore/BookList';
 import { DetailInfo } from '@/components/bookstore/DetailInfo';
 import { Header } from '@/components/common/Header';
+import { BOOKSTORE_DETAIL_TRANSITION_HEIGHT } from '@/constants/bookstore';
 import { type Bookstore, bookstoreData } from '@/mock/bookstoreData';
 
 import { sprinkles } from '@/styles/sprinkles.css';
@@ -38,7 +39,7 @@ function BookstoreDetailPage() {
     if (!scrollElement) return;
 
     const handleScroll = () => {
-      if (scrollElement.scrollTop > 480) {
+      if (scrollElement.scrollTop > BOOKSTORE_DETAIL_TRANSITION_HEIGHT) {
         setIsHeaderTransparent(true);
       } else {
         setIsHeaderTransparent(false);
@@ -77,22 +78,24 @@ function BookstoreDetailPage() {
         <Txt typo="point_lg">{bookstoreDetailData?.name}</Txt>
         <Txt typo="point_sm">{bookstoreDetailData?.description}</Txt>
       </Flex>
-      <Tab>
-        {tabList.map((item) => (
-          <Tab.Item
-            key={item.value}
-            onClick={() => setClickedTabItem(item.value)}
-            active={clickedTabItem === item.value}
-          >
-            {item.label}
-          </Tab.Item>
-        ))}
-      </Tab>
-      <Spacing height="20px" />
+      <Flex style={{ position: 'sticky', top: 52, zIndex: 20, backgroundColor: paletteTheme.palette.background }}>
+        <Tab>
+          {tabList.map((item) => (
+            <Tab.Item
+              key={item.value}
+              onClick={() => setClickedTabItem(item.value)}
+              active={clickedTabItem === item.value}
+            >
+              {item.label}
+            </Tab.Item>
+          ))}
+        </Tab>
+      </Flex>
       <If condition={clickedTabItem === 'bookList'}>
         <BookList bookStoreId={id || ''} />
       </If>
       <If condition={clickedTabItem === 'detail'}>
+        <Spacing height="20px" />
         <DetailInfo
           address={bookstoreDetailData?.address || ''}
           direction={bookstoreDetailData?.direction || ''}

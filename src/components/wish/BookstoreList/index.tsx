@@ -1,28 +1,23 @@
-import type React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Flex } from '@/components/base/Flex';
 import { Grid } from '@/components/base/Grid';
+import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
 import { Card } from '@/components/common/Card';
 import { ROUTES } from '@/config/appConfig';
-import type { Bookstore } from '@/mock/bookstoreData';
+import { bookstoreData } from '@/mock/bookstoreData';
 
-interface BookstoreListProps {
-  title: React.ReactNode;
-  bookStoreData: Bookstore[];
-}
-
-export const BookstoreList = ({ title, bookStoreData }: BookstoreListProps) => {
+export const BookstoreList = () => {
   const navigate = useNavigate();
 
+  const bookstoreListData = bookstoreData.filter((bookstore) => bookstore.liked);
+
   return (
-    <Flex direction="column">
-      <Flex height="48px" alignItems="center">
-        {title}
-      </Flex>
+    <Flex direction="column" style={{ padding: '0 20px' }}>
+      <Spacing height="25px" />
       <Grid colGap="2px" rowGap="20px">
-        {bookStoreData.map((bookStore) => (
+        {bookstoreListData.map((bookStore) => (
           <Grid.Col key={bookStore.id}>
             <Card
               like

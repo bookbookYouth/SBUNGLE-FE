@@ -77,9 +77,9 @@ export const BookList = ({ bookStoreId }: { bookStoreId: string }) => {
         wrap="wrap"
         style={{
           position: 'sticky',
-          top: '52px',
+          top: 101,
           zIndex: 20,
-          padding: '0 20px 12px',
+          padding: '16px 20px 12px',
           backgroundColor: paletteTheme.palette.background,
         }}
       >

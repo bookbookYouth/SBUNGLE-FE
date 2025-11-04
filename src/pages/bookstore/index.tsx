@@ -33,7 +33,7 @@ function BookstorePage() {
             <BookstoreStory
               key={item.id}
               name={item.name}
-              src={item.images[0]}
+              src={item.images?.[0] || ''}
               onClick={() => navigate(ROUTES.bookstoreDetail.link(item.id))}
             />
           ))}
