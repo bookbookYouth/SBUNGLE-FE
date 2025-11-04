@@ -5,6 +5,7 @@ import { If } from '@/components/base/If';
 import { Tab } from '@/components/base/Tab';
 import { Header } from '@/components/common/Header';
 import { BookList } from '@/components/wish/BookList';
+import { BookstoreList } from '@/components/wish/BookstoreList';
 
 import { paletteTheme } from '@/styles/theme.css';
 
@@ -34,6 +35,9 @@ function WishPage() {
       </Flex>
       <If condition={clickedTabItem === 'bookList'}>
         <BookList />
+      </If>
+      <If condition={clickedTabItem === 'bookstoreList'}>
+        <BookstoreList />
       </If>
     </>
   );
