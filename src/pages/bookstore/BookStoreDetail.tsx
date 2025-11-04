@@ -9,6 +9,7 @@ import { If } from '@/components/base/If';
 import { Spacing } from '@/components/base/Spacing';
 import { Tab } from '@/components/base/Tab';
 import { Txt } from '@/components/base/Txt';
+import { BookList } from '@/components/bookstore/BookList';
 import { DetailInfo } from '@/components/bookstore/DetailInfo';
 import { Header } from '@/components/common/Header';
 import { type Bookstore, bookstoreData } from '@/mock/bookstoreData';
@@ -68,7 +69,7 @@ function BookstoreDetailPage() {
       </Tab>
       <Spacing height="20px" />
       <If condition={clickedTabItem === 'bookList'}>
-        <></>
+        <BookList bookStoreId={id || ''} />
       </If>
       <If condition={clickedTabItem === 'detail'}>
         <DetailInfo
