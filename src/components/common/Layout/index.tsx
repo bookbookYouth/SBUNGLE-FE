@@ -32,7 +32,7 @@ export const Layout = () => {
         }}
       >
         <div style={{ flex: '1 0 auto' }}>
-          <Outlet />
+          <Outlet context={{ scrollElement: scrollRef.current }} />
         </div>
       </Flex>
     </Flex>

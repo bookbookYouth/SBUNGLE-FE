@@ -5,10 +5,10 @@ import { Slider } from '@/components/base/Slider';
 import { Spacing } from '@/components/base/Spacing';
 import { Txt } from '@/components/base/Txt';
 import { BookstoreList } from '@/components/bookstore/BookstoreList';
-import BookstoreStory from '@/components/bookstore/BookstoreStory';
+import { BookstoreStory } from '@/components/bookstore/BookstoreStory';
 import { Header } from '@/components/common/Header';
 import { ROUTES } from '@/config/appConfig';
-import { best5BookStoreData, subRecommendedBookStoreData, userRecommendedBookStoreData } from '@/mock/bookStoreData';
+import { best5BookstoreData, subRecommendedBookstoreData, userRecommendedBookstoreData } from '@/mock/bookstoreData';
 import { user } from '@/pages/home';
 
 import { paletteTheme } from '@/styles/theme.css';
@@ -29,12 +29,12 @@ function BookstorePage() {
           <Txt typo="subTitle_bold">인기 독립서점 best 5</Txt>
         </Flex>
         <Slider>
-          {best5BookStoreData.map((item) => (
+          {best5BookstoreData.map((item) => (
             <BookstoreStory
-              key={item.name}
+              key={item.id}
               name={item.name}
               src={item.images[0]}
-              onClick={() => navigate(ROUTES.bookstoreDetail.link(item.name))}
+              onClick={() => navigate(ROUTES.bookstoreDetail.link(item.id))}
             />
           ))}
         </Slider>
@@ -47,7 +47,7 @@ function BookstorePage() {
               <Txt typo="subTitle_bold">{user}</Txt>님을 위한 독립서점
             </Txt>
           }
-          bookStoreData={userRecommendedBookStoreData}
+          bookStoreData={userRecommendedBookstoreData}
         />
         <BookstoreList
           title={
@@ -59,7 +59,7 @@ function BookstorePage() {
               전문 서점
             </Txt>
           }
-          bookStoreData={subRecommendedBookStoreData}
+          bookStoreData={subRecommendedBookstoreData}
         />
       </Flex>
     </>

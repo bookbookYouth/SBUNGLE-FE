@@ -6,9 +6,10 @@ interface LinkProps {
   children: React.ReactNode;
   url: string;
   isExternal?: boolean;
+  style?: React.CSSProperties;
 }
 
-export const Link = ({ children, url, isExternal = false }: LinkProps) => {
+export const Link = ({ children, url, isExternal = false, style }: LinkProps) => {
   const naviagate = useNavigate();
   const handleOpenNewTab = (url: string) => {
     window.open(url, '_blank', 'noopener, noreferrer');
@@ -19,7 +20,7 @@ export const Link = ({ children, url, isExternal = false }: LinkProps) => {
       <button
         className={sprinkles({ cursor: 'pointer', backgroundColor: 'transparent' })}
         onClick={() => handleOpenNewTab(url)}
-        style={{ border: 'none' }}
+        style={{ border: 'none', ...style }}
       >
         {children}
       </button>

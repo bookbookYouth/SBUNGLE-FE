@@ -42,13 +42,14 @@ export const Carousel = ({ imgArray, color }: CarouselProps) => {
         justifyContent: 'center',
         alignItems: 'center',
       })}
-      style={{ position: 'relative', width: '100%', overflow: 'hidden' }}
+      style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}
     >
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
           width: '100%', // 보는 영역
+          height: '100%',
           transform: `translateX(-${carouselIndex * 100}%)`,
           transition: carouselTransition,
         }}
@@ -59,9 +60,15 @@ export const Carousel = ({ imgArray, color }: CarouselProps) => {
             style={{
               flex: '0 0 100%',
               minWidth: '100%',
+              height: '100%',
             }}
           >
-            <img key={`img-${index}`} src={img} alt={img} style={{ display: 'block', width: '100%', height: 'auto' }} />
+            <img
+              key={`img-${index}`}
+              src={img}
+              alt={img}
+              style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
         ))}
       </div>

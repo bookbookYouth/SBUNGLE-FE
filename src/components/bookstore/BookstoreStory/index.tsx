@@ -10,7 +10,7 @@ interface BookstoreStoryProps {
   onClick?: () => void;
 }
 
-export default function BookstoreStory({ name, src, onClick }: BookstoreStoryProps) {
+export const BookstoreStory = ({ name, src, onClick }: BookstoreStoryProps) => {
   return (
     <Flex
       width="88px"
@@ -32,4 +32,4 @@ export default function BookstoreStory({ name, src, onClick }: BookstoreStoryPro
       <Txt typo="point_sm">{name}</Txt>
     </Flex>
   );
-}
+};

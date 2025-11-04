@@ -6,11 +6,11 @@ import { Grid } from '@/components/base/Grid';
 import { Txt } from '@/components/base/Txt';
 import { Card } from '@/components/common/Card';
 import { ROUTES } from '@/config/appConfig';
-import type { BookStore } from '@/mock/bookStoreData';
+import type { Bookstore } from '@/mock/bookstoreData';
 
 interface BookstoreListProps {
   title: React.ReactNode;
-  bookStoreData: BookStore[];
+  bookStoreData: Bookstore[];
 }
 
 export const BookstoreList = ({ title, bookStoreData }: BookstoreListProps) => {
@@ -23,7 +23,7 @@ export const BookstoreList = ({ title, bookStoreData }: BookstoreListProps) => {
       </Flex>
       <Grid colGap="2px" rowGap="20px">
         {bookStoreData.map((bookStore) => (
-          <Grid.Col key={bookStore.name}>
+          <Grid.Col key={bookStore.id}>
             <Card
               like
               liked={bookStore.liked}
@@ -36,7 +36,7 @@ export const BookstoreList = ({ title, bookStoreData }: BookstoreListProps) => {
                   </Txt>
                 </Flex>
               }
-              onClick={() => navigate(ROUTES.bookstoreDetail.link(bookStore.name))}
+              onClick={() => navigate(ROUTES.bookstoreDetail.link(bookStore.id))}
             />
           </Grid.Col>
         ))}

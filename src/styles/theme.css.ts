@@ -10,6 +10,7 @@ export const paletteTheme = createGlobalThemeContract({
     gray100: 'palette-gray100',
     gray: 'palette-gray',
     background: 'palette-background',
+    green: 'palette-green',
     white: 'palette-white',
     transparent: 'palette-transparent',
   },
@@ -50,6 +51,7 @@ export const lightMode = createGlobalTheme(':root', paletteTheme, {
     gray100: 'hsl(37, 15%, 83%)', //GR01
     gray: 'hsl(40, 24%, 90%)', //GR00
     background: 'hsl(44, 65%, 95%)', //BG
+    green: 'hsl(160, 72%, 47%)', //GN
     white: 'hsl(0, 0%, 100%)', //WT
     transparent: 'transparent',
   },

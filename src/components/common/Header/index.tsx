@@ -18,8 +18,11 @@ interface HeaderProps {
   isLogo?: boolean;
   isDelete?: boolean;
   iconColor?: Parameters<typeof sprinkles>[0]['backgroundColor'];
+  color?: Parameters<typeof sprinkles>[0]['color'];
+  backgroundColor?: Parameters<typeof sprinkles>[0]['backgroundColor'];
   handleBack?: () => void;
   handleClose?: () => void;
+  style?: React.CSSProperties;
 }
 
 export const Header = ({
@@ -29,8 +32,11 @@ export const Header = ({
   isLogo = false,
   isDelete = false,
   iconColor = 'gray300',
+  color = 'black',
+  backgroundColor = 'background',
   handleBack,
   handleClose,
+  style,
 }: HeaderProps) => {
   const navigate = useNavigate();
   return (
@@ -39,8 +45,8 @@ export const Header = ({
       width="100%"
       justifyContent="space-between"
       alignItems="center"
-      backgroundColor="background"
-      style={{ maxWidth: '402px', position: 'sticky', top: 0, zIndex: 20 }}
+      backgroundColor={backgroundColor}
+      style={{ maxWidth: '402px', position: 'sticky', top: 0, zIndex: 20, ...style }}
     >
       {isBack ? (
         <BackIcon
@@ -62,7 +68,9 @@ export const Header = ({
       ) : (
         <div style={{ width: '44px', height: '44px' }} />
       )}
-      <Txt typo="title">{title}</Txt>
+      <Txt typo="title" color={color}>
+        {title}
+      </Txt>
       {isCart ? (
         <CartIcon
           className={sprinkles({ cursor: 'pointer' })}
