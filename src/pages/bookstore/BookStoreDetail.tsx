@@ -78,22 +78,24 @@ function BookstoreDetailPage() {
         <Txt typo="point_lg">{bookstoreDetailData?.name}</Txt>
         <Txt typo="point_sm">{bookstoreDetailData?.description}</Txt>
       </Flex>
-      <Tab>
-        {tabList.map((item) => (
-          <Tab.Item
-            key={item.value}
-            onClick={() => setClickedTabItem(item.value)}
-            active={clickedTabItem === item.value}
-          >
-            {item.label}
-          </Tab.Item>
-        ))}
-      </Tab>
-      <Spacing height="20px" />
+      <Flex style={{ position: 'sticky', top: 52, zIndex: 20, backgroundColor: paletteTheme.palette.background }}>
+        <Tab>
+          {tabList.map((item) => (
+            <Tab.Item
+              key={item.value}
+              onClick={() => setClickedTabItem(item.value)}
+              active={clickedTabItem === item.value}
+            >
+              {item.label}
+            </Tab.Item>
+          ))}
+        </Tab>
+      </Flex>
       <If condition={clickedTabItem === 'bookList'}>
         <BookList bookStoreId={id || ''} />
       </If>
       <If condition={clickedTabItem === 'detail'}>
+        <Spacing height="20px" />
         <DetailInfo
           address={bookstoreDetailData?.address || ''}
           direction={bookstoreDetailData?.direction || ''}

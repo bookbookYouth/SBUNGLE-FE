@@ -37,17 +37,19 @@ function BookDetailPage() {
       <Header isBack isCart />
       <ImgCard genre={bookDetailData?.genre || ''} title={bookDetailData?.title || ''} />
       <Spacing height="20px" />
-      <Tab>
-        {tabList.map((item) => (
-          <Tab.Item
-            key={item.value}
-            onClick={() => setClickedTabItem(item.value)}
-            active={clickedTabItem === item.value}
-          >
-            {item.label}
-          </Tab.Item>
-        ))}
-      </Tab>
+      <Flex style={{ position: 'sticky', top: 52, zIndex: 20, backgroundColor: paletteTheme.palette.background }}>
+        <Tab>
+          {tabList.map((item) => (
+            <Tab.Item
+              key={item.value}
+              onClick={() => setClickedTabItem(item.value)}
+              active={clickedTabItem === item.value}
+            >
+              {item.label}
+            </Tab.Item>
+          ))}
+        </Tab>
+      </Flex>
       <Spacing height="20px" />
       <If condition={clickedTabItem === 'detail'}>
         <DetailInfo
