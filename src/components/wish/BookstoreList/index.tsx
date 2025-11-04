@@ -22,7 +22,7 @@ export const BookstoreList = () => {
             <Card
               like
               liked={bookStore.liked}
-              top={<img src={bookStore.images[0]} alt={bookStore.name} style={{ objectFit: 'cover' }} />}
+              top={<img src={bookStore.images?.[0]} alt={bookStore.name} style={{ objectFit: 'cover' }} />}
               bottom={
                 <Flex direction="column">
                   <Txt typo="point_sm_bold">{bookStore.name}</Txt>
