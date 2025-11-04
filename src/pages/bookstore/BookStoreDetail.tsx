@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useOutletContext, useParams } from 'react-router-dom';
 
 import Like from '@/assets/like.svg?react';
 import { Button } from '@/components/base/Button';
@@ -19,9 +19,11 @@ import { paletteTheme } from '@/styles/theme.css';
 
 function BookstoreDetailPage() {
   const { id } = useParams();
+  const { scrollElement } = useOutletContext<{ scrollElement: HTMLDivElement }>();
   const bookstoreDetailData: Bookstore | undefined = bookstoreData.find((item) => item.id === id);
 
   const [clickedTabItem, setClickedTabItem] = useState<'bookList' | 'detail'>('bookList');
+  const [isHeaderTransparent, setIsHeaderTransparent] = useState<boolean>(false);
 
   const handleLiked = () => {
     // api 연동
@@ -32,15 +34,34 @@ function BookstoreDetailPage() {
     { label: '상세 정보', value: 'detail' as const },
   ];
 
+  useEffect(() => {
+    if (!scrollElement) return;
+
+    const handleScroll = () => {
+      if (scrollElement.scrollTop > 480) {
+        setIsHeaderTransparent(true);
+      } else {
+        setIsHeaderTransparent(false);
+      }
+    };
+
+    scrollElement.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      scrollElement.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollElement]);
+
   return (
     <>
       <Header
         isBack
         isCart
-        color="white"
+        color={isHeaderTransparent ? 'black' : 'white'}
         title="상세 페이지"
-        backgroundColor="transparent"
-        iconColor="white"
+        backgroundColor={isHeaderTransparent ? 'background' : 'transparent'}
+        iconColor={isHeaderTransparent ? 'gray300' : 'white'}
         style={{ position: 'fixed' }}
       />
       <Flex width="402px" height="480px">
