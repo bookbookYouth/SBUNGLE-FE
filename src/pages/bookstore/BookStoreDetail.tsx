@@ -12,6 +12,7 @@ import { Txt } from '@/components/base/Txt';
 import { BookList } from '@/components/bookstore/BookList';
 import { DetailInfo } from '@/components/bookstore/DetailInfo';
 import { Header } from '@/components/common/Header';
+import { BOOKSTORE_DETAIL_TRANSITION_HEIGHT } from '@/constants/bookstore';
 import { type Bookstore, bookstoreData } from '@/mock/bookstoreData';
 
 import { sprinkles } from '@/styles/sprinkles.css';
@@ -38,7 +39,7 @@ function BookstoreDetailPage() {
     if (!scrollElement) return;
 
     const handleScroll = () => {
-      if (scrollElement.scrollTop > 480) {
+      if (scrollElement.scrollTop > BOOKSTORE_DETAIL_TRANSITION_HEIGHT) {
         setIsHeaderTransparent(true);
       } else {
         setIsHeaderTransparent(false);

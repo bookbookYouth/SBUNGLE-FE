@@ -58,7 +58,7 @@ function BookDetailPage() {
         />
       </If>
       <If condition={clickedTabItem === 'review'}>
-        <Review bookId={bookDetailData?.id || ''} />
+        <Review bookId={id || ''} />
       </If>
       <Spacing height="108px" />
       <footer

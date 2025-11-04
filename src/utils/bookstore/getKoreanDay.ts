@@ -2,7 +2,7 @@
  * 영업일자에 따라 표시되어야 할 한글 요일을 제공합니다.
  * @param day 영업일자의 요일입니다.
  * @returns '월요일'과 같은 한글 요일입니다.
- * @example getKoreanDay('Mon') = '월요일'
+ * @example getKoreanDay('mon') = '월요일'
  */
 export const getKoreanDay = (day: string) => {
   switch (day) {
